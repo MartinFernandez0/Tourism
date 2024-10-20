@@ -72,6 +72,7 @@ namespace TourismServices.Services
             }
         }
 
+
         public async Task DeleteAsync(int id)
         {
             var response = await client.DeleteAsync($"{_endpoint}/{id}");

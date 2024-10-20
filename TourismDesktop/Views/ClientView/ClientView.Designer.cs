@@ -78,6 +78,7 @@
             txtFilter.Name = "txtFilter";
             txtFilter.Size = new Size(278, 23);
             txtFilter.TabIndex = 42;
+            txtFilter.TextChanged += txtFilter_TextChanged;
             // 
             // btnSearch
             // 
@@ -95,6 +96,7 @@
             btnSearch.TabIndex = 41;
             btnSearch.Text = "Busqueda";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnDelete
             // 
@@ -223,6 +225,8 @@
             tabPageAddEdit.Controls.Add(DateBirth);
             tabPageAddEdit.Controls.Add(label6);
             tabPageAddEdit.Controls.Add(txtEmail);
+            tabPageAddEdit.Controls.Add(btnCancelar);
+            tabPageAddEdit.Controls.Add(btnGuardar);
             tabPageAddEdit.Controls.Add(label5);
             tabPageAddEdit.Controls.Add(label4);
             tabPageAddEdit.Controls.Add(txtFirstName);
@@ -344,7 +348,7 @@
             btnCancelar.IconColor = Color.Black;
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelar.IconSize = 35;
-            btnCancelar.Location = new Point(801, 408);
+            btnCancelar.Location = new Point(525, 234);
             btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(71, 46);
@@ -358,7 +362,7 @@
             btnGuardar.IconColor = Color.Black;
             btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardar.IconSize = 35;
-            btnGuardar.Location = new Point(685, 408);
+            btnGuardar.Location = new Point(409, 234);
             btnGuardar.Margin = new Padding(3, 2, 3, 2);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(68, 46);
@@ -379,8 +383,6 @@
             Controls.Add(btnAdd);
             Controls.Add(panel1);
             Controls.Add(tabControl1);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnGuardar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ClientView";
             StartPosition = FormStartPosition.CenterScreen;
