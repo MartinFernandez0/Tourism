@@ -12,7 +12,7 @@ using TourismBackend.DataContext;
 namespace TourismBackend.Migrations
 {
     [DbContext(typeof(TourismContext))]
-    [Migration("20241019172853_proyectoTourism")]
+    [Migration("20241020211552_proyectoTourism")]
     partial class proyectoTourism
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace TourismBackend.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -115,7 +115,7 @@ namespace TourismBackend.Migrations
                             LastName = "Fernandez",
                             Name = "Martin",
                             Phone = "3498479331",
-                            RegistrationDate = new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6212)
+                            RegistrationDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1726)
                         });
                 });
 
@@ -127,7 +127,7 @@ namespace TourismBackend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<DateTime>("DateRecorded")
+                    b.Property<DateTime>("DateBirth")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Document")
@@ -158,7 +158,7 @@ namespace TourismBackend.Migrations
                         new
                         {
                             ID = 1,
-                            DateRecorded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Document = "123456789",
                             Email = "client1@example.com",
                             FirstName = "Client1",
@@ -168,7 +168,7 @@ namespace TourismBackend.Migrations
                         new
                         {
                             ID = 2,
-                            DateRecorded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateBirth = new DateTime(1994, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1896),
                             Document = "987654321",
                             Email = "client2@example.com",
                             FirstName = "Client2",
@@ -178,7 +178,7 @@ namespace TourismBackend.Migrations
                         new
                         {
                             ID = 3,
-                            DateRecorded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateBirth = new DateTime(1999, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1903),
                             Document = "456789123",
                             Email = "client3@example.com",
                             FirstName = "Client3",
@@ -188,7 +188,7 @@ namespace TourismBackend.Migrations
                         new
                         {
                             ID = 4,
-                            DateRecorded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateBirth = new DateTime(1984, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1906),
                             Document = "321654987",
                             Email = "client4@example.com",
                             FirstName = "Client4",
@@ -198,7 +198,7 @@ namespace TourismBackend.Migrations
                         new
                         {
                             ID = 5,
-                            DateRecorded = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateBirth = new DateTime(1989, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1909),
                             Document = "789123456",
                             Email = "client5@example.com",
                             FirstName = "Client5",
@@ -293,20 +293,20 @@ namespace TourismBackend.Migrations
                         new
                         {
                             ID = 1,
-                            DepartureDate = new DateTime(2024, 10, 26, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6515),
+                            DepartureDate = new DateTime(2024, 10, 27, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2002),
                             Description = "Trip to Paris",
                             DestinationID = 1,
                             Name = "Paris",
-                            ReturnDate = new DateTime(2024, 11, 2, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6521)
+                            ReturnDate = new DateTime(2024, 11, 3, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2008)
                         },
                         new
                         {
                             ID = 2,
-                            DepartureDate = new DateTime(2024, 11, 9, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6523),
+                            DepartureDate = new DateTime(2024, 11, 10, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2010),
                             Description = "Trip to New York",
                             DestinationID = 2,
                             Name = "New York",
-                            ReturnDate = new DateTime(2024, 11, 16, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6524)
+                            ReturnDate = new DateTime(2024, 11, 17, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2011)
                         });
                 });
 
@@ -340,7 +340,7 @@ namespace TourismBackend.Migrations
                             ID = 1,
                             ClientID = 1,
                             ItineraryID = 1,
-                            ReservationDate = new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6546),
+                            ReservationDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2038),
                             ReservationStatus = 0
                         },
                         new
@@ -348,7 +348,7 @@ namespace TourismBackend.Migrations
                             ID = 2,
                             ClientID = 2,
                             ItineraryID = 2,
-                            ReservationDate = new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6548),
+                            ReservationDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2040),
                             ReservationStatus = 1
                         });
                 });
@@ -388,7 +388,7 @@ namespace TourismBackend.Migrations
                             ClientID = 1,
                             PaymentConfirmation = 1,
                             PaymentMethod = 1,
-                            TransactionDate = new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6571)
+                            TransactionDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2066)
                         },
                         new
                         {
@@ -397,7 +397,7 @@ namespace TourismBackend.Migrations
                             ClientID = 2,
                             PaymentConfirmation = 2,
                             PaymentMethod = 1,
-                            TransactionDate = new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6574)
+                            TransactionDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2069)
                         },
                         new
                         {
@@ -406,7 +406,7 @@ namespace TourismBackend.Migrations
                             ClientID = 1,
                             PaymentConfirmation = 3,
                             PaymentMethod = 4,
-                            TransactionDate = new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6575)
+                            TransactionDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2071)
                         });
                 });
 #pragma warning restore 612, 618

@@ -67,7 +67,8 @@ namespace TourismBackend.DataContext
                     LastName = "LastName2",
                     Document = "987654321",
                     Email = "client2@example.com",
-                    PhoneNumber = "0987654321"
+                    PhoneNumber = "0987654321",
+                    DateBirth = DateTime.Now.AddYears(-30)
                 },
                 new pfClient
                 {
@@ -76,7 +77,8 @@ namespace TourismBackend.DataContext
                     LastName = "LastName3",
                     Document = "456789123",
                     Email = "client3@example.com",
-                    PhoneNumber = "4567891230"
+                    PhoneNumber = "4567891230",
+                    DateBirth = DateTime.Now.AddYears(-25)
                 },
                 new pfClient
                 {
@@ -85,7 +87,8 @@ namespace TourismBackend.DataContext
                     LastName = "LastName4",
                     Document = "321654987",
                     Email = "client4@example.com",
-                    PhoneNumber = "3216549870"
+                    PhoneNumber = "3216549870",
+                    DateBirth = DateTime.Now.AddYears(-40)
                 },
                 new pfClient
                 {
@@ -94,7 +97,8 @@ namespace TourismBackend.DataContext
                     LastName = "LastName5",
                     Document = "789123456",
                     Email = "client5@example.com",
-                    PhoneNumber = "7891234560"
+                    PhoneNumber = "7891234560",
+                    DateBirth = DateTime.Now.AddYears(-35)
                 }
             );
             // Seed data for pfActivity

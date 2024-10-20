@@ -76,7 +76,7 @@ namespace TourismBackend.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PhoneNumber = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DateRecorded = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    DateBirth = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -174,18 +174,18 @@ namespace TourismBackend.Migrations
             migrationBuilder.InsertData(
                 table: "pfAdministrators",
                 columns: new[] { "ID", "Email", "LastName", "Name", "Phone", "RegistrationDate" },
-                values: new object[] { 1, "martin_fernandez@example.com", "Fernandez", "Martin", "3498479331", new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6212) });
+                values: new object[] { 1, "martin_fernandez@example.com", "Fernandez", "Martin", "3498479331", new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1726) });
 
             migrationBuilder.InsertData(
                 table: "pfClients",
-                columns: new[] { "ID", "DateRecorded", "Document", "Email", "FirstName", "LastName", "PhoneNumber" },
+                columns: new[] { "ID", "DateBirth", "Document", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[,]
                 {
                     { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "123456789", "client1@example.com", "Client1", "LastName1", "1234567890" },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "987654321", "client2@example.com", "Client2", "LastName2", "0987654321" },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "456789123", "client3@example.com", "Client3", "LastName3", "4567891230" },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "321654987", "client4@example.com", "Client4", "LastName4", "3216549870" },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "789123456", "client5@example.com", "Client5", "LastName5", "7891234560" }
+                    { 2, new DateTime(1994, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1896), "987654321", "client2@example.com", "Client2", "LastName2", "0987654321" },
+                    { 3, new DateTime(1999, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1903), "456789123", "client3@example.com", "Client3", "LastName3", "4567891230" },
+                    { 4, new DateTime(1984, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1906), "321654987", "client4@example.com", "Client4", "LastName4", "3216549870" },
+                    { 5, new DateTime(1989, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1909), "789123456", "client5@example.com", "Client5", "LastName5", "7891234560" }
                 });
 
             migrationBuilder.InsertData(
@@ -202,8 +202,8 @@ namespace TourismBackend.Migrations
                 columns: new[] { "ID", "DepartureDate", "Description", "DestinationID", "Name", "ReturnDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 26, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6515), "Trip to Paris", 1, "Paris", new DateTime(2024, 11, 2, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6521) },
-                    { 2, new DateTime(2024, 11, 9, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6523), "Trip to New York", 2, "New York", new DateTime(2024, 11, 16, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6524) }
+                    { 1, new DateTime(2024, 10, 27, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2002), "Trip to Paris", 1, "Paris", new DateTime(2024, 11, 3, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2008) },
+                    { 2, new DateTime(2024, 11, 10, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2010), "Trip to New York", 2, "New York", new DateTime(2024, 11, 17, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2011) }
                 });
 
             migrationBuilder.InsertData(
@@ -211,8 +211,8 @@ namespace TourismBackend.Migrations
                 columns: new[] { "ID", "ClientID", "ItineraryID", "ReservationDate", "ReservationStatus" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6546), 0 },
-                    { 2, 2, 2, new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6548), 1 }
+                    { 1, 1, 1, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2038), 0 },
+                    { 2, 2, 2, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2040), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -220,9 +220,9 @@ namespace TourismBackend.Migrations
                 columns: new[] { "ID", "Amount", "ClientID", "PaymentConfirmation", "PaymentMethod", "TransactionDate" },
                 values: new object[,]
                 {
-                    { 1, 1500.00m, 1, 1, 1, new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6571) },
-                    { 2, 2000.00m, 2, 2, 1, new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6574) },
-                    { 3, 500.00m, 1, 3, 4, new DateTime(2024, 10, 19, 14, 28, 51, 352, DateTimeKind.Local).AddTicks(6575) }
+                    { 1, 1500.00m, 1, 1, 1, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2066) },
+                    { 2, 2000.00m, 2, 2, 1, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2069) },
+                    { 3, 500.00m, 1, 3, 4, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2071) }
                 });
         }
 

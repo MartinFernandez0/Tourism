@@ -38,15 +38,15 @@
             panel1 = new Panel();
             label1 = new Label();
             tabControl1 = new TabControl();
-            tabPageLista = new TabPage();
+            tabPageList = new TabPage();
             dataGridClientView = new DataGridView();
-            tabPageAgregarEditar = new TabPage();
+            tabPageAddEdit = new TabPage();
             txtLastName = new TextBox();
             txtPhoneNumber = new TextBox();
             label7 = new Label();
             txtDocument = new TextBox();
             label8 = new Label();
-            dateRecor = new DateTimePicker();
+            DateBirth = new DateTimePicker();
             label6 = new Label();
             txtEmail = new TextBox();
             label5 = new Label();
@@ -57,9 +57,9 @@
             btnGuardar = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
-            tabPageLista.SuspendLayout();
+            tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClientView).BeginInit();
-            tabPageAgregarEditar.SuspendLayout();
+            tabPageAddEdit.SuspendLayout();
             SuspendLayout();
             // 
             // label3
@@ -111,6 +111,7 @@
             btnDelete.TabIndex = 40;
             btnDelete.Text = "Eliminar";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnModify
             // 
@@ -127,6 +128,7 @@
             btnModify.TabIndex = 39;
             btnModify.Text = "Modificar";
             btnModify.UseVisualStyleBackColor = true;
+            btnModify.Click += btnModify_Click;
             // 
             // btnAdd
             // 
@@ -143,6 +145,7 @@
             btnAdd.TabIndex = 38;
             btnAdd.Text = "Agregar";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // panel1
             // 
@@ -168,24 +171,24 @@
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPageLista);
-            tabControl1.Controls.Add(tabPageAgregarEditar);
-            tabControl1.Location = new Point(18, 99);
+            tabControl1.Controls.Add(tabPageList);
+            tabControl1.Controls.Add(tabPageAddEdit);
+            tabControl1.Location = new Point(18, 94);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(641, 328);
             tabControl1.TabIndex = 36;
             // 
-            // tabPageLista
+            // tabPageList
             // 
-            tabPageLista.Controls.Add(dataGridClientView);
-            tabPageLista.Location = new Point(4, 24);
-            tabPageLista.Name = "tabPageLista";
-            tabPageLista.Padding = new Padding(3);
-            tabPageLista.Size = new Size(633, 300);
-            tabPageLista.TabIndex = 0;
-            tabPageLista.Text = "Lista";
-            tabPageLista.UseVisualStyleBackColor = true;
+            tabPageList.Controls.Add(dataGridClientView);
+            tabPageList.Location = new Point(4, 24);
+            tabPageList.Name = "tabPageList";
+            tabPageList.Padding = new Padding(3);
+            tabPageList.Size = new Size(633, 300);
+            tabPageList.TabIndex = 0;
+            tabPageList.Text = "Lista";
+            tabPageList.UseVisualStyleBackColor = true;
             // 
             // dataGridClientView
             // 
@@ -210,27 +213,27 @@
             dataGridClientView.Size = new Size(633, 298);
             dataGridClientView.TabIndex = 16;
             // 
-            // tabPageAgregarEditar
+            // tabPageAddEdit
             // 
-            tabPageAgregarEditar.Controls.Add(txtLastName);
-            tabPageAgregarEditar.Controls.Add(txtPhoneNumber);
-            tabPageAgregarEditar.Controls.Add(label7);
-            tabPageAgregarEditar.Controls.Add(txtDocument);
-            tabPageAgregarEditar.Controls.Add(label8);
-            tabPageAgregarEditar.Controls.Add(dateRecor);
-            tabPageAgregarEditar.Controls.Add(label6);
-            tabPageAgregarEditar.Controls.Add(txtEmail);
-            tabPageAgregarEditar.Controls.Add(label5);
-            tabPageAgregarEditar.Controls.Add(label4);
-            tabPageAgregarEditar.Controls.Add(txtFirstName);
-            tabPageAgregarEditar.Controls.Add(label2);
-            tabPageAgregarEditar.Location = new Point(4, 24);
-            tabPageAgregarEditar.Name = "tabPageAgregarEditar";
-            tabPageAgregarEditar.Padding = new Padding(3);
-            tabPageAgregarEditar.Size = new Size(633, 300);
-            tabPageAgregarEditar.TabIndex = 1;
-            tabPageAgregarEditar.Text = "Agregar/Editar";
-            tabPageAgregarEditar.UseVisualStyleBackColor = true;
+            tabPageAddEdit.Controls.Add(txtLastName);
+            tabPageAddEdit.Controls.Add(txtPhoneNumber);
+            tabPageAddEdit.Controls.Add(label7);
+            tabPageAddEdit.Controls.Add(txtDocument);
+            tabPageAddEdit.Controls.Add(label8);
+            tabPageAddEdit.Controls.Add(DateBirth);
+            tabPageAddEdit.Controls.Add(label6);
+            tabPageAddEdit.Controls.Add(txtEmail);
+            tabPageAddEdit.Controls.Add(label5);
+            tabPageAddEdit.Controls.Add(label4);
+            tabPageAddEdit.Controls.Add(txtFirstName);
+            tabPageAddEdit.Controls.Add(label2);
+            tabPageAddEdit.Location = new Point(4, 24);
+            tabPageAddEdit.Name = "tabPageAddEdit";
+            tabPageAddEdit.Padding = new Padding(3);
+            tabPageAddEdit.Size = new Size(633, 300);
+            tabPageAddEdit.TabIndex = 1;
+            tabPageAddEdit.Text = "Agregar/Editar";
+            tabPageAddEdit.UseVisualStyleBackColor = true;
             // 
             // txtLastName
             // 
@@ -274,22 +277,23 @@
             label8.TabIndex = 26;
             label8.Text = "DNI CUIL:";
             // 
-            // dateRecor
+            // DateBirth
             // 
-            dateRecor.Format = DateTimePickerFormat.Short;
-            dateRecor.Location = new Point(455, 54);
-            dateRecor.Name = "dateRecor";
-            dateRecor.Size = new Size(97, 23);
-            dateRecor.TabIndex = 23;
+            DateBirth.Format = DateTimePickerFormat.Custom;
+            DateBirth.Location = new Point(144, 257);
+            DateBirth.Name = "DateBirth";
+            DateBirth.Size = new Size(146, 23);
+            DateBirth.TabIndex = 23;
+            DateBirth.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(442, 38);
+            label6.Location = new Point(171, 239);
             label6.Name = "label6";
-            label6.Size = new Size(122, 15);
+            label6.Size = new Size(103, 15);
             label6.TabIndex = 22;
-            label6.Text = "Fecha de Nacimiento:";
+            label6.Text = "Fecha de Registro:";
             // 
             // txtEmail
             // 
@@ -360,6 +364,7 @@
             btnGuardar.Size = new Size(68, 46);
             btnGuardar.TabIndex = 16;
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // ClientView
             // 
@@ -383,10 +388,10 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
-            tabPageLista.ResumeLayout(false);
+            tabPageList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridClientView).EndInit();
-            tabPageAgregarEditar.ResumeLayout(false);
-            tabPageAgregarEditar.PerformLayout();
+            tabPageAddEdit.ResumeLayout(false);
+            tabPageAddEdit.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -402,11 +407,11 @@
         private Panel panel1;
         private Label label1;
         private TabControl tabControl1;
-        private TabPage tabPageLista;
+        private TabPage tabPageList;
         private DataGridView dataGridClientView;
-        private TabPage tabPageAgregarEditar;
+        private TabPage tabPageAddEdit;
         private ComboBox comboBoxLocalidades;
-        private DateTimePicker dateRecor;
+        private DateTimePicker DateBirth;
         private Label label6;
         private TextBox txtEmail;
         private Label label5;
