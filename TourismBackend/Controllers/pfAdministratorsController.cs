@@ -47,7 +47,7 @@ namespace TourismBackend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutpfAdministrator(int id, pfAdministrator pfAdministrator)
         {
-            if (id != pfAdministrator.ID)
+            if (id != pfAdministrator.Id)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace TourismBackend.Controllers
             _context.pfAdministrators.Add(pfAdministrator);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetpfAdministrator", new { id = pfAdministrator.ID }, pfAdministrator);
+            return CreatedAtAction("GetpfAdministrator", new { id = pfAdministrator.Id }, pfAdministrator);
         }
 
         // DELETE: api/pfAdministrators/5
@@ -102,7 +102,7 @@ namespace TourismBackend.Controllers
 
         private bool pfAdministratorExists(int id)
         {
-            return _context.pfAdministrators.Any(e => e.ID == id);
+            return _context.pfAdministrators.Any(e => e.Id == id);
         }
     }
 }

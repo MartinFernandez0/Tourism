@@ -9,7 +9,7 @@ namespace TourismServices.Models
 {
     public class pfClient
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "El campo nombre es obligatorio")]
         public string FirstName { get; set; }

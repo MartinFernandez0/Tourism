@@ -40,7 +40,7 @@ namespace TourismBackend.DataContext
             modelBuilder.Entity<pfAdministrator>().HasData(
                 new pfAdministrator
                 {
-                    ID = 1,
+                    Id = 1,
                     Name = "Martin",
                     LastName = "Fernandez",
                     Email = "martin_fernandez@example.com",
@@ -53,7 +53,7 @@ namespace TourismBackend.DataContext
             modelBuilder.Entity<pfClient>().HasData(
                 new pfClient
                 {
-                    ID = 1,
+                    Id = 1,
                     FirstName = "Client1",
                     LastName = "LastName1",
                     Document = "123456789",
@@ -62,7 +62,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfClient
                 {
-                    ID = 2,
+                    Id = 2,
                     FirstName = "Client2",
                     LastName = "LastName2",
                     Document = "987654321",
@@ -72,7 +72,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfClient
                 {
-                    ID = 3,
+                    Id = 3,
                     FirstName = "Client3",
                     LastName = "LastName3",
                     Document = "456789123",
@@ -82,7 +82,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfClient
                 {
-                    ID = 4,
+                    Id = 4,
                     FirstName = "Client4",
                     LastName = "LastName4",
                     Document = "321654987",
@@ -92,7 +92,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfClient
                 {
-                    ID = 5,
+                    Id = 5,
                     FirstName = "Client5",
                     LastName = "LastName5",
                     Document = "789123456",
@@ -105,7 +105,7 @@ namespace TourismBackend.DataContext
             modelBuilder.Entity<pfActivity>().HasData(
                 new pfActivity
                 {
-                    ID = 1,
+                    Id = 1,
                     ActivityName = "Eiffel Tower Visit",
                     Description = "Guided tour of the Eiffel Tower",
                     Duration = 3, // in hours
@@ -114,7 +114,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfActivity
                 {
-                    ID = 2,
+                    Id = 2,
                     ActivityName = "Hudson River Cruise",
                     Description = "Boat tour along the Hudson River",
                     Duration = 2, // in hours
@@ -127,7 +127,7 @@ namespace TourismBackend.DataContext
             modelBuilder.Entity<pfDestination>().HasData(
                 new pfDestination
                 {
-                    ID = 1,
+                    Id = 1,
                     Name = "Paris",
                     Country = "France",
                     Description = "The City of Lights",
@@ -136,7 +136,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfDestination
                 {
-                    ID = 2,
+                    Id = 2,
                     Name = "New York",
                     Country = "USA",
                     Description = "The Big Apple",
@@ -149,7 +149,7 @@ namespace TourismBackend.DataContext
             modelBuilder.Entity<pfItinerary>().HasData(
                 new pfItinerary
                 {
-                    ID = 1,
+                    Id = 1,
                     Name = "Paris",
                     DestinationID = 1, // FK to pfDestination
                     DepartureDate = DateTime.Now.AddDays(7),
@@ -158,7 +158,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfItinerary
                 {
-                    ID = 2,
+                    Id = 2,
                     Name = "New York",
                     DestinationID = 2, // FK to pfDestination
                     DepartureDate = DateTime.Now.AddDays(21),
@@ -171,7 +171,7 @@ namespace TourismBackend.DataContext
             modelBuilder.Entity<pfReservation>().HasData(
                 new pfReservation
                 {
-                    ID = 1,
+                    Id = 1,
                     ClientID = 1, // FK to pfClient
                     ItineraryID = 1, // FK to pfItinerary
                     ReservationDate = DateTime.Now,
@@ -179,7 +179,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfReservation
                 {
-                    ID = 2,
+                    Id = 2,
                     ClientID = 2, // FK to pfClient
                     ItineraryID = 2, // FK to pfItinerary
                     ReservationDate = DateTime.Now,
@@ -191,7 +191,7 @@ namespace TourismBackend.DataContext
             modelBuilder.Entity<pfTransaction>().HasData(
                 new pfTransaction
                 {
-                    ID = 1,
+                    Id = 1,
                     Amount = 1500.00m,
                     TransactionDate = DateTime.Now,
                     ClientID = 1, // FK to pfClient
@@ -200,7 +200,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfTransaction
                 {
-                    ID = 2,
+                    Id = 2,
                     Amount = 2000.00m,
                     TransactionDate = DateTime.Now,
                     ClientID = 2, // FK to pfClient
@@ -209,7 +209,7 @@ namespace TourismBackend.DataContext
                 },
                 new pfTransaction
                 {
-                    ID = 3,
+                    Id = 3,
                     Amount = 500.00m,
                     TransactionDate = DateTime.Now,
                     ClientID = 1, // FK to pfClient

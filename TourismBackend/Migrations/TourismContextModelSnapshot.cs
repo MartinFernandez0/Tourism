@@ -24,11 +24,11 @@ namespace TourismBackend.Migrations
 
             modelBuilder.Entity("TourismServices.Models.pfActivity", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ActivityName")
                         .IsRequired()
@@ -48,14 +48,14 @@ namespace TourismBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("pfActivities");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             ActivityName = "Eiffel Tower Visit",
                             Cost = 30.00m,
                             Description = "Guided tour of the Eiffel Tower",
@@ -64,7 +64,7 @@ namespace TourismBackend.Migrations
                         },
                         new
                         {
-                            ID = 2,
+                            Id = 2,
                             ActivityName = "Hudson River Cruise",
                             Cost = 50.00m,
                             Description = "Boat tour along the Hudson River",
@@ -75,11 +75,11 @@ namespace TourismBackend.Migrations
 
             modelBuilder.Entity("TourismServices.Models.pfAdministrator", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -100,29 +100,29 @@ namespace TourismBackend.Migrations
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("pfAdministrators");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             Email = "martin_fernandez@example.com",
                             LastName = "Fernandez",
                             Name = "Martin",
                             Phone = "3498479331",
-                            RegistrationDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1726)
+                            RegistrationDate = new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2229)
                         });
                 });
 
             modelBuilder.Entity("TourismServices.Models.pfClient", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateBirth")
                         .HasColumnType("datetime(6)");
@@ -147,14 +147,14 @@ namespace TourismBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("pfClients");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Document = "123456789",
                             Email = "client1@example.com",
@@ -164,8 +164,8 @@ namespace TourismBackend.Migrations
                         },
                         new
                         {
-                            ID = 2,
-                            DateBirth = new DateTime(1994, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1896),
+                            Id = 2,
+                            DateBirth = new DateTime(1994, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2400),
                             Document = "987654321",
                             Email = "client2@example.com",
                             FirstName = "Client2",
@@ -174,8 +174,8 @@ namespace TourismBackend.Migrations
                         },
                         new
                         {
-                            ID = 3,
-                            DateBirth = new DateTime(1999, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1903),
+                            Id = 3,
+                            DateBirth = new DateTime(1999, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2408),
                             Document = "456789123",
                             Email = "client3@example.com",
                             FirstName = "Client3",
@@ -184,8 +184,8 @@ namespace TourismBackend.Migrations
                         },
                         new
                         {
-                            ID = 4,
-                            DateBirth = new DateTime(1984, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1906),
+                            Id = 4,
+                            DateBirth = new DateTime(1984, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2410),
                             Document = "321654987",
                             Email = "client4@example.com",
                             FirstName = "Client4",
@@ -194,8 +194,8 @@ namespace TourismBackend.Migrations
                         },
                         new
                         {
-                            ID = 5,
-                            DateBirth = new DateTime(1989, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1909),
+                            Id = 5,
+                            DateBirth = new DateTime(1989, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2413),
                             Document = "789123456",
                             Email = "client5@example.com",
                             FirstName = "Client5",
@@ -206,11 +206,11 @@ namespace TourismBackend.Migrations
 
             modelBuilder.Entity("TourismServices.Models.pfDestination", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -232,14 +232,14 @@ namespace TourismBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("pfDestinations");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             CategoryName = "City",
                             Country = "France",
                             Description = "The City of Lights",
@@ -248,7 +248,7 @@ namespace TourismBackend.Migrations
                         },
                         new
                         {
-                            ID = 2,
+                            Id = 2,
                             CategoryName = "City",
                             Country = "USA",
                             Description = "The Big Apple",
@@ -259,11 +259,11 @@ namespace TourismBackend.Migrations
 
             modelBuilder.Entity("TourismServices.Models.pfItinerary", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime(6)");
@@ -282,38 +282,38 @@ namespace TourismBackend.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("pfItineraries");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            DepartureDate = new DateTime(2024, 10, 27, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2002),
+                            Id = 1,
+                            DepartureDate = new DateTime(2024, 10, 30, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2511),
                             Description = "Trip to Paris",
                             DestinationID = 1,
                             Name = "Paris",
-                            ReturnDate = new DateTime(2024, 11, 3, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2008)
+                            ReturnDate = new DateTime(2024, 11, 6, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2515)
                         },
                         new
                         {
-                            ID = 2,
-                            DepartureDate = new DateTime(2024, 11, 10, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2010),
+                            Id = 2,
+                            DepartureDate = new DateTime(2024, 11, 13, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2518),
                             Description = "Trip to New York",
                             DestinationID = 2,
                             Name = "New York",
-                            ReturnDate = new DateTime(2024, 11, 17, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2011)
+                            ReturnDate = new DateTime(2024, 11, 20, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2518)
                         });
                 });
 
             modelBuilder.Entity("TourismServices.Models.pfReservation", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientID")
                         .HasColumnType("int");
@@ -327,36 +327,36 @@ namespace TourismBackend.Migrations
                     b.Property<int>("ReservationStatus")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("pfReservations");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             ClientID = 1,
                             ItineraryID = 1,
-                            ReservationDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2038),
+                            ReservationDate = new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2542),
                             ReservationStatus = 0
                         },
                         new
                         {
-                            ID = 2,
+                            Id = 2,
                             ClientID = 2,
                             ItineraryID = 2,
-                            ReservationDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2040),
+                            ReservationDate = new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2544),
                             ReservationStatus = 1
                         });
                 });
 
             modelBuilder.Entity("TourismServices.Models.pfTransaction", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(65,30)");
@@ -373,37 +373,37 @@ namespace TourismBackend.Migrations
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("pfTransactions");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             Amount = 1500.00m,
                             ClientID = 1,
                             PaymentConfirmation = 1,
                             PaymentMethod = 1,
-                            TransactionDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2066)
+                            TransactionDate = new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2569)
                         },
                         new
                         {
-                            ID = 2,
+                            Id = 2,
                             Amount = 2000.00m,
                             ClientID = 2,
                             PaymentConfirmation = 2,
                             PaymentMethod = 1,
-                            TransactionDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2069)
+                            TransactionDate = new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2573)
                         },
                         new
                         {
-                            ID = 3,
+                            Id = 3,
                             Amount = 500.00m,
                             ClientID = 1,
                             PaymentConfirmation = 3,
                             PaymentMethod = 4,
-                            TransactionDate = new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2071)
+                            TransactionDate = new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2575)
                         });
                 });
 #pragma warning restore 612, 618

@@ -1,6 +1,6 @@
-﻿namespace TourismDesktop.Views
+﻿namespace TourismDesktop.Views.ActivityView
 {
-    partial class ClientView
+    partial class ActivityView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label3 = new Label();
             txtFilter = new TextBox();
+            btnSearch = new FontAwesome.Sharp.IconButton();
             btnDelete = new FontAwesome.Sharp.IconButton();
             btnModify = new FontAwesome.Sharp.IconButton();
             btnAdd = new FontAwesome.Sharp.IconButton();
@@ -39,7 +40,7 @@
             label1 = new Label();
             tabControl1 = new TabControl();
             tabPageList = new TabPage();
-            dataGridClientView = new DataGridView();
+            dataGridActivityView = new DataGridView();
             tabPageAddEdit = new TabPage();
             txtLastName = new TextBox();
             txtPhoneNumber = new TextBox();
@@ -58,7 +59,7 @@
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridClientView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridActivityView).BeginInit();
             tabPageAddEdit.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,19 +67,35 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(245, 90);
+            label3.Location = new Point(239, 93);
             label3.Name = "label3";
-            label3.Size = new Size(109, 15);
-            label3.TabIndex = 43;
-            label3.Text = "BUSCAR CLIENTE";
+            label3.Size = new Size(127, 15);
+            label3.TabIndex = 51;
+            label3.Text = "BUSCAR ACTIVIDAD";
             // 
             // txtFilter
             // 
-            txtFilter.Location = new Point(381, 86);
+            txtFilter.Location = new Point(380, 85);
             txtFilter.Name = "txtFilter";
             txtFilter.Size = new Size(278, 23);
-            txtFilter.TabIndex = 42;
-            txtFilter.TextChanged += txtFilter_TextChanged;
+            txtFilter.TabIndex = 50;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+            btnSearch.IconColor = Color.Black;
+            btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSearch.IconSize = 20;
+            btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSearch.Location = new Point(721, 76);
+            btnSearch.Margin = new Padding(3, 2, 3, 2);
+            btnSearch.Name = "btnSearch";
+            btnSearch.RightToLeft = RightToLeft.No;
+            btnSearch.Size = new Size(127, 38);
+            btnSearch.TabIndex = 49;
+            btnSearch.Text = "Busqueda";
+            btnSearch.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
@@ -88,14 +105,13 @@
             btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDelete.IconSize = 20;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(722, 262);
+            btnDelete.Location = new Point(721, 261);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(127, 38);
-            btnDelete.TabIndex = 40;
+            btnDelete.TabIndex = 48;
             btnDelete.Text = "Eliminar";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
             // 
             // btnModify
             // 
@@ -105,14 +121,13 @@
             btnModify.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModify.IconSize = 20;
             btnModify.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModify.Location = new Point(722, 220);
+            btnModify.Location = new Point(721, 219);
             btnModify.Margin = new Padding(3, 2, 3, 2);
             btnModify.Name = "btnModify";
             btnModify.Size = new Size(127, 38);
-            btnModify.TabIndex = 39;
+            btnModify.TabIndex = 47;
             btnModify.Text = "Modificar";
             btnModify.UseVisualStyleBackColor = true;
-            btnModify.Click += btnModify_Click;
             // 
             // btnAdd
             // 
@@ -122,14 +137,13 @@
             btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAdd.IconSize = 20;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(722, 178);
+            btnAdd.Location = new Point(721, 177);
             btnAdd.Margin = new Padding(3, 2, 3, 2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(127, 38);
-            btnAdd.TabIndex = 38;
+            btnAdd.TabIndex = 46;
             btnAdd.Text = "Agregar";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
             // 
             // panel1
             // 
@@ -137,11 +151,11 @@
             panel1.BackColor = Color.FromArgb(24, 24, 29);
             panel1.Controls.Add(btnReturn);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(-1, -1);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(903, 63);
-            panel1.TabIndex = 37;
+            panel1.TabIndex = 45;
             // 
             // btnReturn
             // 
@@ -152,7 +166,7 @@
             btnReturn.IconColor = Color.Black;
             btnReturn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnReturn.IconSize = 25;
-            btnReturn.Location = new Point(831, 12);
+            btnReturn.Location = new Point(757, 15);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(57, 37);
             btnReturn.TabIndex = 61;
@@ -164,25 +178,25 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ControlLight;
-            label1.Location = new Point(18, 15);
+            label1.Location = new Point(13, 14);
             label1.Name = "label1";
-            label1.Size = new Size(111, 30);
+            label1.Size = new Size(155, 30);
             label1.TabIndex = 0;
-            label1.Text = "CLIENTES";
+            label1.Text = "ACTIVIDADES";
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPageList);
             tabControl1.Controls.Add(tabPageAddEdit);
-            tabControl1.Location = new Point(18, 94);
+            tabControl1.Location = new Point(17, 93);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(641, 328);
-            tabControl1.TabIndex = 36;
+            tabControl1.TabIndex = 44;
             // 
             // tabPageList
             // 
-            tabPageList.Controls.Add(dataGridClientView);
+            tabPageList.Controls.Add(dataGridActivityView);
             tabPageList.Location = new Point(4, 24);
             tabPageList.Name = "tabPageList";
             tabPageList.Padding = new Padding(3);
@@ -191,28 +205,28 @@
             tabPageList.Text = "Lista";
             tabPageList.UseVisualStyleBackColor = true;
             // 
-            // dataGridClientView
+            // dataGridActivityView
             // 
-            dataGridClientView.AllowUserToAddRows = false;
-            dataGridClientView.AllowUserToDeleteRows = false;
-            dataGridClientView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridClientView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridClientView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridClientView.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridClientView.Location = new Point(0, 0);
-            dataGridClientView.Margin = new Padding(3, 2, 3, 2);
-            dataGridClientView.Name = "dataGridClientView";
-            dataGridClientView.ReadOnly = true;
-            dataGridClientView.RowHeadersWidth = 51;
-            dataGridClientView.Size = new Size(633, 298);
-            dataGridClientView.TabIndex = 16;
+            dataGridActivityView.AllowUserToAddRows = false;
+            dataGridActivityView.AllowUserToDeleteRows = false;
+            dataGridActivityView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridActivityView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridActivityView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridActivityView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridActivityView.Location = new Point(3, 3);
+            dataGridActivityView.Margin = new Padding(3, 2, 3, 2);
+            dataGridActivityView.Name = "dataGridActivityView";
+            dataGridActivityView.ReadOnly = true;
+            dataGridActivityView.RowHeadersWidth = 51;
+            dataGridActivityView.Size = new Size(1060, 492);
+            dataGridActivityView.TabIndex = 16;
             // 
             // tabPageAddEdit
             // 
@@ -257,7 +271,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(32, 202);
+            label7.Location = new Point(35, 205);
             label7.Name = "label7";
             label7.Size = new Size(55, 15);
             label7.TabIndex = 28;
@@ -274,7 +288,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(32, 125);
+            label8.Location = new Point(35, 128);
             label8.Name = "label8";
             label8.Size = new Size(58, 15);
             label8.TabIndex = 26;
@@ -292,7 +306,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(171, 239);
+            label6.Location = new Point(174, 242);
             label6.Name = "label6";
             label6.Size = new Size(103, 15);
             label6.TabIndex = 22;
@@ -318,7 +332,6 @@
             btnCancelar.Size = new Size(182, 27);
             btnCancelar.TabIndex = 17;
             btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnGuardar
             // 
@@ -333,12 +346,11 @@
             btnGuardar.Size = new Size(182, 32);
             btnGuardar.TabIndex = 16;
             btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(32, 164);
+            label5.Location = new Point(35, 167);
             label5.Name = "label5";
             label5.Size = new Size(39, 15);
             label5.TabIndex = 20;
@@ -347,7 +359,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 83);
+            label4.Location = new Point(35, 86);
             label4.Name = "label4";
             label4.Size = new Size(54, 15);
             label4.TabIndex = 18;
@@ -364,33 +376,34 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(32, 46);
+            label2.Location = new Point(35, 49);
             label2.Name = "label2";
             label2.Size = new Size(54, 15);
             label2.TabIndex = 14;
             label2.Text = "Nombre:";
             // 
-            // ClientView
+            // ActivityView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 465);
             Controls.Add(label3);
             Controls.Add(txtFilter);
+            Controls.Add(btnSearch);
             Controls.Add(btnDelete);
             Controls.Add(btnModify);
             Controls.Add(btnAdd);
             Controls.Add(panel1);
             Controls.Add(tabControl1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ClientView";
+            Name = "ActivityView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ClientView";
+            Text = "ActivityView";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPageList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridClientView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridActivityView).EndInit();
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
             ResumeLayout(false);
@@ -406,27 +419,25 @@
         private FontAwesome.Sharp.IconButton btnModify;
         private FontAwesome.Sharp.IconButton btnAdd;
         private Panel panel1;
+        private FontAwesome.Sharp.IconButton btnReturn;
         private Label label1;
         private TabControl tabControl1;
         private TabPage tabPageList;
-        private DataGridView dataGridClientView;
+        private DataGridView dataGridActivityView;
         private TabPage tabPageAddEdit;
-        private ComboBox comboBoxLocalidades;
-        private DateTimePicker DateBirth;
-        private Label label6;
-        private TextBox txtEmail;
-        private Label label5;
-        private TextBox txtDireccion;
-        private Label label4;
-        private FontAwesome.Sharp.IconButton btnCancelar;
-        private FontAwesome.Sharp.IconButton btnGuardar;
-        private TextBox txtFirstName;
-        private Label label2;
+        private TextBox txtLastName;
         private TextBox txtPhoneNumber;
         private Label label7;
         private TextBox txtDocument;
         private Label label8;
-        private TextBox txtLastName;
-        private FontAwesome.Sharp.IconButton btnReturn;
+        private DateTimePicker DateBirth;
+        private Label label6;
+        private TextBox txtEmail;
+        private FontAwesome.Sharp.IconButton btnCancelar;
+        private FontAwesome.Sharp.IconButton btnGuardar;
+        private Label label5;
+        private Label label4;
+        private TextBox txtFirstName;
+        private Label label2;
     }
 }

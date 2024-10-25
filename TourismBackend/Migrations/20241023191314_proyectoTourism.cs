@@ -21,7 +21,7 @@ namespace TourismBackend.Migrations
                 name: "pfActivities",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ActivityName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -34,7 +34,7 @@ namespace TourismBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pfActivities", x => x.ID);
+                    table.PrimaryKey("PK_pfActivities", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -42,7 +42,7 @@ namespace TourismBackend.Migrations
                 name: "pfAdministrators",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -56,7 +56,7 @@ namespace TourismBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pfAdministrators", x => x.ID);
+                    table.PrimaryKey("PK_pfAdministrators", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -64,7 +64,7 @@ namespace TourismBackend.Migrations
                 name: "pfClients",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -80,7 +80,7 @@ namespace TourismBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pfClients", x => x.ID);
+                    table.PrimaryKey("PK_pfClients", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -88,7 +88,7 @@ namespace TourismBackend.Migrations
                 name: "pfDestinations",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -103,7 +103,7 @@ namespace TourismBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pfDestinations", x => x.ID);
+                    table.PrimaryKey("PK_pfDestinations", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -111,7 +111,7 @@ namespace TourismBackend.Migrations
                 name: "pfItineraries",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -123,7 +123,7 @@ namespace TourismBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pfItineraries", x => x.ID);
+                    table.PrimaryKey("PK_pfItineraries", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -131,7 +131,7 @@ namespace TourismBackend.Migrations
                 name: "pfReservations",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ItineraryID = table.Column<int>(type: "int", nullable: false),
                     ClientID = table.Column<int>(type: "int", nullable: false),
@@ -140,7 +140,7 @@ namespace TourismBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pfReservations", x => x.ID);
+                    table.PrimaryKey("PK_pfReservations", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -148,7 +148,7 @@ namespace TourismBackend.Migrations
                 name: "pfTransactions",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ClientID = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
@@ -158,13 +158,13 @@ namespace TourismBackend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pfTransactions", x => x.ID);
+                    table.PrimaryKey("PK_pfTransactions", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.InsertData(
                 table: "pfActivities",
-                columns: new[] { "ID", "ActivityName", "Cost", "Description", "Duration", "URLimage" },
+                columns: new[] { "Id", "ActivityName", "Cost", "Description", "Duration", "URLimage" },
                 values: new object[,]
                 {
                     { 1, "Eiffel Tower Visit", 30.00m, "Guided tour of the Eiffel Tower", 3, "https://imgs.search.brave.com/ifM8jJudxdlseBcPdMm8ql0MWz9JgP3R1sugQ7Q2WzA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y3VsdHVyYWdlbmlh/bC5jb20vZXMvaW1h/Z2VuZXMvdG9ycmUt/ZWlmZmVsLWNrZS5q/cGc_Y2xhc3M9YXJ0/aWNsZQ" },
@@ -173,24 +173,24 @@ namespace TourismBackend.Migrations
 
             migrationBuilder.InsertData(
                 table: "pfAdministrators",
-                columns: new[] { "ID", "Email", "LastName", "Name", "Phone", "RegistrationDate" },
-                values: new object[] { 1, "martin_fernandez@example.com", "Fernandez", "Martin", "3498479331", new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1726) });
+                columns: new[] { "Id", "Email", "LastName", "Name", "Phone", "RegistrationDate" },
+                values: new object[] { 1, "martin_fernandez@example.com", "Fernandez", "Martin", "3498479331", new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2229) });
 
             migrationBuilder.InsertData(
                 table: "pfClients",
-                columns: new[] { "ID", "DateBirth", "Document", "Email", "FirstName", "LastName", "PhoneNumber" },
+                columns: new[] { "Id", "DateBirth", "Document", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[,]
                 {
                     { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "123456789", "client1@example.com", "Client1", "LastName1", "1234567890" },
-                    { 2, new DateTime(1994, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1896), "987654321", "client2@example.com", "Client2", "LastName2", "0987654321" },
-                    { 3, new DateTime(1999, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1903), "456789123", "client3@example.com", "Client3", "LastName3", "4567891230" },
-                    { 4, new DateTime(1984, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1906), "321654987", "client4@example.com", "Client4", "LastName4", "3216549870" },
-                    { 5, new DateTime(1989, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(1909), "789123456", "client5@example.com", "Client5", "LastName5", "7891234560" }
+                    { 2, new DateTime(1994, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2400), "987654321", "client2@example.com", "Client2", "LastName2", "0987654321" },
+                    { 3, new DateTime(1999, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2408), "456789123", "client3@example.com", "Client3", "LastName3", "4567891230" },
+                    { 4, new DateTime(1984, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2410), "321654987", "client4@example.com", "Client4", "LastName4", "3216549870" },
+                    { 5, new DateTime(1989, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2413), "789123456", "client5@example.com", "Client5", "LastName5", "7891234560" }
                 });
 
             migrationBuilder.InsertData(
                 table: "pfDestinations",
-                columns: new[] { "ID", "CategoryName", "Country", "Description", "Name", "URL_image" },
+                columns: new[] { "Id", "CategoryName", "Country", "Description", "Name", "URL_image" },
                 values: new object[,]
                 {
                     { 1, "City", "France", "The City of Lights", "Paris", "https://imgs.search.brave.com/ifM8jJudxdlseBcPdMm8ql0MWz9JgP3R1sugQ7Q2WzA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y3VsdHVyYWdlbmlh/bC5jb20vZXMvaW1h/Z2VuZXMvdG9ycmUt/ZWlmZmVsLWNrZS5q/cGc_Y2xhc3M9YXJ0/aWNsZQ" },
@@ -199,30 +199,30 @@ namespace TourismBackend.Migrations
 
             migrationBuilder.InsertData(
                 table: "pfItineraries",
-                columns: new[] { "ID", "DepartureDate", "Description", "DestinationID", "Name", "ReturnDate" },
+                columns: new[] { "Id", "DepartureDate", "Description", "DestinationID", "Name", "ReturnDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 27, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2002), "Trip to Paris", 1, "Paris", new DateTime(2024, 11, 3, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2008) },
-                    { 2, new DateTime(2024, 11, 10, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2010), "Trip to New York", 2, "New York", new DateTime(2024, 11, 17, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2011) }
+                    { 1, new DateTime(2024, 10, 30, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2511), "Trip to Paris", 1, "Paris", new DateTime(2024, 11, 6, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2515) },
+                    { 2, new DateTime(2024, 11, 13, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2518), "Trip to New York", 2, "New York", new DateTime(2024, 11, 20, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2518) }
                 });
 
             migrationBuilder.InsertData(
                 table: "pfReservations",
-                columns: new[] { "ID", "ClientID", "ItineraryID", "ReservationDate", "ReservationStatus" },
+                columns: new[] { "Id", "ClientID", "ItineraryID", "ReservationDate", "ReservationStatus" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2038), 0 },
-                    { 2, 2, 2, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2040), 1 }
+                    { 1, 1, 1, new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2542), 0 },
+                    { 2, 2, 2, new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2544), 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "pfTransactions",
-                columns: new[] { "ID", "Amount", "ClientID", "PaymentConfirmation", "PaymentMethod", "TransactionDate" },
+                columns: new[] { "Id", "Amount", "ClientID", "PaymentConfirmation", "PaymentMethod", "TransactionDate" },
                 values: new object[,]
                 {
-                    { 1, 1500.00m, 1, 1, 1, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2066) },
-                    { 2, 2000.00m, 2, 2, 1, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2069) },
-                    { 3, 500.00m, 1, 3, 4, new DateTime(2024, 10, 20, 18, 15, 47, 805, DateTimeKind.Local).AddTicks(2071) }
+                    { 1, 1500.00m, 1, 1, 1, new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2569) },
+                    { 2, 2000.00m, 2, 2, 1, new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2573) },
+                    { 3, 500.00m, 1, 3, 4, new DateTime(2024, 10, 23, 16, 13, 11, 214, DateTimeKind.Local).AddTicks(2575) }
                 });
         }
 

@@ -47,9 +47,6 @@
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             btnCloseMain = new FontAwesome.Sharp.IconPictureBox();
             sidebarTimer = new System.Windows.Forms.Timer(components);
-            btnEliminar = new FontAwesome.Sharp.IconButton();
-            btnModificar = new FontAwesome.Sharp.IconButton();
-            btnAgregar = new FontAwesome.Sharp.IconButton();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -198,6 +195,7 @@
             btnActivityMain.TabIndex = 13;
             btnActivityMain.Text = "Actividades";
             btnActivityMain.UseVisualStyleBackColor = false;
+            btnActivityMain.Click += btnActivityMain_Click;
             // 
             // iconButton4
             // 
@@ -206,7 +204,7 @@
             iconButton4.FlatAppearance.BorderSize = 0;
             iconButton4.FlatStyle = FlatStyle.Flat;
             iconButton4.ForeColor = Color.Transparent;
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconButton4.IconChar = FontAwesome.Sharp.IconChar.Arrows;
             iconButton4.IconColor = Color.White;
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 30;
@@ -227,7 +225,7 @@
             iconButton3.FlatAppearance.BorderSize = 0;
             iconButton3.FlatStyle = FlatStyle.Flat;
             iconButton3.ForeColor = Color.Transparent;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconButton3.IconChar = FontAwesome.Sharp.IconChar.Plane;
             iconButton3.IconColor = Color.White;
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton3.IconSize = 30;
@@ -248,7 +246,7 @@
             iconButton2.FlatAppearance.BorderSize = 0;
             iconButton2.FlatStyle = FlatStyle.Flat;
             iconButton2.ForeColor = Color.Transparent;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.ListSquares;
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 30;
@@ -269,7 +267,7 @@
             iconButton1.FlatAppearance.BorderSize = 0;
             iconButton1.FlatStyle = FlatStyle.Flat;
             iconButton1.ForeColor = Color.Transparent;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
             iconButton1.IconColor = Color.White;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 30;
@@ -351,57 +349,6 @@
             sidebarTimer.Interval = 10;
             sidebarTimer.Tick += sidebarTimer_Tick;
             // 
-            // btnEliminar
-            // 
-            btnEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEliminar.ForeColor = SystemColors.ControlText;
-            btnEliminar.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnEliminar.IconColor = Color.Black;
-            btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEliminar.IconSize = 20;
-            btnEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminar.Location = new Point(673, 19);
-            btnEliminar.Margin = new Padding(3, 2, 3, 2);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(127, 38);
-            btnEliminar.TabIndex = 27;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnModificar.ForeColor = SystemColors.ControlText;
-            btnModificar.IconChar = FontAwesome.Sharp.IconChar.Pencil;
-            btnModificar.IconColor = Color.Black;
-            btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnModificar.IconSize = 20;
-            btnModificar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModificar.Location = new Point(526, 19);
-            btnModificar.Margin = new Padding(3, 2, 3, 2);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(127, 38);
-            btnModificar.TabIndex = 26;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAgregar.ForeColor = SystemColors.ControlText;
-            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
-            btnAgregar.IconColor = Color.Black;
-            btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAgregar.IconSize = 20;
-            btnAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregar.Location = new Point(375, 20);
-            btnAgregar.Margin = new Padding(3, 2, 3, 2);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(127, 38);
-            btnAgregar.TabIndex = 25;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
@@ -444,10 +391,7 @@
             ClientSize = new Size(900, 465);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnModificar);
             Controls.Add(sidebar);
-            Controls.Add(btnAgregar);
             Controls.Add(pictureBox1);
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
@@ -477,9 +421,6 @@
         private Label label1;
         private FontAwesome.Sharp.IconPictureBox menubutton;
         private System.Windows.Forms.Timer sidebarTimer;
-        private FontAwesome.Sharp.IconButton btnEliminar;
-        private FontAwesome.Sharp.IconButton btnModificar;
-        private FontAwesome.Sharp.IconButton btnAgregar;
         private Panel panel2;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;

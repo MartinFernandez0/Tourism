@@ -47,7 +47,7 @@ namespace TourismBackend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutpfItinerary(int id, pfItinerary pfItinerary)
         {
-            if (id != pfItinerary.ID)
+            if (id != pfItinerary.Id)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace TourismBackend.Controllers
             _context.pfItineraries.Add(pfItinerary);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetpfItinerary", new { id = pfItinerary.ID }, pfItinerary);
+            return CreatedAtAction("GetpfItinerary", new { id = pfItinerary.Id }, pfItinerary);
         }
 
         // DELETE: api/pfItineraries/5
@@ -102,7 +102,7 @@ namespace TourismBackend.Controllers
 
         private bool pfItineraryExists(int id)
         {
-            return _context.pfItineraries.Any(e => e.ID == id);
+            return _context.pfItineraries.Any(e => e.Id == id);
         }
     }
 }

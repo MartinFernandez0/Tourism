@@ -47,7 +47,7 @@ namespace TourismBackend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutpfActivity(int id, pfActivity pfActivity)
         {
-            if (id != pfActivity.ID)
+            if (id != pfActivity.Id)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace TourismBackend.Controllers
             _context.pfActivities.Add(pfActivity);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetpfActivity", new { id = pfActivity.ID }, pfActivity);
+            return CreatedAtAction("GetpfActivity", new { id = pfActivity.Id }, pfActivity);
         }
 
         // DELETE: api/pfActivities/5
@@ -102,7 +102,7 @@ namespace TourismBackend.Controllers
 
         private bool pfActivityExists(int id)
         {
-            return _context.pfActivities.Any(e => e.ID == id);
+            return _context.pfActivities.Any(e => e.Id == id);
         }
     }
 }

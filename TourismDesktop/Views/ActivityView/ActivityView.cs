@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace TourismDesktop.Views.ActivityView
 {
-    public partial class AddEditClient : Form
+    public partial class ActivityView : Form
     {
-        public AddEditClient()
+        public ActivityView()
         {
             InitializeComponent();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

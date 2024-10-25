@@ -14,7 +14,7 @@ namespace TourismDesktop.Views
         BindingSource ListClient = new BindingSource();
         List<pfClient> Filterlist = new List<pfClient>();
 
-        pfClient ClientCurrent;
+        pfClient? ClientCurrent;
 
         public ClientView()
         {
@@ -37,12 +37,19 @@ namespace TourismDesktop.Views
             txtPhoneNumber.Text = string.Empty;
             DateBirth.Value = DateTime.Now;
 
-            tabControl1.SelectTab(tabPageAddEdit); 
+            tabControl1.SelectTab(tabPageAddEdit);
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
             ClientCurrent = (pfClient)ListClient.Current;
+
+            if (ClientCurrent == null)
+            {
+                MessageBox.Show("Debe seleccionar un cliente");
+                return;
+            }
+
             txtFirstName.Text = ClientCurrent.FirstName;
             txtLastName.Text = ClientCurrent.LastName;
             txtDocument.Text = ClientCurrent.Document;
@@ -73,6 +80,8 @@ namespace TourismDesktop.Views
 
             if (ClientCurrent != null)
             {
+                pfClient.Id = ClientCurrent.Id;
+
                 ClientCurrent.FirstName = txtFirstName.Text;
                 ClientCurrent.LastName = txtLastName.Text;
                 ClientCurrent.Document = txtDocument.Text;
@@ -80,14 +89,13 @@ namespace TourismDesktop.Views
                 ClientCurrent.PhoneNumber = txtPhoneNumber.Text;
                 DateBirth.Value = DateTime.Now;
 
-                await ClientService.UpdateAsync(ClientCurrent);
-                ClientCurrent = null;
+                await ClientService.UpdateAsync(pfClient);
                 MessageBox.Show("Cliente modificado correctamente");
             }
             else
             {
                 await ClientService.AddAsync(pfClient);
-                MessageBox.Show("Cliente agregado correctamente");
+
             }
 
             MessageBox.Show("Cliente guardado correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -99,10 +107,9 @@ namespace TourismDesktop.Views
             txtEmail.Text = string.Empty;
             txtPhoneNumber.Text = string.Empty;
             DateBirth.Value = DateTime.Now;
+
             tabControl1.SelectTab(tabPageList);
         }
-
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Operación cancelada");
@@ -116,7 +123,7 @@ namespace TourismDesktop.Views
                 var result = MessageBox.Show("¿Está seguro que desea eliminar el cliente?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    await ClientService.DeleteAsync(pfClient.ID);
+                    await ClientService.DeleteAsync(pfClient.Id);
                     await LoadGrid();
                     MessageBox.Show("Cliente eliminado correctamente");
                 }
@@ -124,20 +131,19 @@ namespace TourismDesktop.Views
 
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             FilterClient();
         }
-
         private void FilterClient()
         {
             var filteredClient = Filterlist.Where(c => c.FirstName.Contains(txtFilter.Text)).ToList();
             ListClient.DataSource = new BindingSource(filteredClient, null);
         }
 
-        private void txtFilter_TextChanged(object sender, EventArgs e)
+        private void btnReturn_Click(object sender, EventArgs e)
         {
-            FilterClient();
+            this.Close();
         }
     }
 }

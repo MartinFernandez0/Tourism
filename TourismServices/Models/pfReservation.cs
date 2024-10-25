@@ -10,7 +10,7 @@ namespace TourismServices.Models
 {
     public class pfReservation
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int ItineraryID { get; set; }
         public int ClientID { get; set; }
         public DateTime ReservationDate { get; set; }

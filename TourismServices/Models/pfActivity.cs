@@ -10,7 +10,7 @@ namespace TourismServices.Models
 {
     public class pfActivity
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string ActivityName { get; set; }
         public string URLimage { get; set; }
         public int Duration { get; set; }
