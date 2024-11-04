@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TourismApp.Views.DestinationView"
+             Title="Destinos">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollView Grid.Column="0">
+            <CollectionView x:Name="DestinationsCollectionView" SelectionMode="Single" SelectionChanged="OnDestinationSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" Padding="10" BorderColor="LightGray" CornerRadius="5">
+                            <VerticalStackLayout>
+                                <Image Source="{Binding URL_image}" 
+                                       HeightRequest="100" 
+                                       Aspect="AspectFill" />
+                                <Label Text="{Binding Name}" 
+                                       FontSize="16" 
+                                       FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <StackLayout Grid.Column="1" Padding="20" Spacing="10">
+            <Label Text="Detalles del Destino"
+                   FontSize="24"
+                   HorizontalOptions="Center" 
+                   Margin="0,10,0,20" />
+            <Image x:Name="SelectedDestinationImage" HeightRequest="200" Aspect="AspectFill" />
+            <Label x:Name="SelectedDestinationName" FontSize="20" FontAttributes="Bold" />
+            <Label x:Name="SelectedDestinationDescription" FontSize="14" />
+            <Label x:Name="SelectedDestinationCountry" FontSize="12" TextColor="Gray" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

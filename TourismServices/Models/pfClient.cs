@@ -22,5 +22,7 @@ namespace TourismServices.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateBirth { get; set; }
+
+        public ICollection<pfReservation> Reservations { get; set; } // Lista de reservas
     }
 }

@@ -10,6 +10,6 @@ namespace TourismServices.Enums
     {
         Confirmed,
         Pending,
-        Canceled
+        Cancelled
     }
 }

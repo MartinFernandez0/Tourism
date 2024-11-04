@@ -16,6 +16,8 @@ namespace TourismServices.Models
         public int Duration { get; set; }
         public decimal Cost { get; set; }
         public string Description { get; set; }
-    }
+        public int DestinationId { get; set; }
 
+        public pfDestination Destination { get; set; } // Relación de navegación
+    }
 }

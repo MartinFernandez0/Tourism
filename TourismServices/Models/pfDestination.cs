@@ -15,6 +15,8 @@ namespace TourismServices.Models
         public string URL_image { get; set; }
         public string CategoryName { get; set; }
         public string Country { get; set; }
+
+        public ICollection<pfItinerary> Itineraries { get; set; } // Lista de itinerarios
     }
 
 }

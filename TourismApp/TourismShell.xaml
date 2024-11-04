@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TourismApp.TourismShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TourismApp"
+    xmlns:views="clr-namespace:TourismApp.Views"
+    xmlns:contentViews="clr-namespace:TourismApp.ContenViews"
+    Shell.FlyoutBehavior="Flyout"
+    
+    Title="TourismApp"
+    FlyoutBackgroundImage="photo.jpg"
+    FlyoutBackgroundImageAspect="AspectFill"
+    FlyoutHeaderBehavior="CollapseOnScroll">
+
+    <Shell.FlyoutHeader>
+        <contentViews:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <contentViews:FlyoutFooter />
+    </Shell.FlyoutFooter>
+
+    <FlyoutItem Route="TourismApp"
+                FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+
+        <Tab Title="Products"
+             Route="Products"
+             Icon="paw.png">
+
+            <ShellContent
+                Title="Product List"
+                ContentTemplate="{DataTemplate views:DestinationView}"
+                Route="ProductList" />
+
+        </Tab>
+
+    </FlyoutItem>
+
+    <MenuItem Text="Goodbye, Go Team!" IconImageSource="team_logo.png" />
+
+</Shell>

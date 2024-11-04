@@ -36,90 +36,37 @@ namespace TourismBackend.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Seed data for pfAdministrators
-            modelBuilder.Entity<pfAdministrator>().HasData(
-                new pfAdministrator
-                {
-                    Id = 1,
-                    Name = "Martin",
-                    LastName = "Fernandez",
-                    Email = "martin_fernandez@example.com",
-                    Phone = "3498479331",
-                    RegistrationDate = DateTime.Now
-                }
-            );
-
-            // Seed data for pfClients
+            // Seed data for pfClient
             modelBuilder.Entity<pfClient>().HasData(
                 new pfClient
                 {
                     Id = 1,
-                    FirstName = "Client1",
-                    LastName = "LastName1",
-                    Document = "123456789",
-                    Email = "client1@example.com",
-                    PhoneNumber = "1234567890"
+                    FirstName = "Juan",
+                    LastName = "Pérez",
+                    Document = "12345678",
+                    Email = "juan.perez@mail.com",
+                    PhoneNumber = "123456789",
+                    DateBirth = new DateTime(1985, 3, 15)
                 },
                 new pfClient
                 {
                     Id = 2,
-                    FirstName = "Client2",
-                    LastName = "LastName2",
-                    Document = "987654321",
-                    Email = "client2@example.com",
-                    PhoneNumber = "0987654321",
-                    DateBirth = DateTime.Now.AddYears(-30)
+                    FirstName = "María",
+                    LastName = "González",
+                    Document = "87654321",
+                    Email = "maria.gonzalez@mail.com",
+                    PhoneNumber = "987654321",
+                    DateBirth = new DateTime(1990, 7, 20)
                 },
                 new pfClient
                 {
                     Id = 3,
-                    FirstName = "Client3",
-                    LastName = "LastName3",
-                    Document = "456789123",
-                    Email = "client3@example.com",
-                    PhoneNumber = "4567891230",
-                    DateBirth = DateTime.Now.AddYears(-25)
-                },
-                new pfClient
-                {
-                    Id = 4,
-                    FirstName = "Client4",
-                    LastName = "LastName4",
-                    Document = "321654987",
-                    Email = "client4@example.com",
-                    PhoneNumber = "3216549870",
-                    DateBirth = DateTime.Now.AddYears(-40)
-                },
-                new pfClient
-                {
-                    Id = 5,
-                    FirstName = "Client5",
-                    LastName = "LastName5",
-                    Document = "789123456",
-                    Email = "client5@example.com",
-                    PhoneNumber = "7891234560",
-                    DateBirth = DateTime.Now.AddYears(-35)
-                }
-            );
-            // Seed data for pfActivity
-            modelBuilder.Entity<pfActivity>().HasData(
-                new pfActivity
-                {
-                    Id = 1,
-                    ActivityName = "Eiffel Tower Visit",
-                    Description = "Guided tour of the Eiffel Tower",
-                    Duration = 3, // in hours
-                    Cost = 30.00m,
-                    URLimage = "https://imgs.search.brave.com/ifM8jJudxdlseBcPdMm8ql0MWz9JgP3R1sugQ7Q2WzA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y3VsdHVyYWdlbmlh/bC5jb20vZXMvaW1h/Z2VuZXMvdG9ycmUt/ZWlmZmVsLWNrZS5q/cGc_Y2xhc3M9YXJ0/aWNsZQ"
-                },
-                new pfActivity
-                {
-                    Id = 2,
-                    ActivityName = "Hudson River Cruise",
-                    Description = "Boat tour along the Hudson River",
-                    Duration = 2, // in hours
-                    Cost = 50.00m,
-                    URLimage = "https://imgs.search.brave.com/zuhiGpSpdxrdQSGxmpnztHWQX-jfCQUae6Xa0mzj9Q8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hY2xt/ZWRpYS5henVyZWVk/Z2UubmV0L2Ntc21l/ZGlhL2xpYnJhcmll/cy9hY2wvaW1hZ2Vz/L2NydWlzZXMvaHVk/c29uLXJpdmVyLWNy/dWlzZXMvYWNsX3dl/YnNpdGVfNzAweDUw/MF9odWRzb25fY3J1/aXNpbmdfb3ZlcnZp/ZXcyLmpwZz9leHQ9/LmpwZw"
+                    FirstName = "Carlos",
+                    LastName = "López",
+                    Document = "11223344",
+                    Email = "carlos.lopez@mail.com",
+                    PhoneNumber = "456123789",
+                    DateBirth = new DateTime(1988, 1, 10)
                 }
             );
 
@@ -128,20 +75,31 @@ namespace TourismBackend.DataContext
                 new pfDestination
                 {
                     Id = 1,
-                    Name = "Paris",
-                    Country = "France",
-                    Description = "The City of Lights",
-                    URL_image = "https://imgs.search.brave.com/ifM8jJudxdlseBcPdMm8ql0MWz9JgP3R1sugQ7Q2WzA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y3VsdHVyYWdlbmlh/bC5jb20vZXMvaW1h/Z2VuZXMvdG9ycmUt/ZWlmZmVsLWNrZS5q/cGc_Y2xhc3M9YXJ0/aWNsZQ",
-                    CategoryName = "City",
+                    Name = "Playa Paraíso",
+                    Description = "Hermosa playa con arenas blancas",
+                    URL_image = "https://imgs.search.brave.com/C5tkx-WUU6YIj0GGJZdF-TSyS_1X3UOs1eEbI6D-Xwc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Ym9va2F3YXkuY29t/L2Jsb2cvd3AtY29u/dGVudC91cGxvYWRz/LzIwMjMvMDEvUGxh/eWEtcGFyYWlzby0u/anBn",
+                    CategoryName = "Playa",
+                    Country = "México"
                 },
                 new pfDestination
                 {
                     Id = 2,
-                    Name = "New York",
-                    Country = "USA",
-                    Description = "The Big Apple",
-                    URL_image = "https://www.travel-guide.es/media/new-york.jpeg",
-                    CategoryName = "City",
+                    Name = "Montaña Encantada",
+                    Description = "Montaña con vistas espectaculares",
+                    URL_image = "https://lh3.googleusercontent.com/proxy/qJ0tsxrv8qWp0gUPwGcvY4SROCGlCNHt7chgRwCnBIiTLuUQQWnW54L1uCkqp34-LfqzWKOtd0Dkru_PlN7o8kghewZi0Xecoyg5hna7B-AiwkFfLQ",
+                    CategoryName = "Montaña",
+                    Country = "Chile"
+                },
+                new pfDestination
+                {
+                    Id = 3,
+                    Name = "Selva Amazónica",
+                    Description = "Experiencia en la selva",
+                    URL_image = "https://www.cronista.com/files/image/658/658401/64d235435ebc6.jpg",
+                    CategoryName = "Aventura",
+                    Country = "Brasil"
+
+                    
                 }
             );
 
@@ -150,20 +108,60 @@ namespace TourismBackend.DataContext
                 new pfItinerary
                 {
                     Id = 1,
-                    Name = "Paris",
-                    DestinationID = 1, // FK to pfDestination
-                    DepartureDate = DateTime.Now.AddDays(7),
-                    ReturnDate = DateTime.Now.AddDays(14),
-                    Description = "Trip to Paris"
+                    Name = "Aventura en Playa",
+                    DepartureDate = new DateTime(2024, 1, 10),
+                    ReturnDate = new DateTime(2024, 1, 20),
+                    Description = "10 días en la playa"
                 },
                 new pfItinerary
                 {
                     Id = 2,
-                    Name = "New York",
-                    DestinationID = 2, // FK to pfDestination
-                    DepartureDate = DateTime.Now.AddDays(21),
-                    ReturnDate = DateTime.Now.AddDays(28),
-                    Description = "Trip to New York"
+                    Name = "Exploración en Montaña",
+                    DepartureDate = new DateTime(2024, 2, 5),
+                    ReturnDate = new DateTime(2024, 2, 15),
+                    Description = "Caminatas y exploración de montañas"
+                },
+                new pfItinerary
+                {
+                    Id = 3,
+                    Name = "Selva Amazónica Tour",
+                    DepartureDate = new DateTime(2024, 3, 1),
+                    ReturnDate = new DateTime(2024, 3, 10),
+                    Description = "Recorrido en la selva amazónica"
+                }
+            );
+
+            // Seed data for pfActivity
+            modelBuilder.Entity<pfActivity>().HasData(
+                new pfActivity
+                {
+                    Id = 1,
+                    ActivityName = "Buceo en Playa",
+                    URLimage = "https://s3-us-west-2.amazonaws.com/wp-divingyucatan/wp-content/uploads/2020/03/30181654/diving-yucatan-ventajas-buceo.jpeg",
+                    Duration = 2,
+                    Cost = 50.00m,
+                    Description = "Buceo en arrecifes de coral",
+                    DestinationId = 1
+                },
+                new pfActivity
+                {
+                    Id = 2,
+                    ActivityName = "Escalada en Montaña",
+                    URLimage = "https://aamtuc.org/wp-content/uploads/2020/08/Presentaci%C3%B3n.jpg",
+                    Duration = 4,
+                    Cost = 75.00m,
+                    Description = "Escalada guiada en roca",
+                    DestinationId = 2
+                },
+                new pfActivity
+                {
+                    Id = 3,
+                    ActivityName = "Safari en la Selva",
+                    URLimage = "https://admin.panrotas.com.br/media/thumb/cropper/permalink/fix/1200,675/?source=media-files-original/2016/02/15/2c5c6ad76509fc0e15b9faefc7c72cdb-dorobosafaristanzania150216.jpg",
+                    Duration = 3,
+                    Cost = 100.00m,
+                    Description = "Exploración en la selva amazónica",
+                    DestinationId = 3
                 }
             );
 
@@ -172,18 +170,29 @@ namespace TourismBackend.DataContext
                 new pfReservation
                 {
                     Id = 1,
-                    ClientID = 1, // FK to pfClient
-                    ItineraryID = 1, // FK to pfItinerary
+                    ItineraryId = 1,
+                    ClientId = 1,
+                    DestinationId = 1,
                     ReservationDate = DateTime.Now,
                     ReservationStatus = ReservationStatusEnum.Confirmed
                 },
                 new pfReservation
                 {
                     Id = 2,
-                    ClientID = 2, // FK to pfClient
-                    ItineraryID = 2, // FK to pfItinerary
+                    ItineraryId = 2,
+                    ClientId = 2,
+                    DestinationId = 2,
                     ReservationDate = DateTime.Now,
                     ReservationStatus = ReservationStatusEnum.Pending
+                },
+                new pfReservation
+                {
+                    Id = 3,
+                    ItineraryId = 3,
+                    ClientId = 3,
+                    DestinationId = 3,
+                    ReservationDate = DateTime.Now,
+                    ReservationStatus = ReservationStatusEnum.Cancelled
                 }
             );
 
@@ -192,29 +201,29 @@ namespace TourismBackend.DataContext
                 new pfTransaction
                 {
                     Id = 1,
-                    Amount = 1500.00m,
+                    ClientId = 1,
+                    Amount = 150.00m,
                     TransactionDate = DateTime.Now,
-                    ClientID = 1, // FK to pfClient
-                    PaymentConfirmation = PaymentConfirmationEnum.Confirmed,
-                    PaymentMethod = PaymentMethodEnum.CreditCard
+                    PaymentMethod = PaymentMethodEnum.CreditCard,
+                    PaymentConfirmation = PaymentConfirmationEnum.Confirmed
                 },
                 new pfTransaction
                 {
                     Id = 2,
-                    Amount = 2000.00m,
+                    ClientId = 2,
+                    Amount = 200.00m,
                     TransactionDate = DateTime.Now,
-                    ClientID = 2, // FK to pfClient
-                    PaymentConfirmation = PaymentConfirmationEnum.Rejected,
-                    PaymentMethod = PaymentMethodEnum.CreditCard
+                    PaymentMethod = PaymentMethodEnum.PayPal,
+                    PaymentConfirmation = PaymentConfirmationEnum.Pending
                 },
                 new pfTransaction
                 {
                     Id = 3,
-                    Amount = 500.00m,
+                    ClientId = 3,
+                    Amount = 120.00m,
                     TransactionDate = DateTime.Now,
-                    ClientID = 1, // FK to pfClient
-                    PaymentConfirmation = PaymentConfirmationEnum.Refunded,
-                    PaymentMethod = PaymentMethodEnum.PayPal
+                    PaymentMethod = PaymentMethodEnum.BankTransfer,
+                    PaymentConfirmation = PaymentConfirmationEnum.Rejected
                 }
             );
 
