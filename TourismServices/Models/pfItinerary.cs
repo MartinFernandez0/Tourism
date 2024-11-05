@@ -15,8 +15,8 @@ namespace TourismServices.Models
         public string Description { get; set; }
 
         // Relación con Actividad
-        public int ActivityId { get; set; }
-        public virtual pfActivity Activity { get; set; }
+        public int? ActivityId { get; set; }
+        public virtual pfActivity? Activity { get; set; }
 
         // Eliminado
         public bool IsDeleted { get; set; } = false;

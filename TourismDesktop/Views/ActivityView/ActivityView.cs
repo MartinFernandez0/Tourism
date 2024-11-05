@@ -7,14 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TourismServices.Interfaces;
+using TourismServices.Models;
+using TourismServices.Services;
 
 namespace TourismDesktop.Views.ActivityView
 {
     public partial class ActivityView : Form
     {
+        IActivityService ActivityService = new ActivityService();
+        IDestinationService DestinationService = new DestinationService();
+
+        BindingSource ListActivity = new BindingSource();
+        List<pfActivity> FilterList = new List<pfActivity>();
+
+        pfActivity? ActivityCurrent;
         public ActivityView()
         {
             InitializeComponent();
+            dataGridActivityView.DataSource = ListActivity;
+            LoadGrid();
+        }
+
+        private async void LoadGrid()
+        {
+            ListActivity.DataSource = await ActivityService.GetAllAsync();
+            FilterList = (List<pfActivity>)ListActivity.DataSource;
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

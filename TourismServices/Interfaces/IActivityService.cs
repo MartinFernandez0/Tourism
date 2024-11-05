@@ -10,5 +10,7 @@ namespace TourismServices.Interfaces
     public interface IActivityService : IGenericService<pfActivity>
     {
         public Task<List<pfActivity>?> GetAllAsync(string? filtro);
+        public Task<List<pfActivity>?> GetAllDeletedAsync(string? filtro);
+
     }
 }

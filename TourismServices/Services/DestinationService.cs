@@ -16,5 +16,10 @@ namespace TourismServices.Services
             }
             return JsonSerializer.Deserialize<List<pfDestination>>(content, options);
         }
+
+        public async Task<List<pfDestination>?> GetAllDeletedAsync(string? filtro)
+        {
+            return await GetAllDeletedAsync();
+        }
     }
 }

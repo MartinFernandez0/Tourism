@@ -19,7 +19,7 @@ namespace TourismServices.Services
             var remoto = Properties.Resources.Remoto;
 
             var urlApi = Properties.Resources.UrlApi;
-            if (remoto == "False")
+            if (remoto == "false")
             {
                 urlApi = Properties.Resources.UrlApiLocal;
             }

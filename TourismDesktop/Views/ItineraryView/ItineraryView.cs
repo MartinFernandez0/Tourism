@@ -38,7 +38,7 @@ namespace TourismDesktop.Views
             CBoxActivity.DataSource = await ActivityService.GetAllAsync();
             CBoxActivity.DisplayMember = "ActivityName";
             CBoxActivity.ValueMember = "Id";
-            CBoxActivity.SelectedIndex = 1;
+            CBoxActivity.SelectedIndex = 0;
         }
 
         private async Task LoadGrid()
@@ -77,16 +77,12 @@ namespace TourismDesktop.Views
         private void btnModify_Click(object sender, EventArgs e)
         {
             ItineraryCurrent = (pfItinerary)ListItinerary.Current;
-
-            if (ItineraryCurrent == null)
-            {
-                MessageBox.Show("Debe seleccionar un itinerario");
-                return;
-            }
             txtName.Text = ItineraryCurrent.Name;
             txtDescription.Text = ItineraryCurrent.Description;
             DepartureDate.Value = ItineraryCurrent.DepartureDate;
             ReturnDate.Value = ItineraryCurrent.ReturnDate;
+
+            CBoxActivity.SelectedValue = ItineraryCurrent.ActivityId;
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
@@ -111,8 +107,6 @@ namespace TourismDesktop.Views
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            var selectedActivity = (pfActivity)CBoxActivity.SelectedItem;
-            var activities = new HashSet<pfActivity> { selectedActivity };
 
             var pfItinerary = new pfItinerary
             {
@@ -121,33 +115,35 @@ namespace TourismDesktop.Views
                 DepartureDate = DepartureDate.Value,
                 ReturnDate = ReturnDate.Value,
 
+                ActivityId = (int)CBoxActivity.SelectedValue
+
             };
 
             if (ItineraryCurrent != null)
             {
-                pfItinerary.Id = ItineraryCurrent.Id;
 
                 ItineraryCurrent.Name = txtName.Text;
                 ItineraryCurrent.Description = txtDescription.Text;
                 ItineraryCurrent.DepartureDate = DepartureDate.Value;
                 ItineraryCurrent.ReturnDate = ReturnDate.Value;
 
+                ItineraryCurrent.ActivityId = (int)CBoxActivity.SelectedValue;
 
                 await ItineraryService.UpdateAsync(pfItinerary);
                 MessageBox.Show("Itinerario modificado correctamente");
+                ItineraryCurrent = null;
             }
             else
             {
                 await ItineraryService.AddAsync(pfItinerary);
-                MessageBox.Show("Itinerario agregado correctamente");
             }
+            MessageBox.Show("Itinerario agregado correctamente");
 
             await LoadGrid();
             txtName.Text = string.Empty;
             txtDescription.Text = string.Empty;
             DepartureDate.Value = DateTime.Now;
             ReturnDate.Value = DateTime.Now;
-            CBoxActivity.SelectedIndex = -1;
 
             tabControl1.SelectTab(tabPageList);
         }
