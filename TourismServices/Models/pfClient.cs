@@ -23,6 +23,16 @@ namespace TourismServices.Models
         public string PhoneNumber { get; set; }
         public DateTime DateBirth { get; set; }
 
-        public ICollection<pfReservation> Reservations { get; set; } // Lista de reservas
+        // Relación con Reservación
+        public int? ReservationId { get; set; }
+        public virtual pfReservation? Reservation { get; set; }
+
+        // Relación con Transacción
+        public int? TransactionId { get; set; }
+        public virtual pfTransaction? Transaction { get; set; }
+
+        // Eliminado
+        public bool IsDeleted { get; set; } = false;
     }
+
 }

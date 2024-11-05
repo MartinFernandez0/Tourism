@@ -11,15 +11,19 @@ namespace TourismServices.Models
     public class pfReservation
     {
         public int Id { get; set; }
-        public int ItineraryId { get; set; }
-        public int ClientId { get; set; }
-        public int DestinationId { get; set; }
         public DateTime ReservationDate { get; set; }
         [Required]
         public ReservationStatusEnum ReservationStatus { get; set; }
 
-        public pfItinerary Itinerary { get; set; } // Relación de navegación
-        public pfClient Client { get; set; } // Relación de navegación
-        public pfDestination Destination { get; set; } // Relación de navegación
+        // Relación con Itinerario
+        public int? ItineraryId { get; set; }
+        public virtual pfItinerary? Itinerary { get; set; }
+
+        // Relación con Destino
+        public int? DestinationId { get; set; }
+        public virtual pfDestination? Destination { get; set; }
+
+        // Eliminado
+        public bool IsDeleted { get; set; } = false;
     }
 }

@@ -16,7 +16,13 @@ namespace TourismServices.Models
         public string CategoryName { get; set; }
         public string Country { get; set; }
 
-        public ICollection<pfItinerary> Itineraries { get; set; } // Lista de itinerarios
+        // Relación con Itinerario
+        public int? ItineraryId { get; set; }
+        public virtual pfItinerary? Itinerary { get; set; }
+
+        // Eliminado
+        public bool IsDeleted { get; set; } = false;
     }
+
 
 }

@@ -14,6 +14,12 @@ namespace TourismServices.Models
         public DateTime ReturnDate { get; set; }
         public string Description { get; set; }
 
-        public ICollection<pfActivity> Activities { get; set; } // Lista de actividades
+        // Relación con Actividad
+        public int ActivityId { get; set; }
+        public virtual pfActivity Activity { get; set; }
+
+        // Eliminado
+        public bool IsDeleted { get; set; } = false;
     }
+
 }

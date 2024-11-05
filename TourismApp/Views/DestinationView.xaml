@@ -11,7 +11,7 @@
         </Grid.ColumnDefinitions>
 
         <ScrollView Grid.Column="0">
-            <CollectionView x:Name="DestinationsCollectionView" SelectionMode="Single" SelectionChanged="OnDestinationSelected">
+            <CollectionView x:Name="DestinationsCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Margin="0,5" Padding="10" BorderColor="LightGray" CornerRadius="5">

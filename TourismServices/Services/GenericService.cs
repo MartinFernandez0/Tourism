@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Json;
 using System.Text.Json;
 using TourismServices.Class;
 using TourismServices.Interfaces;
@@ -69,7 +70,6 @@ namespace TourismServices.Services
             }
         }
 
-
         public async Task DeleteAsync(int id)
         {
             var response = await client.DeleteAsync($"{_endpoint}/{id}");
@@ -77,6 +77,19 @@ namespace TourismServices.Services
             {
                 throw new ApplicationException(response.ToString());
             }
+        }
+
+        public async Task<List<T>?> GetAllDeletedAsync()
+        {
+            var response = await client.GetAsync($"{_endpoint}/deleted");
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content?.ToString());
+            }
+
+            return JsonSerializer.Deserialize<List<T>>(content, options);
         }
     }
 

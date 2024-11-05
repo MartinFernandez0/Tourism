@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label3 = new Label();
             txtFilter = new TextBox();
             btnSearch = new FontAwesome.Sharp.IconButton();
@@ -42,25 +43,26 @@
             tabPageList = new TabPage();
             dataGridItineraryView = new DataGridView();
             tabPageAddEdit = new TabPage();
-            txtLastName = new TextBox();
-            txtPhoneNumber = new TextBox();
-            label7 = new Label();
-            txtDocument = new TextBox();
-            label8 = new Label();
-            DateBirth = new DateTimePicker();
+            ReturnDate = new DateTimePicker();
+            CBoxActivity = new ComboBox();
+            txtDescription = new TextBox();
+            DepartureDate = new DateTimePicker();
             label6 = new Label();
-            txtEmail = new TextBox();
-            btnCancelar = new FontAwesome.Sharp.IconButton();
-            btnGuardar = new FontAwesome.Sharp.IconButton();
-            label5 = new Label();
+            btnCancel = new FontAwesome.Sharp.IconButton();
+            btnSave = new FontAwesome.Sharp.IconButton();
             label4 = new Label();
-            txtFirstName = new TextBox();
+            txtName = new TextBox();
             label2 = new Label();
+            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
+            tabPageDelete = new TabPage();
+            dataGridItineraryDelete = new DataGridView();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridItineraryView).BeginInit();
             tabPageAddEdit.SuspendLayout();
+            tabPageDelete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridItineraryDelete).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -112,6 +114,7 @@
             btnDelete.TabIndex = 56;
             btnDelete.Text = "Eliminar";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnModify
             // 
@@ -128,6 +131,7 @@
             btnModify.TabIndex = 55;
             btnModify.Text = "Modificar";
             btnModify.UseVisualStyleBackColor = true;
+            btnModify.Click += btnModify_Click;
             // 
             // btnAdd
             // 
@@ -144,6 +148,7 @@
             btnAdd.TabIndex = 54;
             btnAdd.Text = "Agregar";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // panel1
             // 
@@ -188,6 +193,7 @@
             // 
             tabControl1.Controls.Add(tabPageList);
             tabControl1.Controls.Add(tabPageAddEdit);
+            tabControl1.Controls.Add(tabPageDelete);
             tabControl1.Location = new Point(17, 96);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -230,19 +236,15 @@
             // 
             // tabPageAddEdit
             // 
-            tabPageAddEdit.Controls.Add(txtLastName);
-            tabPageAddEdit.Controls.Add(txtPhoneNumber);
-            tabPageAddEdit.Controls.Add(label7);
-            tabPageAddEdit.Controls.Add(txtDocument);
-            tabPageAddEdit.Controls.Add(label8);
-            tabPageAddEdit.Controls.Add(DateBirth);
+            tabPageAddEdit.Controls.Add(ReturnDate);
+            tabPageAddEdit.Controls.Add(CBoxActivity);
+            tabPageAddEdit.Controls.Add(txtDescription);
+            tabPageAddEdit.Controls.Add(DepartureDate);
             tabPageAddEdit.Controls.Add(label6);
-            tabPageAddEdit.Controls.Add(txtEmail);
-            tabPageAddEdit.Controls.Add(btnCancelar);
-            tabPageAddEdit.Controls.Add(btnGuardar);
-            tabPageAddEdit.Controls.Add(label5);
+            tabPageAddEdit.Controls.Add(btnCancel);
+            tabPageAddEdit.Controls.Add(btnSave);
             tabPageAddEdit.Controls.Add(label4);
-            tabPageAddEdit.Controls.Add(txtFirstName);
+            tabPageAddEdit.Controls.Add(txtName);
             tabPageAddEdit.Controls.Add(label2);
             tabPageAddEdit.Location = new Point(4, 24);
             tabPageAddEdit.Name = "tabPageAddEdit";
@@ -252,109 +254,77 @@
             tabPageAddEdit.Text = "Agregar/Editar";
             tabPageAddEdit.UseVisualStyleBackColor = true;
             // 
-            // txtLastName
+            // ReturnDate
             // 
-            txtLastName.Location = new Point(100, 80);
-            txtLastName.Margin = new Padding(3, 2, 3, 2);
-            txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(269, 23);
-            txtLastName.TabIndex = 30;
+            ReturnDate.Format = DateTimePickerFormat.Custom;
+            ReturnDate.Location = new Point(148, 183);
+            ReturnDate.Name = "ReturnDate";
+            ReturnDate.Size = new Size(146, 23);
+            ReturnDate.TabIndex = 32;
+            ReturnDate.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
             // 
-            // txtPhoneNumber
+            // CBoxActivity
             // 
-            txtPhoneNumber.Location = new Point(100, 194);
-            txtPhoneNumber.Margin = new Padding(3, 2, 3, 2);
-            txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(269, 23);
-            txtPhoneNumber.TabIndex = 29;
+            CBoxActivity.FormattingEnabled = true;
+            CBoxActivity.Location = new Point(159, 237);
+            CBoxActivity.Name = "CBoxActivity";
+            CBoxActivity.Size = new Size(121, 23);
+            CBoxActivity.TabIndex = 31;
             // 
-            // label7
+            // txtDescription
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(38, 208);
-            label7.Name = "label7";
-            label7.Size = new Size(55, 15);
-            label7.TabIndex = 28;
-            label7.Text = "Telefono:";
+            txtDescription.Location = new Point(100, 80);
+            txtDescription.Margin = new Padding(3, 2, 3, 2);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(269, 23);
+            txtDescription.TabIndex = 30;
             // 
-            // txtDocument
+            // DepartureDate
             // 
-            txtDocument.Location = new Point(100, 117);
-            txtDocument.Margin = new Padding(3, 2, 3, 2);
-            txtDocument.Name = "txtDocument";
-            txtDocument.Size = new Size(269, 23);
-            txtDocument.TabIndex = 27;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(38, 131);
-            label8.Name = "label8";
-            label8.Size = new Size(58, 15);
-            label8.TabIndex = 26;
-            label8.Text = "DNI CUIL:";
-            // 
-            // DateBirth
-            // 
-            DateBirth.Format = DateTimePickerFormat.Custom;
-            DateBirth.Location = new Point(144, 257);
-            DateBirth.Name = "DateBirth";
-            DateBirth.Size = new Size(146, 23);
-            DateBirth.TabIndex = 23;
-            DateBirth.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
+            DepartureDate.Format = DateTimePickerFormat.Custom;
+            DepartureDate.Location = new Point(148, 137);
+            DepartureDate.Name = "DepartureDate";
+            DepartureDate.Size = new Size(146, 23);
+            DepartureDate.TabIndex = 23;
+            DepartureDate.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(177, 245);
+            label6.Location = new Point(6, 137);
             label6.Name = "label6";
             label6.Size = new Size(103, 15);
             label6.TabIndex = 22;
             label6.Text = "Fecha de Registro:";
             // 
-            // txtEmail
+            // btnCancel
             // 
-            txtEmail.Location = new Point(100, 156);
-            txtEmail.Margin = new Padding(3, 2, 3, 2);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(269, 23);
-            txtEmail.TabIndex = 21;
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.Cancel;
+            btnCancel.IconColor = Color.Black;
+            btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancel.IconSize = 35;
+            btnCancel.Location = new Point(427, 125);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(182, 27);
+            btnCancel.TabIndex = 17;
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // btnCancelar
+            // btnSave
             // 
-            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.Cancel;
-            btnCancelar.IconColor = Color.Black;
-            btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancelar.IconSize = 35;
-            btnCancelar.Location = new Point(427, 125);
-            btnCancelar.Margin = new Padding(3, 2, 3, 2);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(182, 27);
-            btnCancelar.TabIndex = 17;
-            btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.FromArgb(24, 24, 29);
-            btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
-            btnGuardar.IconColor = Color.White;
-            btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnGuardar.IconSize = 20;
-            btnGuardar.Location = new Point(427, 74);
-            btnGuardar.Margin = new Padding(3, 2, 3, 2);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(182, 32);
-            btnGuardar.TabIndex = 16;
-            btnGuardar.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(38, 170);
-            label5.Name = "label5";
-            label5.Size = new Size(39, 15);
-            label5.TabIndex = 20;
-            label5.Text = "Email:";
+            btnSave.BackColor = Color.FromArgb(24, 24, 29);
+            btnSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            btnSave.IconColor = Color.White;
+            btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSave.IconSize = 20;
+            btnSave.Location = new Point(427, 74);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(182, 32);
+            btnSave.TabIndex = 16;
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // label4
             // 
@@ -365,28 +335,80 @@
             label4.TabIndex = 18;
             label4.Text = "Apellido:";
             // 
-            // txtFirstName
+            // txtName
             // 
-            txtFirstName.Location = new Point(100, 38);
-            txtFirstName.Margin = new Padding(3, 2, 3, 2);
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(269, 23);
-            txtFirstName.TabIndex = 15;
+            txtName.Location = new Point(100, 38);
+            txtName.Margin = new Padding(3, 2, 3, 2);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(269, 23);
+            txtName.TabIndex = 15;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(38, 52);
+            label2.Location = new Point(39, 46);
             label2.Name = "label2";
             label2.Size = new Size(54, 15);
             label2.TabIndex = 14;
             label2.Text = "Nombre:";
+            // 
+            // btnSeeEliminated
+            // 
+            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnSeeEliminated.IconColor = Color.Black;
+            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSeeEliminated.IconSize = 20;
+            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSeeEliminated.Location = new Point(721, 386);
+            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
+            btnSeeEliminated.Name = "btnSeeEliminated";
+            btnSeeEliminated.Size = new Size(127, 38);
+            btnSeeEliminated.TabIndex = 60;
+            btnSeeEliminated.Text = "Papelera";
+            btnSeeEliminated.UseVisualStyleBackColor = true;
+            btnSeeEliminated.Click += btnSeeEliminated_Click;
+            // 
+            // tabPageDelete
+            // 
+            tabPageDelete.Controls.Add(dataGridItineraryDelete);
+            tabPageDelete.Location = new Point(4, 24);
+            tabPageDelete.Name = "tabPageDelete";
+            tabPageDelete.Padding = new Padding(3);
+            tabPageDelete.Size = new Size(633, 300);
+            tabPageDelete.TabIndex = 2;
+            tabPageDelete.Text = "Papelera";
+            tabPageDelete.UseVisualStyleBackColor = true;
+            // 
+            // dataGridItineraryDelete
+            // 
+            dataGridItineraryDelete.AllowUserToAddRows = false;
+            dataGridItineraryDelete.AllowUserToDeleteRows = false;
+            dataGridItineraryDelete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridItineraryDelete.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridItineraryDelete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridItineraryDelete.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridItineraryDelete.Location = new Point(-427, -193);
+            dataGridItineraryDelete.Margin = new Padding(3, 2, 3, 2);
+            dataGridItineraryDelete.Name = "dataGridItineraryDelete";
+            dataGridItineraryDelete.ReadOnly = true;
+            dataGridItineraryDelete.RowHeadersWidth = 51;
+            dataGridItineraryDelete.Size = new Size(1487, 686);
+            dataGridItineraryDelete.TabIndex = 17;
             // 
             // ItineraryView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 465);
+            Controls.Add(btnSeeEliminated);
             Controls.Add(label3);
             Controls.Add(txtFilter);
             Controls.Add(btnSearch);
@@ -406,6 +428,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridItineraryView).EndInit();
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
+            tabPageDelete.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridItineraryDelete).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -425,19 +449,18 @@
         private TabPage tabPageList;
         private DataGridView dataGridItineraryView;
         private TabPage tabPageAddEdit;
-        private TextBox txtLastName;
-        private TextBox txtPhoneNumber;
-        private Label label7;
-        private TextBox txtDocument;
-        private Label label8;
-        private DateTimePicker DateBirth;
+        private TextBox txtDescription;
+        private DateTimePicker DepartureDate;
         private Label label6;
-        private TextBox txtEmail;
-        private FontAwesome.Sharp.IconButton btnCancelar;
-        private FontAwesome.Sharp.IconButton btnGuardar;
-        private Label label5;
+        private FontAwesome.Sharp.IconButton btnCancel;
+        private FontAwesome.Sharp.IconButton btnSave;
         private Label label4;
-        private TextBox txtFirstName;
+        private TextBox txtName;
         private Label label2;
+        private ComboBox CBoxActivity;
+        private DateTimePicker ReturnDate;
+        private FontAwesome.Sharp.IconButton btnSeeEliminated;
+        private TabPage tabPageDelete;
+        private DataGridView dataGridItineraryDelete;
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label3 = new Label();
             txtFilter = new TextBox();
             btnDelete = new FontAwesome.Sharp.IconButton();
@@ -41,6 +42,9 @@
             tabPageList = new TabPage();
             dataGridDestinationView = new DataGridView();
             tabPageAddEdit = new TabPage();
+            label6 = new Label();
+            CBoxItinerary = new ComboBox();
+            pictureBoxDestinationList = new PictureBox();
             txtDescription = new TextBox();
             txtCountry = new TextBox();
             label7 = new Label();
@@ -53,13 +57,16 @@
             label4 = new Label();
             txtFirstName = new TextBox();
             label2 = new Label();
-            pictureBoxDestinationList = new PictureBox();
+            tabPageDelete = new TabPage();
+            dataGridDestinationDelete = new DataGridView();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridDestinationView).BeginInit();
             tabPageAddEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxDestinationList).BeginInit();
+            tabPageDelete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridDestinationDelete).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -174,6 +181,7 @@
             // 
             tabControl1.Controls.Add(tabPageList);
             tabControl1.Controls.Add(tabPageAddEdit);
+            tabControl1.Controls.Add(tabPageDelete);
             tabControl1.Location = new Point(15, 94);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -213,10 +221,11 @@
             dataGridDestinationView.RowHeadersWidth = 51;
             dataGridDestinationView.Size = new Size(1060, 492);
             dataGridDestinationView.TabIndex = 16;
-            dataGridDestinationView.CellContentClick += dataGridDestinationView_CellContentClick;
             // 
             // tabPageAddEdit
             // 
+            tabPageAddEdit.Controls.Add(label6);
+            tabPageAddEdit.Controls.Add(CBoxItinerary);
             tabPageAddEdit.Controls.Add(pictureBoxDestinationList);
             tabPageAddEdit.Controls.Add(txtDescription);
             tabPageAddEdit.Controls.Add(txtCountry);
@@ -238,9 +247,34 @@
             tabPageAddEdit.Text = "Agregar/Editar";
             tabPageAddEdit.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(173, 240);
+            label6.Name = "label6";
+            label6.Size = new Size(116, 15);
+            label6.TabIndex = 55;
+            label6.Text = "Itinerario Disponible:";
+            // 
+            // CBoxItinerary
+            // 
+            CBoxItinerary.FormattingEnabled = true;
+            CBoxItinerary.Location = new Point(101, 258);
+            CBoxItinerary.Name = "CBoxItinerary";
+            CBoxItinerary.Size = new Size(269, 23);
+            CBoxItinerary.TabIndex = 54;
+            // 
+            // pictureBoxDestinationList
+            // 
+            pictureBoxDestinationList.Location = new Point(427, 128);
+            pictureBoxDestinationList.Name = "pictureBoxDestinationList";
+            pictureBoxDestinationList.Size = new Size(167, 153);
+            pictureBoxDestinationList.TabIndex = 53;
+            pictureBoxDestinationList.TabStop = false;
+            // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(117, 141);
+            txtDescription.Location = new Point(101, 70);
             txtDescription.Margin = new Padding(3, 2, 3, 2);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(269, 23);
@@ -248,7 +282,7 @@
             // 
             // txtCountry
             // 
-            txtCountry.Location = new Point(117, 255);
+            txtCountry.Location = new Point(101, 184);
             txtCountry.Margin = new Padding(3, 2, 3, 2);
             txtCountry.Name = "txtCountry";
             txtCountry.Size = new Size(269, 23);
@@ -257,7 +291,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(34, 266);
+            label7.Location = new Point(18, 195);
             label7.Name = "label7";
             label7.Size = new Size(31, 15);
             label7.TabIndex = 28;
@@ -265,7 +299,7 @@
             // 
             // txtURL_image
             // 
-            txtURL_image.Location = new Point(117, 178);
+            txtURL_image.Location = new Point(101, 107);
             txtURL_image.Margin = new Padding(3, 2, 3, 2);
             txtURL_image.Name = "txtURL_image";
             txtURL_image.Size = new Size(269, 23);
@@ -274,7 +308,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(34, 189);
+            label8.Location = new Point(18, 118);
             label8.Name = "label8";
             label8.Size = new Size(67, 15);
             label8.TabIndex = 26;
@@ -282,7 +316,7 @@
             // 
             // txtCategoryName
             // 
-            txtCategoryName.Location = new Point(117, 217);
+            txtCategoryName.Location = new Point(101, 146);
             txtCategoryName.Margin = new Padding(3, 2, 3, 2);
             txtCategoryName.Name = "txtCategoryName";
             txtCategoryName.Size = new Size(269, 23);
@@ -320,7 +354,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(34, 228);
+            label5.Location = new Point(18, 157);
             label5.Name = "label5";
             label5.Size = new Size(61, 15);
             label5.TabIndex = 20;
@@ -329,7 +363,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(34, 147);
+            label4.Location = new Point(18, 76);
             label4.Name = "label4";
             label4.Size = new Size(72, 15);
             label4.TabIndex = 18;
@@ -337,7 +371,7 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(117, 99);
+            txtFirstName.Location = new Point(101, 28);
             txtFirstName.Margin = new Padding(3, 2, 3, 2);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(269, 23);
@@ -346,19 +380,45 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(34, 110);
+            label2.Location = new Point(18, 39);
             label2.Name = "label2";
             label2.Size = new Size(54, 15);
             label2.TabIndex = 14;
             label2.Text = "Nombre:";
             // 
-            // pictureBoxDestinationList
+            // tabPageDelete
             // 
-            pictureBoxDestinationList.Location = new Point(427, 128);
-            pictureBoxDestinationList.Name = "pictureBoxDestinationList";
-            pictureBoxDestinationList.Size = new Size(167, 153);
-            pictureBoxDestinationList.TabIndex = 53;
-            pictureBoxDestinationList.TabStop = false;
+            tabPageDelete.Controls.Add(dataGridDestinationDelete);
+            tabPageDelete.Location = new Point(4, 24);
+            tabPageDelete.Name = "tabPageDelete";
+            tabPageDelete.Padding = new Padding(3);
+            tabPageDelete.Size = new Size(633, 300);
+            tabPageDelete.TabIndex = 2;
+            tabPageDelete.Text = "Papelera";
+            tabPageDelete.UseVisualStyleBackColor = true;
+            // 
+            // dataGridDestinationDelete
+            // 
+            dataGridDestinationDelete.AllowUserToAddRows = false;
+            dataGridDestinationDelete.AllowUserToDeleteRows = false;
+            dataGridDestinationDelete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridDestinationDelete.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridDestinationDelete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridDestinationDelete.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridDestinationDelete.Location = new Point(-214, -96);
+            dataGridDestinationDelete.Margin = new Padding(3, 2, 3, 2);
+            dataGridDestinationDelete.Name = "dataGridDestinationDelete";
+            dataGridDestinationDelete.ReadOnly = true;
+            dataGridDestinationDelete.RowHeadersWidth = 51;
+            dataGridDestinationDelete.Size = new Size(1060, 492);
+            dataGridDestinationDelete.TabIndex = 17;
             // 
             // DestinationView
             // 
@@ -384,6 +444,8 @@
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxDestinationList).EndInit();
+            tabPageDelete.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridDestinationDelete).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -415,5 +477,9 @@
         private Label label2;
         private FontAwesome.Sharp.IconButton btnReturn;
         private PictureBox pictureBoxDestinationList;
+        private Label label6;
+        private ComboBox CBoxItinerary;
+        private TabPage tabPageDelete;
+        private DataGridView dataGridDestinationDelete;
     }
 }

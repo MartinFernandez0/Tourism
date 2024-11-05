@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using TourismServices.Interfaces;
 using TourismServices.Models;
 using TourismServices.Services;
@@ -16,6 +8,7 @@ namespace TourismDesktop.Views
     public partial class DestinationView : Form
     {
         IDestinationService DestinationService = new DestinationService();
+        IItineraryService ItineraryService = new ItineraryService();
 
         BindingSource ListDestination = new BindingSource();
         List<pfDestination> FilterList = new List<pfDestination>();
@@ -27,7 +20,17 @@ namespace TourismDesktop.Views
             InitializeComponent();
             dataGridDestinationView.DataSource = ListDestination;
             LoadGrid();
+            LoadComboBox();
         }
+
+        private async Task LoadComboBox()
+        {
+            CBoxItinerary.DataSource = await ItineraryService.GetAllAsync();
+            CBoxItinerary.DisplayMember = "Name";
+            CBoxItinerary.ValueMember = "Id";
+            CBoxItinerary.SelectedIndex = 0;
+        }
+
         private async Task LoadGrid()
         {
             ListDestination.DataSource = await DestinationService.GetAllAsync();
@@ -53,19 +56,13 @@ namespace TourismDesktop.Views
         private void btnModify_Click(object sender, EventArgs e)
         {
             DestinationCurrent = (pfDestination)ListDestination.Current;
-
-            if (DestinationCurrent == null)
-            {
-                MessageBox.Show("Debe seleccionar un destino");
-                return;
-            }
-
             txtFirstName.Text = DestinationCurrent.Name;
             txtDescription.Text = DestinationCurrent.Description;
             txtURL_image.Text = DestinationCurrent.URL_image;
             txtCategoryName.Text = DestinationCurrent.CategoryName;
             txtCountry.Text = DestinationCurrent.Country;
 
+            CBoxItinerary.SelectedValue = DestinationCurrent.ItineraryId;
 
 
             //Image List addEditt
@@ -104,12 +101,13 @@ namespace TourismDesktop.Views
                 Description = txtDescription.Text,
                 URL_image = txtURL_image.Text,
                 CategoryName = txtCategoryName.Text,
-                Country = txtCountry.Text
+                Country = txtCountry.Text,
+
+                ItineraryId = (int)CBoxItinerary.SelectedValue
             };
 
             if (DestinationCurrent != null)
             {
-                pfDesination.Id = DestinationCurrent.Id;
 
                 DestinationCurrent.Name = txtFirstName.Text;
                 DestinationCurrent.Description = txtDescription.Text;
@@ -117,8 +115,12 @@ namespace TourismDesktop.Views
                 DestinationCurrent.CategoryName = txtCategoryName.Text;
                 DestinationCurrent.Country = txtCountry.Text;
 
+                DestinationCurrent.ItineraryId = (int)CBoxItinerary.SelectedValue;
+
                 await DestinationService.UpdateAsync(pfDesination);
                 MessageBox.Show("Destino modificado correctamente");
+
+                DestinationCurrent = null;
             }
             else
             {
@@ -166,11 +168,6 @@ namespace TourismDesktop.Views
         {
             var filteredDestination = FilterList.Where(d => d.Name.Contains(txtFilter.Text)).ToList();
             ListDestination.DataSource = new BindingSource(filteredDestination, null);
-        }
-
-        private void dataGridDestinationView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
