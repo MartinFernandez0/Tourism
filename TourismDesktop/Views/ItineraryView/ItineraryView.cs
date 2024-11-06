@@ -31,6 +31,9 @@ namespace TourismDesktop.Views
             dataGridItineraryView.DataSource = ListItinerary;
             LoadGrid();
             LoadComboBox();
+
+            //Iniciar BtnIsDeleted = Eliminados
+            btnSeeEliminated.Text = "Ver Eliminados";
         }
 
         private async Task LoadComboBox()
@@ -43,21 +46,44 @@ namespace TourismDesktop.Views
 
         private async Task LoadGrid()
         {
-            ListItinerary.DataSource = await ItineraryService.GetAllAsync();
+            var itineraries = await ItineraryService.GetAllAsync();
+            ListItinerary.DataSource = itineraries?.Where(i => !i.IsDeleted).ToList(); // Filtra los itinerarios no eliminados
             FilterList = (List<pfItinerary>)ListItinerary.DataSource;
         }
+
+
+        //Manejo boton Eliminados IsDeleted Funcionando
+
+        private bool showingDeleted = false;
         private async void btnSeeEliminated_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(tabPageDelete);
-            LoadDeleteItems();
-        }
+            if (showingDeleted)
+            {
+                // Mostrar itinerarios activos
+                var activeItineraries = await ItineraryService.GetAllAsync(null);
+                ListItinerary.DataSource = activeItineraries?.Where(i => !i.IsDeleted).ToList();
 
-        private async Task LoadDeleteItems()
-        {
-            var deletedItems = await ItineraryService.GetAllDeletedAsync();
-            dataGridItineraryDelete.DataSource = deletedItems;
-        }
+                //Properties
+                btnSeeEliminated.Text = "Eliminados";
+                btnSeeEliminated.BackColor = System.Drawing.Color.LightCoral;
+                btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                // Mostrar itinerarios eliminados
+                var deletedItineraries = await ItineraryService.GetAllDeletedAsync(null);
+                ListItinerary.DataSource = deletedItineraries?.Where(i => i.IsDeleted).ToList();
 
+                //Properties
+                btnSeeEliminated.Text = "Activos";
+                btnSeeEliminated.BackColor = System.Drawing.Color.LightSkyBlue;
+                btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+            }
+
+            FilterList = (List<pfItinerary>)ListItinerary.DataSource;
+            showingDeleted = !showingDeleted;
+
+        }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
@@ -91,14 +117,13 @@ namespace TourismDesktop.Views
         {
             if (ListItinerary.Current is pfItinerary pfItinerary)
             {
-                var results = MessageBox.Show("¿Está seguro que desea ocultar el itinerario?", "Ocultar", MessageBoxButtons.YesNo);
+                var results = MessageBox.Show($"¿Está seguro que desea eliminar el itinerario {pfItinerary.Name}?", "Eliminar", MessageBoxButtons.YesNo);
 
                 if (results == DialogResult.Yes)
                 {
-                    // Marca el itinerario como eliminado
-                    pfItinerary.IsDeleted = true; // Asegúrate de que esta propiedad esté presente en tu modelo
+                    pfItinerary.IsDeleted = true;
 
-                    await ItineraryService.UpdateAsync(pfItinerary); // Actualiza el itinerario en lugar de eliminarlo
+                    await ItineraryService.UpdateAsync(pfItinerary);
                     await LoadGrid();
                     MessageBox.Show("Itinerario ocultado correctamente");
                 }

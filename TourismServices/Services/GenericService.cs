@@ -28,6 +28,7 @@ namespace TourismServices.Services
 
         public async Task<List<T>?> GetAllAsync()
         {
+
             var response = await client.GetAsync(_endpoint);
             var content = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
@@ -35,6 +36,18 @@ namespace TourismServices.Services
                 throw new ApplicationException(content?.ToString());
             }
             return JsonSerializer.Deserialize<List<T>>(content, options); ;
+        }
+        public async Task<List<T>?> GetAllDeletedAsync()
+        {
+            var response = await client.GetAsync($"{_endpoint}/Deleted");
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content?.ToString());
+            }
+
+            return JsonSerializer.Deserialize<List<T>>(content, options);
         }
 
         public async Task<T?> GetByIdAsync(int id)
@@ -79,18 +92,6 @@ namespace TourismServices.Services
             }
         }
 
-        public async Task<List<T>?> GetAllDeletedAsync()
-        {
-            var response = await client.GetAsync($"{_endpoint}/deleted");
-            var content = await response.Content.ReadAsStringAsync();
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new ApplicationException(content?.ToString());
-            }
-
-            return JsonSerializer.Deserialize<List<T>>(content, options);
-        }
     }
 
 }

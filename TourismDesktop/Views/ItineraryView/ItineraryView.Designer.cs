@@ -53,9 +53,9 @@
             label4 = new Label();
             txtName = new TextBox();
             label2 = new Label();
-            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             tabPageDelete = new TabPage();
             dataGridItineraryDelete = new DataGridView();
+            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
@@ -352,23 +352,6 @@
             label2.TabIndex = 14;
             label2.Text = "Nombre:";
             // 
-            // btnSeeEliminated
-            // 
-            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnSeeEliminated.IconColor = Color.Black;
-            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSeeEliminated.IconSize = 20;
-            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSeeEliminated.Location = new Point(721, 386);
-            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
-            btnSeeEliminated.Name = "btnSeeEliminated";
-            btnSeeEliminated.Size = new Size(127, 38);
-            btnSeeEliminated.TabIndex = 60;
-            btnSeeEliminated.Text = "Papelera";
-            btnSeeEliminated.UseVisualStyleBackColor = true;
-            btnSeeEliminated.Click += btnSeeEliminated_Click;
-            // 
             // tabPageDelete
             // 
             tabPageDelete.Controls.Add(dataGridItineraryDelete);
@@ -402,6 +385,22 @@
             dataGridItineraryDelete.RowHeadersWidth = 51;
             dataGridItineraryDelete.Size = new Size(1487, 686);
             dataGridItineraryDelete.TabIndex = 17;
+            // 
+            // btnSeeEliminated
+            // 
+            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnSeeEliminated.IconColor = Color.Black;
+            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSeeEliminated.IconSize = 20;
+            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSeeEliminated.Location = new Point(721, 386);
+            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
+            btnSeeEliminated.Name = "btnSeeEliminated";
+            btnSeeEliminated.Size = new Size(127, 38);
+            btnSeeEliminated.TabIndex = 60;
+            btnSeeEliminated.UseVisualStyleBackColor = true;
+            btnSeeEliminated.Click += btnSeeEliminated_Click;
             // 
             // ItineraryView
             // 

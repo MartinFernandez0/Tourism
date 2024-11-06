@@ -24,7 +24,19 @@ namespace TourismServices.Services
 
         public async Task<List<pfItinerary>?> GetAllDeletedAsync(string? filtro)
         {
-            return await GetAllDeletedAsync();
+            var response = await client.GetAsync($"{_endpoint}?filtro={filtro}");
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content?.ToString());
+            }
+
+            // Deserializamos los itinerarios
+            var itineraries = JsonSerializer.Deserialize<List<pfItinerary>>(content, options);
+
+            // Filtramos los itinerarios eliminados (IsDeleted = true)
+            return itineraries?.Where(i => i.IsDeleted).ToList();
         }
 
     }
