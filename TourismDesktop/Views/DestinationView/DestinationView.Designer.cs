@@ -29,12 +29,8 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label3 = new Label();
             txtFilter = new TextBox();
-            btnDelete = new FontAwesome.Sharp.IconButton();
-            btnModify = new FontAwesome.Sharp.IconButton();
-            btnAdd = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
             btnReturn = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
@@ -42,6 +38,9 @@
             tabPageList = new TabPage();
             dataGridDestinationView = new DataGridView();
             tabPageAddEdit = new TabPage();
+            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
+            btnCancel = new FontAwesome.Sharp.IconButton();
+            btnSave = new FontAwesome.Sharp.IconButton();
             label6 = new Label();
             CBoxItinerary = new ComboBox();
             pictureBoxDestinationList = new PictureBox();
@@ -51,22 +50,19 @@
             txtURL_image = new TextBox();
             label8 = new Label();
             txtCategoryName = new TextBox();
-            btnCancelar = new FontAwesome.Sharp.IconButton();
-            btnGuardar = new FontAwesome.Sharp.IconButton();
             label5 = new Label();
             label4 = new Label();
             txtFirstName = new TextBox();
             label2 = new Label();
-            tabPageDelete = new TabPage();
-            dataGridDestinationDelete = new DataGridView();
+            btnDelete = new FontAwesome.Sharp.IconButton();
+            btnModify = new FontAwesome.Sharp.IconButton();
+            btnAdd = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridDestinationView).BeginInit();
             tabPageAddEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxDestinationList).BeginInit();
-            tabPageDelete.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridDestinationDelete).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -86,57 +82,6 @@
             txtFilter.Size = new Size(278, 23);
             txtFilter.TabIndex = 50;
             txtFilter.TextChanged += txtFilter_TextChanged;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnDelete.IconColor = Color.Black;
-            btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDelete.IconSize = 20;
-            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(727, 202);
-            btnDelete.Margin = new Padding(3, 2, 3, 2);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(127, 38);
-            btnDelete.TabIndex = 48;
-            btnDelete.Text = "Eliminar";
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnModify
-            // 
-            btnModify.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnModify.IconChar = FontAwesome.Sharp.IconChar.Pencil;
-            btnModify.IconColor = Color.Black;
-            btnModify.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnModify.IconSize = 20;
-            btnModify.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModify.Location = new Point(727, 160);
-            btnModify.Margin = new Padding(3, 2, 3, 2);
-            btnModify.Name = "btnModify";
-            btnModify.Size = new Size(127, 38);
-            btnModify.TabIndex = 47;
-            btnModify.Text = "Modificar";
-            btnModify.UseVisualStyleBackColor = true;
-            btnModify.Click += btnModify_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAdd.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
-            btnAdd.IconColor = Color.Black;
-            btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAdd.IconSize = 20;
-            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(727, 118);
-            btnAdd.Margin = new Padding(3, 2, 3, 2);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(127, 38);
-            btnAdd.TabIndex = 46;
-            btnAdd.Text = "Agregar";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
             // 
             // panel1
             // 
@@ -181,7 +126,6 @@
             // 
             tabControl1.Controls.Add(tabPageList);
             tabControl1.Controls.Add(tabPageAddEdit);
-            tabControl1.Controls.Add(tabPageDelete);
             tabControl1.Location = new Point(15, 94);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -214,16 +158,19 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridDestinationView.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridDestinationView.Location = new Point(3, 3);
+            dataGridDestinationView.Location = new Point(0, 0);
             dataGridDestinationView.Margin = new Padding(3, 2, 3, 2);
             dataGridDestinationView.Name = "dataGridDestinationView";
             dataGridDestinationView.ReadOnly = true;
             dataGridDestinationView.RowHeadersWidth = 51;
-            dataGridDestinationView.Size = new Size(1060, 492);
+            dataGridDestinationView.Size = new Size(633, 298);
             dataGridDestinationView.TabIndex = 16;
             // 
             // tabPageAddEdit
             // 
+            tabPageAddEdit.Controls.Add(btnSeeEliminated);
+            tabPageAddEdit.Controls.Add(btnCancel);
+            tabPageAddEdit.Controls.Add(btnSave);
             tabPageAddEdit.Controls.Add(label6);
             tabPageAddEdit.Controls.Add(CBoxItinerary);
             tabPageAddEdit.Controls.Add(pictureBoxDestinationList);
@@ -233,8 +180,6 @@
             tabPageAddEdit.Controls.Add(txtURL_image);
             tabPageAddEdit.Controls.Add(label8);
             tabPageAddEdit.Controls.Add(txtCategoryName);
-            tabPageAddEdit.Controls.Add(btnCancelar);
-            tabPageAddEdit.Controls.Add(btnGuardar);
             tabPageAddEdit.Controls.Add(label5);
             tabPageAddEdit.Controls.Add(label4);
             tabPageAddEdit.Controls.Add(txtFirstName);
@@ -247,10 +192,65 @@
             tabPageAddEdit.Text = "Agregar/Editar";
             tabPageAddEdit.UseVisualStyleBackColor = true;
             // 
+            // btnSeeEliminated
+            // 
+            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnSeeEliminated.IconColor = Color.Black;
+            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSeeEliminated.IconSize = 20;
+            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSeeEliminated.Location = new Point(306, 257);
+            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
+            btnSeeEliminated.Name = "btnSeeEliminated";
+            btnSeeEliminated.Size = new Size(100, 33);
+            btnSeeEliminated.TabIndex = 63;
+            btnSeeEliminated.UseVisualStyleBackColor = true;
+            btnSeeEliminated.Click += btnSeeEliminated_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Brown;
+            btnCancel.FlatStyle = FlatStyle.Popup;
+            btnCancel.ForeColor = SystemColors.Control;
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancel.IconColor = Color.Black;
+            btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancel.IconSize = 20;
+            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancel.Location = new Point(527, 261);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(100, 25);
+            btnCancel.TabIndex = 62;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.SeaGreen;
+            btnSave.FlatStyle = FlatStyle.Popup;
+            btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = SystemColors.Control;
+            btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnSave.IconColor = SystemColors.ActiveCaptionText;
+            btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSave.IconSize = 20;
+            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSave.Location = new Point(421, 261);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(100, 25);
+            btnSave.TabIndex = 64;
+            btnSave.Text = "Guardar";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(173, 240);
+            label6.Location = new Point(447, 181);
             label6.Name = "label6";
             label6.Size = new Size(116, 15);
             label6.TabIndex = 55;
@@ -259,16 +259,16 @@
             // CBoxItinerary
             // 
             CBoxItinerary.FormattingEnabled = true;
-            CBoxItinerary.Location = new Point(101, 258);
+            CBoxItinerary.Location = new Point(421, 199);
             CBoxItinerary.Name = "CBoxItinerary";
-            CBoxItinerary.Size = new Size(269, 23);
+            CBoxItinerary.Size = new Size(177, 23);
             CBoxItinerary.TabIndex = 54;
             // 
             // pictureBoxDestinationList
             // 
-            pictureBoxDestinationList.Location = new Point(427, 128);
+            pictureBoxDestinationList.Location = new Point(421, 28);
             pictureBoxDestinationList.Name = "pictureBoxDestinationList";
-            pictureBoxDestinationList.Size = new Size(167, 153);
+            pictureBoxDestinationList.Size = new Size(189, 126);
             pictureBoxDestinationList.TabIndex = 53;
             pictureBoxDestinationList.TabStop = false;
             // 
@@ -322,35 +322,6 @@
             txtCategoryName.Size = new Size(269, 23);
             txtCategoryName.TabIndex = 21;
             // 
-            // btnCancelar
-            // 
-            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.Cancel;
-            btnCancelar.IconColor = Color.Black;
-            btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancelar.IconSize = 35;
-            btnCancelar.Location = new Point(427, 70);
-            btnCancelar.Margin = new Padding(3, 2, 3, 2);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(182, 41);
-            btnCancelar.TabIndex = 17;
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.FromArgb(24, 24, 29);
-            btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
-            btnGuardar.IconColor = Color.White;
-            btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnGuardar.IconSize = 20;
-            btnGuardar.Location = new Point(427, 22);
-            btnGuardar.Margin = new Padding(3, 2, 3, 2);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(182, 39);
-            btnGuardar.TabIndex = 16;
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -386,49 +357,75 @@
             label2.TabIndex = 14;
             label2.Text = "Nombre:";
             // 
-            // tabPageDelete
+            // btnDelete
             // 
-            tabPageDelete.Controls.Add(dataGridDestinationDelete);
-            tabPageDelete.Location = new Point(4, 24);
-            tabPageDelete.Name = "tabPageDelete";
-            tabPageDelete.Padding = new Padding(3);
-            tabPageDelete.Size = new Size(633, 300);
-            tabPageDelete.TabIndex = 2;
-            tabPageDelete.Text = "Papelera";
-            tabPageDelete.UseVisualStyleBackColor = true;
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.BackColor = Color.FromArgb(24, 24, 29);
+            btnDelete.FlatStyle = FlatStyle.Popup;
+            btnDelete.ForeColor = SystemColors.Control;
+            btnDelete.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnDelete.IconColor = Color.White;
+            btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnDelete.IconSize = 20;
+            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDelete.Location = new Point(721, 295);
+            btnDelete.Margin = new Padding(3, 2, 3, 2);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(130, 45);
+            btnDelete.TabIndex = 59;
+            btnDelete.Text = "Eliminar";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click_1;
             // 
-            // dataGridDestinationDelete
+            // btnModify
             // 
-            dataGridDestinationDelete.AllowUserToAddRows = false;
-            dataGridDestinationDelete.AllowUserToDeleteRows = false;
-            dataGridDestinationDelete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridDestinationDelete.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridDestinationDelete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridDestinationDelete.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridDestinationDelete.Location = new Point(-214, -96);
-            dataGridDestinationDelete.Margin = new Padding(3, 2, 3, 2);
-            dataGridDestinationDelete.Name = "dataGridDestinationDelete";
-            dataGridDestinationDelete.ReadOnly = true;
-            dataGridDestinationDelete.RowHeadersWidth = 51;
-            dataGridDestinationDelete.Size = new Size(1060, 492);
-            dataGridDestinationDelete.TabIndex = 17;
+            btnModify.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnModify.BackColor = Color.FromArgb(24, 24, 29);
+            btnModify.FlatStyle = FlatStyle.Popup;
+            btnModify.ForeColor = SystemColors.Control;
+            btnModify.IconChar = FontAwesome.Sharp.IconChar.Pencil;
+            btnModify.IconColor = Color.White;
+            btnModify.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnModify.IconSize = 20;
+            btnModify.ImageAlign = ContentAlignment.MiddleLeft;
+            btnModify.Location = new Point(721, 209);
+            btnModify.Margin = new Padding(3, 2, 3, 2);
+            btnModify.Name = "btnModify";
+            btnModify.Size = new Size(130, 45);
+            btnModify.TabIndex = 58;
+            btnModify.Text = "Modificar";
+            btnModify.UseVisualStyleBackColor = false;
+            btnModify.Click += btnModify_Click_1;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAdd.BackColor = Color.FromArgb(24, 24, 29);
+            btnAdd.FlatStyle = FlatStyle.Popup;
+            btnAdd.ForeColor = SystemColors.Control;
+            btnAdd.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
+            btnAdd.IconColor = Color.White;
+            btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAdd.IconSize = 20;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdd.Location = new Point(721, 121);
+            btnAdd.Margin = new Padding(3, 2, 3, 2);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(130, 45);
+            btnAdd.TabIndex = 57;
+            btnAdd.Text = "Agregar";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click_1;
             // 
             // DestinationView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 465);
-            Controls.Add(label3);
-            Controls.Add(txtFilter);
             Controls.Add(btnDelete);
+            Controls.Add(label3);
             Controls.Add(btnModify);
+            Controls.Add(txtFilter);
             Controls.Add(btnAdd);
             Controls.Add(panel1);
             Controls.Add(tabControl1);
@@ -444,8 +441,6 @@
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxDestinationList).EndInit();
-            tabPageDelete.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridDestinationDelete).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -454,9 +449,6 @@
 
         private Label label3;
         private TextBox txtFilter;
-        private FontAwesome.Sharp.IconButton btnDelete;
-        private FontAwesome.Sharp.IconButton btnModify;
-        private FontAwesome.Sharp.IconButton btnAdd;
         private Panel panel1;
         private Label label1;
         private TabControl tabControl1;
@@ -469,8 +461,6 @@
         private TextBox txtURL_image;
         private Label label8;
         private TextBox txtCategoryName;
-        private FontAwesome.Sharp.IconButton btnCancelar;
-        private FontAwesome.Sharp.IconButton btnGuardar;
         private Label label5;
         private Label label4;
         private TextBox txtFirstName;
@@ -479,7 +469,11 @@
         private PictureBox pictureBoxDestinationList;
         private Label label6;
         private ComboBox CBoxItinerary;
-        private TabPage tabPageDelete;
-        private DataGridView dataGridDestinationDelete;
+        private FontAwesome.Sharp.IconButton btnDelete;
+        private FontAwesome.Sharp.IconButton btnModify;
+        private FontAwesome.Sharp.IconButton btnAdd;
+        private FontAwesome.Sharp.IconButton btnSeeEliminated;
+        private FontAwesome.Sharp.IconButton btnCancel;
+        private FontAwesome.Sharp.IconButton btnSave;
     }
 }

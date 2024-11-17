@@ -15,14 +15,28 @@ namespace TourismDesktop.Views
 
         pfDestination? DestinationCurrent;
 
+        //Manejo boton Eliminados IsDeleted Funcionando
+        private bool showingDeleted = false;
+
         public DestinationView()
         {
             InitializeComponent();
             dataGridDestinationView.DataSource = ListDestination;
             LoadGrid();
             LoadComboBox();
+
+            //Properties Buttons isDeleted
+            btnSeeEliminated.Text = "Eliminados";
+            btnSeeEliminated.BackColor = System.Drawing.Color.LightCoral;
+            btnSeeEliminated.ForeColor = System.Drawing.Color.White;
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #region LoadDate
         private async Task LoadComboBox()
         {
             CBoxItinerary.DataSource = await ItineraryService.GetAllAsync();
@@ -33,16 +47,46 @@ namespace TourismDesktop.Views
 
         private async Task LoadGrid()
         {
-            ListDestination.DataSource = await DestinationService.GetAllAsync();
+            var destinations = await DestinationService.GetAllAsync();
+            ListDestination.DataSource = destinations?.Where(i => !i.IsDeleted).ToList();
             FilterList = (List<pfDestination>)ListDestination.DataSource;
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        #region btnSeeDeleted
+        private async void btnSeeEliminated_Click(object sender, EventArgs e)
+        {
+
+            if (showingDeleted)
+            {
+                //Mostrar Destinos activos
+                var ActiveDestinations = await DestinationService.GetAllAsync(null);
+                ListDestination.DataSource = ActiveDestinations?.Where(i => !i.IsDeleted).ToList();
+
+                //Properties
+                btnSeeEliminated.Text = "Eliminados";
+                btnSeeEliminated.BackColor = System.Drawing.Color.LightCoral;
+                btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                //Mostraar Destinos eliminados
+                var deletedDestinations = await DestinationService.GetAllDeletedAsync(null);
+                ListDestination.DataSource = deletedDestinations?.Where(i => i.IsDeleted).ToList();
+
+                //Properties
+                btnSeeEliminated.Text = "Activos";
+                btnSeeEliminated.BackColor = System.Drawing.Color.LightSkyBlue;
+                btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+            }
+            FilterList = (List<pfDestination>)ListDestination.DataSource;
+            showingDeleted = !showingDeleted;
+        }
+        #endregion
+
+        #region C.R.U.D
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             txtFirstName.Text = string.Empty;
             txtDescription.Text = string.Empty;
@@ -52,8 +96,7 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
-
-        private void btnModify_Click(object sender, EventArgs e)
+        private void btnModify_Click_1(object sender, EventArgs e)
         {
             DestinationCurrent = (pfDestination)ListDestination.Current;
             txtFirstName.Text = DestinationCurrent.Name;
@@ -86,15 +129,27 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
-
-        private async void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnDelete_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFirstName.Text))
+            if (ListDestination.Current is pfDestination pfDestination)
             {
-                MessageBox.Show("Debe completar todos los campos");
-                return;
-            }
+                var results = MessageBox.Show($"¿Está seguro que desea eliminar el destino {pfDestination.Name}?", "Eliminar", MessageBoxButtons.YesNo);
 
+                if (results == DialogResult.Yes)
+                {
+                    pfDestination.IsDeleted = true;
+
+                    await DestinationService.UpdateAsync(pfDestination);
+                    await LoadGrid();
+                    MessageBox.Show("Destino ocultado correctamente");
+                }
+            }
+        }
+        #endregion
+
+        #region BtnSaveCandel
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
             var pfDesination = new pfDestination
             {
                 Name = txtFirstName.Text,
@@ -125,8 +180,8 @@ namespace TourismDesktop.Views
             else
             {
                 await DestinationService.AddAsync(pfDesination);
+                MessageBox.Show("Destino agregado correctamente");
             }
-            MessageBox.Show("Destino agregado correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             await LoadGrid();
             txtFirstName.Text = string.Empty;
@@ -137,37 +192,23 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageList);
         }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Operación cancelada");
             tabControl1.SelectTab(tabPageList);
         }
+        #endregion
 
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (ListDestination.Current is pfDestination pfDestination)
-            {
-                var results = MessageBox.Show("¿Está seguro que desea eliminar el destino?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (results == DialogResult.Yes)
-                {
-                    await DestinationService.DeleteAsync(pfDestination.Id);
-                    await LoadGrid();
-                    MessageBox.Show("Destino eliminado correctamente");
-                }
-            }
-        }
-
+        #region TxtFilterTextChanged
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             FilterDestination();
         }
-
         private void FilterDestination()
         {
             var filteredDestination = FilterList.Where(d => d.Name.Contains(txtFilter.Text)).ToList();
             ListDestination.DataSource = new BindingSource(filteredDestination, null);
         }
+        #endregion
     }
 }

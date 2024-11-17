@@ -29,40 +29,36 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label3 = new Label();
             txtFilter = new TextBox();
-            btnSearch = new FontAwesome.Sharp.IconButton();
             btnDelete = new FontAwesome.Sharp.IconButton();
             btnModify = new FontAwesome.Sharp.IconButton();
             btnAdd = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
             btnReturn = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
-            tabControl1 = new TabControl();
-            tabPageList = new TabPage();
-            dataGridItineraryView = new DataGridView();
+            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             tabPageAddEdit = new TabPage();
+            label7 = new Label();
+            label5 = new Label();
             ReturnDate = new DateTimePicker();
             CBoxActivity = new ComboBox();
             txtDescription = new TextBox();
+            txtName = new TextBox();
             DepartureDate = new DateTimePicker();
             label6 = new Label();
             btnCancel = new FontAwesome.Sharp.IconButton();
             btnSave = new FontAwesome.Sharp.IconButton();
             label4 = new Label();
-            txtName = new TextBox();
             label2 = new Label();
-            tabPageDelete = new TabPage();
-            dataGridItineraryDelete = new DataGridView();
-            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
+            tabPageList = new TabPage();
+            dataGridItineraryView = new DataGridView();
+            tabControl1 = new TabControl();
             panel1.SuspendLayout();
-            tabControl1.SuspendLayout();
+            tabPageAddEdit.SuspendLayout();
             tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridItineraryView).BeginInit();
-            tabPageAddEdit.SuspendLayout();
-            tabPageDelete.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridItineraryDelete).BeginInit();
+            tabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // label3
@@ -81,73 +77,66 @@
             txtFilter.Name = "txtFilter";
             txtFilter.Size = new Size(278, 23);
             txtFilter.TabIndex = 58;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
-            btnSearch.IconColor = Color.Black;
-            btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSearch.IconSize = 20;
-            btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearch.Location = new Point(721, 79);
-            btnSearch.Margin = new Padding(3, 2, 3, 2);
-            btnSearch.Name = "btnSearch";
-            btnSearch.RightToLeft = RightToLeft.No;
-            btnSearch.Size = new Size(127, 38);
-            btnSearch.TabIndex = 57;
-            btnSearch.Text = "Busqueda";
-            btnSearch.UseVisualStyleBackColor = true;
+            txtFilter.TextChanged += txtFilter_TextChanged;
             // 
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.BackColor = Color.FromArgb(24, 24, 29);
+            btnDelete.FlatStyle = FlatStyle.Popup;
+            btnDelete.ForeColor = SystemColors.Control;
             btnDelete.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnDelete.IconColor = Color.Black;
+            btnDelete.IconColor = Color.White;
             btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDelete.IconSize = 20;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(721, 264);
+            btnDelete.Location = new Point(721, 294);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(127, 38);
+            btnDelete.Size = new Size(130, 45);
             btnDelete.TabIndex = 56;
             btnDelete.Text = "Eliminar";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnModify
             // 
             btnModify.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnModify.BackColor = Color.FromArgb(24, 24, 29);
+            btnModify.FlatStyle = FlatStyle.Popup;
+            btnModify.ForeColor = SystemColors.Control;
             btnModify.IconChar = FontAwesome.Sharp.IconChar.Pencil;
-            btnModify.IconColor = Color.Black;
+            btnModify.IconColor = Color.White;
             btnModify.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModify.IconSize = 20;
             btnModify.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModify.Location = new Point(721, 222);
+            btnModify.Location = new Point(721, 208);
             btnModify.Margin = new Padding(3, 2, 3, 2);
             btnModify.Name = "btnModify";
-            btnModify.Size = new Size(127, 38);
+            btnModify.Size = new Size(130, 45);
             btnModify.TabIndex = 55;
             btnModify.Text = "Modificar";
-            btnModify.UseVisualStyleBackColor = true;
+            btnModify.UseVisualStyleBackColor = false;
             btnModify.Click += btnModify_Click;
             // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAdd.BackColor = Color.FromArgb(24, 24, 29);
+            btnAdd.FlatStyle = FlatStyle.Popup;
+            btnAdd.ForeColor = SystemColors.Control;
             btnAdd.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
-            btnAdd.IconColor = Color.Black;
+            btnAdd.IconColor = Color.White;
             btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAdd.IconSize = 20;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(721, 180);
+            btnAdd.Location = new Point(721, 120);
             btnAdd.Margin = new Padding(3, 2, 3, 2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(127, 38);
+            btnAdd.Size = new Size(130, 45);
             btnAdd.TabIndex = 54;
             btnAdd.Text = "Agregar";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // panel1
@@ -171,7 +160,7 @@
             btnReturn.IconColor = Color.Black;
             btnReturn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnReturn.IconSize = 25;
-            btnReturn.Location = new Point(764, 13);
+            btnReturn.Location = new Point(832, 13);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(57, 37);
             btnReturn.TabIndex = 60;
@@ -189,16 +178,170 @@
             label1.TabIndex = 0;
             label1.Text = "ITINERARIO";
             // 
-            // tabControl1
+            // btnSeeEliminated
             // 
-            tabControl1.Controls.Add(tabPageList);
-            tabControl1.Controls.Add(tabPageAddEdit);
-            tabControl1.Controls.Add(tabPageDelete);
-            tabControl1.Location = new Point(17, 96);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(641, 328);
-            tabControl1.TabIndex = 52;
+            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnSeeEliminated.IconColor = Color.Black;
+            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSeeEliminated.IconSize = 20;
+            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSeeEliminated.Location = new Point(306, 261);
+            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
+            btnSeeEliminated.Name = "btnSeeEliminated";
+            btnSeeEliminated.Size = new Size(100, 33);
+            btnSeeEliminated.TabIndex = 60;
+            btnSeeEliminated.UseVisualStyleBackColor = true;
+            btnSeeEliminated.Click += btnSeeEliminated_Click;
+            // 
+            // tabPageAddEdit
+            // 
+            tabPageAddEdit.Controls.Add(btnSeeEliminated);
+            tabPageAddEdit.Controls.Add(label7);
+            tabPageAddEdit.Controls.Add(label5);
+            tabPageAddEdit.Controls.Add(ReturnDate);
+            tabPageAddEdit.Controls.Add(CBoxActivity);
+            tabPageAddEdit.Controls.Add(txtDescription);
+            tabPageAddEdit.Controls.Add(txtName);
+            tabPageAddEdit.Controls.Add(DepartureDate);
+            tabPageAddEdit.Controls.Add(label6);
+            tabPageAddEdit.Controls.Add(btnCancel);
+            tabPageAddEdit.Controls.Add(btnSave);
+            tabPageAddEdit.Controls.Add(label4);
+            tabPageAddEdit.Controls.Add(label2);
+            tabPageAddEdit.Location = new Point(4, 24);
+            tabPageAddEdit.Name = "tabPageAddEdit";
+            tabPageAddEdit.Padding = new Padding(3);
+            tabPageAddEdit.Size = new Size(633, 300);
+            tabPageAddEdit.TabIndex = 1;
+            tabPageAddEdit.Text = "Agregar/Editar";
+            tabPageAddEdit.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(464, 15);
+            label7.Name = "label7";
+            label7.Size = new Size(57, 15);
+            label7.TabIndex = 63;
+            label7.Text = "Actividad";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(18, 189);
+            label5.Name = "label5";
+            label5.Size = new Size(86, 15);
+            label5.TabIndex = 62;
+            label5.Text = "Fecha Regreso:";
+            // 
+            // ReturnDate
+            // 
+            ReturnDate.Format = DateTimePickerFormat.Custom;
+            ReturnDate.Location = new Point(148, 183);
+            ReturnDate.Name = "ReturnDate";
+            ReturnDate.Size = new Size(146, 23);
+            ReturnDate.TabIndex = 32;
+            ReturnDate.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
+            // 
+            // CBoxActivity
+            // 
+            CBoxActivity.FormattingEnabled = true;
+            CBoxActivity.Location = new Point(339, 38);
+            CBoxActivity.Name = "CBoxActivity";
+            CBoxActivity.Size = new Size(269, 23);
+            CBoxActivity.TabIndex = 31;
+            // 
+            // txtDescription
+            // 
+            txtDescription.Location = new Point(100, 80);
+            txtDescription.Margin = new Padding(3, 2, 3, 2);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(194, 23);
+            txtDescription.TabIndex = 30;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(100, 38);
+            txtName.Margin = new Padding(3, 2, 3, 2);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(194, 23);
+            txtName.TabIndex = 15;
+            // 
+            // DepartureDate
+            // 
+            DepartureDate.Format = DateTimePickerFormat.Custom;
+            DepartureDate.Location = new Point(148, 137);
+            DepartureDate.Name = "DepartureDate";
+            DepartureDate.Size = new Size(146, 23);
+            DepartureDate.TabIndex = 23;
+            DepartureDate.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(18, 143);
+            label6.Name = "label6";
+            label6.Size = new Size(98, 15);
+            label6.TabIndex = 22;
+            label6.Text = "Fecha Comienzo:";
+            // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Brown;
+            btnCancel.FlatStyle = FlatStyle.Popup;
+            btnCancel.ForeColor = SystemColors.Control;
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancel.IconColor = Color.Black;
+            btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancel.IconSize = 20;
+            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancel.Location = new Point(527, 265);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(100, 25);
+            btnCancel.TabIndex = 17;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.SeaGreen;
+            btnSave.FlatStyle = FlatStyle.Popup;
+            btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = SystemColors.Control;
+            btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnSave.IconColor = SystemColors.ActiveCaptionText;
+            btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSave.IconSize = 20;
+            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSave.Location = new Point(421, 265);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(100, 25);
+            btnSave.TabIndex = 61;
+            btnSave.Text = "Guardar";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(18, 88);
+            label4.Name = "label4";
+            label4.Size = new Size(72, 15);
+            label4.TabIndex = 18;
+            label4.Text = "Descripcion:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(18, 46);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Nombre:";
             // 
             // tabPageList
             // 
@@ -226,191 +369,31 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridItineraryView.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridItineraryView.Location = new Point(6, 6);
+            dataGridItineraryView.Location = new Point(0, 0);
             dataGridItineraryView.Margin = new Padding(3, 2, 3, 2);
             dataGridItineraryView.Name = "dataGridItineraryView";
             dataGridItineraryView.ReadOnly = true;
             dataGridItineraryView.RowHeadersWidth = 51;
-            dataGridItineraryView.Size = new Size(1487, 686);
+            dataGridItineraryView.Size = new Size(633, 300);
             dataGridItineraryView.TabIndex = 16;
             // 
-            // tabPageAddEdit
+            // tabControl1
             // 
-            tabPageAddEdit.Controls.Add(ReturnDate);
-            tabPageAddEdit.Controls.Add(CBoxActivity);
-            tabPageAddEdit.Controls.Add(txtDescription);
-            tabPageAddEdit.Controls.Add(DepartureDate);
-            tabPageAddEdit.Controls.Add(label6);
-            tabPageAddEdit.Controls.Add(btnCancel);
-            tabPageAddEdit.Controls.Add(btnSave);
-            tabPageAddEdit.Controls.Add(label4);
-            tabPageAddEdit.Controls.Add(txtName);
-            tabPageAddEdit.Controls.Add(label2);
-            tabPageAddEdit.Location = new Point(4, 24);
-            tabPageAddEdit.Name = "tabPageAddEdit";
-            tabPageAddEdit.Padding = new Padding(3);
-            tabPageAddEdit.Size = new Size(633, 300);
-            tabPageAddEdit.TabIndex = 1;
-            tabPageAddEdit.Text = "Agregar/Editar";
-            tabPageAddEdit.UseVisualStyleBackColor = true;
-            // 
-            // ReturnDate
-            // 
-            ReturnDate.Format = DateTimePickerFormat.Custom;
-            ReturnDate.Location = new Point(148, 183);
-            ReturnDate.Name = "ReturnDate";
-            ReturnDate.Size = new Size(146, 23);
-            ReturnDate.TabIndex = 32;
-            ReturnDate.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
-            // 
-            // CBoxActivity
-            // 
-            CBoxActivity.FormattingEnabled = true;
-            CBoxActivity.Location = new Point(159, 237);
-            CBoxActivity.Name = "CBoxActivity";
-            CBoxActivity.Size = new Size(121, 23);
-            CBoxActivity.TabIndex = 31;
-            // 
-            // txtDescription
-            // 
-            txtDescription.Location = new Point(100, 80);
-            txtDescription.Margin = new Padding(3, 2, 3, 2);
-            txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(269, 23);
-            txtDescription.TabIndex = 30;
-            // 
-            // DepartureDate
-            // 
-            DepartureDate.Format = DateTimePickerFormat.Custom;
-            DepartureDate.Location = new Point(148, 137);
-            DepartureDate.Name = "DepartureDate";
-            DepartureDate.Size = new Size(146, 23);
-            DepartureDate.TabIndex = 23;
-            DepartureDate.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(6, 137);
-            label6.Name = "label6";
-            label6.Size = new Size(103, 15);
-            label6.TabIndex = 22;
-            label6.Text = "Fecha de Registro:";
-            // 
-            // btnCancel
-            // 
-            btnCancel.IconChar = FontAwesome.Sharp.IconChar.Cancel;
-            btnCancel.IconColor = Color.Black;
-            btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancel.IconSize = 35;
-            btnCancel.Location = new Point(427, 125);
-            btnCancel.Margin = new Padding(3, 2, 3, 2);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(182, 27);
-            btnCancel.TabIndex = 17;
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.FromArgb(24, 24, 29);
-            btnSave.IconChar = FontAwesome.Sharp.IconChar.Save;
-            btnSave.IconColor = Color.White;
-            btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSave.IconSize = 20;
-            btnSave.Location = new Point(427, 74);
-            btnSave.Margin = new Padding(3, 2, 3, 2);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(182, 32);
-            btnSave.TabIndex = 16;
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(38, 89);
-            label4.Name = "label4";
-            label4.Size = new Size(54, 15);
-            label4.TabIndex = 18;
-            label4.Text = "Apellido:";
-            // 
-            // txtName
-            // 
-            txtName.Location = new Point(100, 38);
-            txtName.Margin = new Padding(3, 2, 3, 2);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(269, 23);
-            txtName.TabIndex = 15;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(39, 46);
-            label2.Name = "label2";
-            label2.Size = new Size(54, 15);
-            label2.TabIndex = 14;
-            label2.Text = "Nombre:";
-            // 
-            // tabPageDelete
-            // 
-            tabPageDelete.Controls.Add(dataGridItineraryDelete);
-            tabPageDelete.Location = new Point(4, 24);
-            tabPageDelete.Name = "tabPageDelete";
-            tabPageDelete.Padding = new Padding(3);
-            tabPageDelete.Size = new Size(633, 300);
-            tabPageDelete.TabIndex = 2;
-            tabPageDelete.Text = "Papelera";
-            tabPageDelete.UseVisualStyleBackColor = true;
-            // 
-            // dataGridItineraryDelete
-            // 
-            dataGridItineraryDelete.AllowUserToAddRows = false;
-            dataGridItineraryDelete.AllowUserToDeleteRows = false;
-            dataGridItineraryDelete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridItineraryDelete.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridItineraryDelete.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridItineraryDelete.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridItineraryDelete.Location = new Point(-427, -193);
-            dataGridItineraryDelete.Margin = new Padding(3, 2, 3, 2);
-            dataGridItineraryDelete.Name = "dataGridItineraryDelete";
-            dataGridItineraryDelete.ReadOnly = true;
-            dataGridItineraryDelete.RowHeadersWidth = 51;
-            dataGridItineraryDelete.Size = new Size(1487, 686);
-            dataGridItineraryDelete.TabIndex = 17;
-            // 
-            // btnSeeEliminated
-            // 
-            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnSeeEliminated.IconColor = Color.Black;
-            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSeeEliminated.IconSize = 20;
-            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSeeEliminated.Location = new Point(721, 386);
-            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
-            btnSeeEliminated.Name = "btnSeeEliminated";
-            btnSeeEliminated.Size = new Size(127, 38);
-            btnSeeEliminated.TabIndex = 60;
-            btnSeeEliminated.UseVisualStyleBackColor = true;
-            btnSeeEliminated.Click += btnSeeEliminated_Click;
+            tabControl1.Controls.Add(tabPageList);
+            tabControl1.Controls.Add(tabPageAddEdit);
+            tabControl1.Location = new Point(17, 96);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(641, 328);
+            tabControl1.TabIndex = 52;
             // 
             // ItineraryView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 465);
-            Controls.Add(btnSeeEliminated);
             Controls.Add(label3);
             Controls.Add(txtFilter);
-            Controls.Add(btnSearch);
             Controls.Add(btnDelete);
             Controls.Add(btnModify);
             Controls.Add(btnAdd);
@@ -422,13 +405,11 @@
             Text = "ItineraryView";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            tabControl1.ResumeLayout(false);
-            tabPageList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridItineraryView).EndInit();
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
-            tabPageDelete.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridItineraryDelete).EndInit();
+            tabPageList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridItineraryView).EndInit();
+            tabControl1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -437,29 +418,28 @@
 
         private Label label3;
         private TextBox txtFilter;
-        private FontAwesome.Sharp.IconButton btnSearch;
         private FontAwesome.Sharp.IconButton btnDelete;
         private FontAwesome.Sharp.IconButton btnModify;
         private FontAwesome.Sharp.IconButton btnAdd;
         private Panel panel1;
         private FontAwesome.Sharp.IconButton btnReturn;
         private Label label1;
-        private TabControl tabControl1;
-        private TabPage tabPageList;
-        private DataGridView dataGridItineraryView;
+        private FontAwesome.Sharp.IconButton btnSeeEliminated;
         private TabPage tabPageAddEdit;
+        private Label label7;
+        private Label label5;
+        private DateTimePicker ReturnDate;
+        private ComboBox CBoxActivity;
         private TextBox txtDescription;
+        private TextBox txtName;
         private DateTimePicker DepartureDate;
         private Label label6;
         private FontAwesome.Sharp.IconButton btnCancel;
         private FontAwesome.Sharp.IconButton btnSave;
         private Label label4;
-        private TextBox txtName;
         private Label label2;
-        private ComboBox CBoxActivity;
-        private DateTimePicker ReturnDate;
-        private FontAwesome.Sharp.IconButton btnSeeEliminated;
-        private TabPage tabPageDelete;
-        private DataGridView dataGridItineraryDelete;
+        private TabPage tabPageList;
+        private DataGridView dataGridItineraryView;
+        private TabControl tabControl1;
     }
 }

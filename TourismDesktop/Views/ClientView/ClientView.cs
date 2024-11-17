@@ -16,19 +16,67 @@ namespace TourismDesktop.Views
 
         pfClient? ClientCurrent;
 
+        //Manejo boton Eliminados IsDeleted Funcionando
+        private bool showingDeleted = false;
+
         public ClientView()
         {
             InitializeComponent();
             dataGridClientView.DataSource = ListClient;
             LoadGrid();
+
+
+            //Properties Buttons isDeleted
+            btnSeeEliminated.Text = "Eliminados";
+            btnSeeEliminated.BackColor = System.Drawing.Color.LightCoral;
+            btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+        }
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
+        #region LoadDate
         private async Task LoadGrid()
         {
-            ListClient.DataSource = await ClientService.GetAllAsync();
+            var clients = await ClientService.GetAllAsync();
+            ListClient.DataSource = clients?.Where(i => !i.IsDeleted).ToList();
             Filterlist = (List<pfClient>)ListClient.DataSource;
         }
-        private void btnAdd_Click(object sender, EventArgs e)
+        #endregion
+
+        #region BtnSeeDeleted
+        private async void btnSeeEliminated_Click(object sender, EventArgs e)
+        {
+            if (showingDeleted)
+            {
+                //Mostrar Clientes Activos
+                var ActiveClients = await ClientService.GetAllAsync(null);
+                ListClient.DataSource = ActiveClients?.Where(i => !i.IsDeleted).ToList();
+
+                //Properties
+                btnSeeEliminated.Text = "Eliminados";
+                btnSeeEliminated.BackColor = System.Drawing.Color.LightCoral;
+                btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                //Mostrar Destinos Eliminados
+                var DeletedClients = await ClientService.GetAllDeletedAsync(null);
+                ListClient.DataSource = DeletedClients?.Where(i => i.IsDeleted).ToList();
+
+                //Properties
+                btnSeeEliminated.Text = "Activos";
+                btnSeeEliminated.BackColor = System.Drawing.Color.LightGreen;
+                btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+            }
+            Filterlist = (List<pfClient>)ListClient.DataSource;
+            showingDeleted = !showingDeleted;
+        }
+        #endregion
+
+        #region C.R.U.D
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             txtFirstName.Text = string.Empty;
             txtLastName.Text = string.Empty;
@@ -39,17 +87,8 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
-
-        private void btnModify_Click(object sender, EventArgs e)
+        private void btnModify_Click_1(object sender, EventArgs e)
         {
-            ClientCurrent = (pfClient)ListClient.Current;
-
-            if (ClientCurrent == null)
-            {
-                MessageBox.Show("Debe seleccionar un cliente");
-                return;
-            }
-
             txtFirstName.Text = ClientCurrent.FirstName;
             txtLastName.Text = ClientCurrent.LastName;
             txtDocument.Text = ClientCurrent.Document;
@@ -59,14 +98,28 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
-
-        private async void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnDelete_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFirstName.Text) || string.IsNullOrEmpty(txtLastName.Text) || string.IsNullOrEmpty(txtDocument.Text))
+            if (ListClient.Current is pfClient pfClient)
             {
-                MessageBox.Show("Los campos nombre, apellido y DNI son obligatorios");
-                return;
+                var results = MessageBox.Show($"¿Está seguro que desea eliminar el cliente {pfClient.FirstName}?", "Eliminar", MessageBoxButtons.YesNo);
+
+                if (results == DialogResult.Yes)
+                {
+                    pfClient.IsDeleted = true;
+
+                    await ClientService.UpdateAsync(pfClient);
+                    await LoadGrid();
+                    MessageBox.Show("Cliente ocultado correctamente");
+                }
             }
+        }
+        #endregion
+
+        #region BtnSaveCancel
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
 
             var pfClient = new pfClient
             {
@@ -80,8 +133,6 @@ namespace TourismDesktop.Views
 
             if (ClientCurrent != null)
             {
-                pfClient.Id = ClientCurrent.Id;
-
                 ClientCurrent.FirstName = txtFirstName.Text;
                 ClientCurrent.LastName = txtLastName.Text;
                 ClientCurrent.Document = txtDocument.Text;
@@ -95,10 +146,9 @@ namespace TourismDesktop.Views
             else
             {
                 await ClientService.AddAsync(pfClient);
+                MessageBox.Show("Cliente agregado correctamente");
 
             }
-
-            MessageBox.Show("Cliente guardado correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             await LoadGrid();
             txtFirstName.Text = string.Empty;
@@ -110,27 +160,14 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageList);
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Operación cancelada");
             tabControl1.SelectTab(tabPageList);
         }
+        #endregion
 
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (ListClient.Current is pfClient pfClient)
-            {
-                var result = MessageBox.Show("¿Está seguro que desea eliminar el cliente?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    await ClientService.DeleteAsync(pfClient.Id);
-                    await LoadGrid();
-                    MessageBox.Show("Cliente eliminado correctamente");
-                }
-            }
-
-        }
-
+        #region TxtFilterTextChanged
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             FilterClient();
@@ -140,11 +177,7 @@ namespace TourismDesktop.Views
             var filteredClient = Filterlist.Where(c => c.FirstName.Contains(txtFilter.Text)).ToList();
             ListClient.DataSource = new BindingSource(filteredClient, null);
         }
-
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
     }
 }
 

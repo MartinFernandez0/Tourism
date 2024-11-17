@@ -13,10 +13,10 @@ namespace TourismApp.ViewModels
         private string filterText;
         public string FilterText
         {
-            get { return FilterText; }
+            get { return filterText; }
             set
             {
-                FilterText = value;
+                filterText = value;
                 OnPropertyChanged();
                 _ = filterTextDestination();
             }
@@ -52,30 +52,40 @@ namespace TourismApp.ViewModels
         }
 
         private List<pfDestination>? DestinationListToFilter;
-        private DestinationService SelectedDestination;
+        private pfDestination selectedDestination;
 
-        //Selected Destination View
-        //public pfDestination SelectedDestination
-        //{
-        //    get { return SelectedDestination; }
-        //    set
-        //    {
-        //        SelectedDestination = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        public pfDestination SelectedDestinations
+        {
+            get { return selectedDestination; }
+            set
+            {
+                selectedDestination = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         public Command GetDestinationsCommand { get; set; }
         public Command FilterDestinationCommand { get; set; }
+        public Command AddDestinationCommand { get; set; }
+        public Command UpdateDestinarionCommand { get; set; }
+
 
         public DestinationViewModel()
         {
             GetDestinationsCommand = new Command(async () => await GetDestinations());
             FilterDestinationCommand = new Command(async () => await filterTextDestination());
+            AddDestinationCommand = new Command(async () => await AddDestination());
+            UpdateDestinarionCommand = new Command(async (obj) => await UpdateDestination(), allowEdit);
+            GetDestinations();
         }
 
-        private async Task GetDestinations()
+        private bool allowEdit(object obj)
+        {
+            return SelectedDestinations != null;
+        }
+
+        public async Task GetDestinations()
         {
             FilterText = string.Empty;
             IsRefreshing = true;
@@ -83,12 +93,23 @@ namespace TourismApp.ViewModels
             Destinations = new ObservableCollection<pfDestination>(DestinationListToFilter);
             IsRefreshing = false;
         }
+        private async Task AddDestination()
+        {
+            var navigationParameter = new ShellNavigationQueryParameters
+            {
+                { "DestinationToEdit", null }
+            };
+            await Shell.Current.GoToAsync("//AddEditDestination", navigationParameter);
+        }
 
+        private async Task UpdateDestination()
+        {
+            var navigationParameter = new ShellNavigationQueryParameters
+            {
+                { "DestinationToEdit", SelectedDestinations }
+            };
+            await Shell.Current.GoToAsync("//AddEditDestination", navigationParameter);
+        }
 
-        //  Select Editt
-        //private bool PermitirEditar(object arg)
-        //{
-        //    return selectedProducto != null;
-        //}
     }
 }

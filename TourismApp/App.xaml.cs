@@ -8,7 +8,7 @@ namespace TourismApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new TourismShell();
         }
     }
 }

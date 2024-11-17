@@ -1,10 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using TourismServices.Interfaces;
 using TourismServices.Models;
 
@@ -25,7 +19,19 @@ namespace TourismServices.Services
 
         public async Task<List<pfActivity>?> GetAllDeletedAsync(string? filtro)
         {
-            return await GetAllDeletedAsync();
+            var response = await client.GetAsync($"{_endpoint}?filtro={filtro}");
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content?.ToString());
+            }
+
+            //Deserializamos las actividades
+            var activities = JsonSerializer.Deserialize<List<pfActivity>>(content, options);
+
+            //Filtramos las actividades eliminadas (IsDeleted = true)
+            return activities?.Where(a => a.IsDeleted).ToList();
         }
     }
 }

@@ -1,3 +1,4 @@
+using TourismApp.ViewModels;
 using TourismServices.Interfaces;
 using TourismServices.Services;
 
@@ -5,26 +6,21 @@ namespace TourismApp.Views
 {
     public partial class DestinationView : ContentPage
     {
-        private readonly IDestinationService destinationService;
 
         public DestinationView()
         {
             InitializeComponent();
-            this.destinationService = new DestinationService();
-            LoadDestinations();
         }
 
-        private async void LoadDestinations()
+        protected override void OnAppearing()
         {
-            try
-            {
-                var destinations = await destinationService.GetAllAsync(null);
-                DestinationsCollectionView.ItemsSource = destinations;
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "OK");
-            }
+            base.OnAppearing();
+            var viewmodel = this.BindingContext as DestinationViewModel;
+            //if (viewmodel.NotaSeleccionada != null)
+            //{
+            viewmodel.GetDestinations();
+            viewmodel.SelectedDestinations = null;
+            //}
         }
     }
 }

@@ -2,42 +2,87 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourismApp.Views.DestinationView"
-             Title="Destinos">
+             xmlns:viewModels="clr-namespace:TourismApp.ViewModels"
+             Title="Destinos"
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
+    <ContentPage.BindingContext>
+        <viewModels:DestinationViewModel />
+    </ContentPage.BindingContext>
 
-        <ScrollView Grid.Column="0">
-            <CollectionView x:Name="DestinationsCollectionView">
-                <CollectionView.ItemTemplate>
+    <VerticalStackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
+
+        <!-- Barra Superior -->
+        <HorizontalStackLayout Padding="10" Spacing="20">
+            <SearchBar x:Name="SearchBar"
+                       Text="{Binding FilterText}"
+                       Placeholder="Buscar destinos"
+                       HorizontalOptions="FillAndExpand"
+                       BackgroundColor="#E8E8E8"
+                       TextColor="Black" />
+        </HorizontalStackLayout>
+
+        <!-- Botones -->
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button Text="Agregar"
+                    Command="{Binding AddDestinationCommand}"
+                    BackgroundColor="#1E3A5F"
+                    TextColor="White"
+                    CornerRadius="5" />
+            <Button Text="Editar"
+                    Command="{Binding UpdateDestinarionCommand}"
+                    BackgroundColor="#1E3A5F"
+                    TextColor="White"
+                    CornerRadius="5" />
+            <Button Text="Eliminar"
+                    BackgroundColor="#1E3A5F"
+                    TextColor="White"
+                    CornerRadius="5" />
+        </HorizontalStackLayout>
+
+        <!-- Lista de Destinos -->
+        <ScrollView Grid.Row="1">
+            
+            <ListView ItemsSource="{Binding Destinations}"
+                      SelectedItem="{Binding SelectedDestinations}"
+                      SelectionMode="Single"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding GetDestinationsCommand}">
+                
+                <ListView.ItemTemplate>
+                    
                     <DataTemplate>
-                        <Frame Margin="0,5" Padding="10" BorderColor="LightGray" CornerRadius="5">
-                            <VerticalStackLayout>
+                        <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="5" BackgroundColor="White">
+                            
+                            <HorizontalStackLayout Spacing="10">
+                                <!-- Texto del destino -->
+                                <VerticalStackLayout Spacing="5" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+                                    <Label Text="{Binding Description}" 
+                                           FontSize="14" 
+                                           TextColor="Gray" 
+                                           LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+
+                                <!-- Imagen del destino -->
                                 <Image Source="{Binding URL_image}" 
+                                       WidthRequest="100" 
                                        HeightRequest="100" 
                                        Aspect="AspectFill" />
-                                <Label Text="{Binding Name}" 
-                                       FontSize="16" 
-                                       FontAttributes="Bold" />
-                            </VerticalStackLayout>
+                            </HorizontalStackLayout>
                         </Frame>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                    
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            
         </ScrollView>
+        
+    </VerticalStackLayout>
 
-        <StackLayout Grid.Column="1" Padding="20" Spacing="10">
-            <Label Text="Detalles del Destino"
-                   FontSize="24"
-                   HorizontalOptions="Center" 
-                   Margin="0,10,0,20" />
-            <Image x:Name="SelectedDestinationImage" HeightRequest="200" Aspect="AspectFill" />
-            <Label x:Name="SelectedDestinationName" FontSize="20" FontAttributes="Bold" />
-            <Label x:Name="SelectedDestinationDescription" FontSize="14" />
-            <Label x:Name="SelectedDestinationCountry" FontSize="12" TextColor="Gray" />
-        </StackLayout>
-    </Grid>
 </ContentPage>

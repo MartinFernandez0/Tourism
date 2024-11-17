@@ -1,14 +1,4 @@
-﻿using NuGet.Packaging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Forms;
+﻿using System.Data;
 using TourismServices.Interfaces;
 using TourismServices.Models;
 using TourismServices.Services;
@@ -25,6 +15,9 @@ namespace TourismDesktop.Views
 
         pfItinerary? ItineraryCurrent;
 
+        //Manejo boton Eliminados IsDeleted Funcionando
+        private bool showingDeleted = false;
+
         public ItineraryView()
         {
             InitializeComponent();
@@ -32,9 +25,18 @@ namespace TourismDesktop.Views
             LoadGrid();
             LoadComboBox();
 
-            //Iniciar BtnIsDeleted = Eliminados
-            btnSeeEliminated.Text = "Ver Eliminados";
+            //Properties Buttons isDeleted
+            btnSeeEliminated.Text = "Eliminados";
+            btnSeeEliminated.BackColor = System.Drawing.Color.LightCoral;
+            btnSeeEliminated.ForeColor = System.Drawing.Color.White;
+
         }
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #region LoadDate
 
         private async Task LoadComboBox()
         {
@@ -43,18 +45,15 @@ namespace TourismDesktop.Views
             CBoxActivity.ValueMember = "Id";
             CBoxActivity.SelectedIndex = 0;
         }
-
         private async Task LoadGrid()
         {
             var itineraries = await ItineraryService.GetAllAsync();
             ListItinerary.DataSource = itineraries?.Where(i => !i.IsDeleted).ToList(); // Filtra los itinerarios no eliminados
             FilterList = (List<pfItinerary>)ListItinerary.DataSource;
         }
+        #endregion
 
-
-        //Manejo boton Eliminados IsDeleted Funcionando
-
-        private bool showingDeleted = false;
+        #region BtnSeeDelete
         private async void btnSeeEliminated_Click(object sender, EventArgs e)
         {
             if (showingDeleted)
@@ -85,10 +84,9 @@ namespace TourismDesktop.Views
 
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
+
+        #region C.R.U.D
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -99,7 +97,6 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
-
         private void btnModify_Click(object sender, EventArgs e)
         {
             ItineraryCurrent = (pfItinerary)ListItinerary.Current;
@@ -112,7 +109,6 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
-
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (ListItinerary.Current is pfItinerary pfItinerary)
@@ -130,9 +126,11 @@ namespace TourismDesktop.Views
             }
         }
 
+        #endregion
+
+        #region BtnSaveCancel
         private async void btnSave_Click(object sender, EventArgs e)
         {
-
             var pfItinerary = new pfItinerary
             {
                 Name = txtName.Text,
@@ -154,15 +152,16 @@ namespace TourismDesktop.Views
 
                 ItineraryCurrent.ActivityId = (int)CBoxActivity.SelectedValue;
 
-                await ItineraryService.UpdateAsync(pfItinerary);
+                await ItineraryService.UpdateAsync(ItineraryCurrent);
                 MessageBox.Show("Itinerario modificado correctamente");
+
                 ItineraryCurrent = null;
             }
             else
             {
                 await ItineraryService.AddAsync(pfItinerary);
+                MessageBox.Show("Itinerario agregado correctamente");
             }
-            MessageBox.Show("Itinerario agregado correctamente");
 
             await LoadGrid();
             txtName.Text = string.Empty;
@@ -172,12 +171,25 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageList);
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Operación cancelada");
             tabControl1.SelectTab(tabPageList);
         }
 
+        #endregion
+
+        #region TxtFilterTextChanged
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            FilterItinerary();
+        }
+
+        private void FilterItinerary()
+        {
+            var filteredItinerary = FilterList.Where(i => i.Name.Contains(txtFilter.Text)).ToList();
+            ListItinerary.DataSource = new BindingSource(filteredItinerary, null);
+        }
+        #endregion
     }
 }

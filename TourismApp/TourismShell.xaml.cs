@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using TourismApp.Utils;
+using TourismApp.Views;
 namespace TourismApp
 {
     public partial class TourismShell : Shell
@@ -7,20 +8,11 @@ namespace TourismApp
         public TourismShell()
         {
             InitializeComponent();
-
-            /////CÓDIGO QUE para preparar la recepción de mensajes y la llamada al método RecibirMensaje
-            WeakReferenceMessenger.Default.Register<Message>(this, (r, mensaje) =>
+            Routing.RegisterRoute(nameof(DestinationView), typeof(DestinationView));
+            CurrentItem = new ShellContent
             {
-                OnReceiveMessage(mensaje);
-            });
-        }
-
-        private void OnReceiveMessage(Message mensaje)
-        {
-            if (mensaje.Value == "OpenDestinationsPage")
-            {
-                //await Navigation.PushAsync(new ProductosView());
-            }
+                ContentTemplate = new DataTemplate(typeof(DestinationView))
+            };
         }
     }
 }
