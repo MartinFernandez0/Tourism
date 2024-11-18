@@ -1,6 +1,4 @@
 using TourismApp.ViewModels;
-using TourismServices.Interfaces;
-using TourismServices.Services;
 
 namespace TourismApp.Views
 {

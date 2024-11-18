@@ -29,14 +29,14 @@
                 ContentTemplate="{DataTemplate local:MainPage}"
                 Route="MainPage" />
 
-        <Tab Title="Products"
-             Route="Products"
+        <Tab Title="Destinos"
+             Route="Destinos"
              Icon="paw.png">
 
             <ShellContent
-                Title="Product List"
+                Title="Destination List"
                 ContentTemplate="{DataTemplate views:DestinationView}"
-                Route="ProductList" />
+                Route="DestinationList" />
 
         </Tab>
 

@@ -6,7 +6,7 @@
 
     <VerticalStackLayout>
         <StackLayout>
-            <Label Text="Xaminals"
+            <Label Text="Tourism Aplication"
                TextColor="GhostWhite"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
