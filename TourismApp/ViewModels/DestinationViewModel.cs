@@ -94,7 +94,7 @@ namespace TourismApp.ViewModels
                 FilterText = string.Empty;
                 IsRefreshing = true;
                 DestinationListToFilter = await destinationService.GetAllAsync();
-                Destinations = new ObservableCollection<pfDestination>(DestinationListToFilter);
+                Destinations = new ObservableCollection<pfDestination>();
             }
             catch (Exception ex)
             {

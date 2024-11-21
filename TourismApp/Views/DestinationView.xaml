@@ -8,7 +8,7 @@
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
-        <viewModels:DestinationViewModel />
+        <viewModels:DestinationViewModel/>
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
@@ -43,7 +43,7 @@
 
         <!-- Lista de Destinos -->
         <ScrollView Grid.Row="1">
-            <ListView ItemsSource="{Binding Destinations}"
+            <ListView ItemsSource="{Binding pfDestinations}"
                       SelectedItem="{Binding SelectedDestinations}"
                       SelectionMode="Single"
                       IsPullToRefreshEnabled="True"
