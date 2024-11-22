@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using TourismApp.Utils;
-using TourismServices.Interfaces;
+using TourismApp.Class;
 using TourismServices.Models;
 using TourismServices.Services;
 
@@ -11,10 +10,10 @@ namespace TourismApp.ViewModels
     {
         private GenericService<pfDestination> destinationService = new GenericService<pfDestination>();
 
-        public Command GetDestinationsCommand { get; set; }
-        public Command FilterDestinationCommand { get; set; }
-        public Command AddDestinationCommand { get; set; }
-        public Command UpdateDestinarionCommand { get; set; }
+        public Command GetDestinationsCommand { get; }
+        public Command FilterDestinationCommand { get; }
+        public Command AddDestinationCommand { get; }
+        public Command UpdateDestinarionCommand { get; }
 
         public DestinationViewModel()
         {
@@ -72,7 +71,7 @@ namespace TourismApp.ViewModels
         private List<pfDestination>? DestinationListToFilter;
         private pfDestination selectedDestination;
 
-        public pfDestination SelectedDestinations
+        public pfDestination SelectedDestination
         {
             get { return selectedDestination; }
             set
@@ -84,21 +83,32 @@ namespace TourismApp.ViewModels
 
         private bool AllowEdit(object obj)
         {
-            return SelectedDestinations != null;
+            return SelectedDestination != null;
         }
 
         public async Task GetDestinations()
         {
             try
             {
-                FilterText = string.Empty;
+                filterText = string.Empty;
                 IsRefreshing = true;
+
+                Debug.WriteLine("Obteniendo destinos...");
                 DestinationListToFilter = await destinationService.GetAllAsync();
-                Destinations = new ObservableCollection<pfDestination>();
+
+                if (DestinationListToFilter == null || !DestinationListToFilter.Any())
+                {
+                    Debug.WriteLine("No se encontraron destinos.");
+                    Destinations = new ObservableCollection<pfDestination>();
+                }
+                else
+                {
+                    Debug.WriteLine($"Se encontraron {DestinationListToFilter.Count} destinos.");
+                    Destinations = new ObservableCollection<pfDestination>(DestinationListToFilter);
+                }
             }
             catch (Exception ex)
             {
-                // Manejo de errores, por ejemplo, escribir el error en los logs.
                 Debug.WriteLine($"Error al obtener destinos: {ex.Message}");
             }
             finally
@@ -120,7 +130,7 @@ namespace TourismApp.ViewModels
         {
             var navigationParameter = new ShellNavigationQueryParameters
             {
-                { "DestinationToEdit", SelectedDestinations }
+                { "DestinationToEdit", SelectedDestination }
             };
             await Shell.Current.GoToAsync("//AddEditDestination", navigationParameter);
         }

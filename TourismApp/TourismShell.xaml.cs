@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
-using TourismApp.Utils;
+using TourismApp.Class;
 using TourismApp.Views;
 namespace TourismApp
 {
@@ -8,11 +8,11 @@ namespace TourismApp
         public TourismShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(DestinationView), typeof(DestinationView));
-            CurrentItem = new ShellContent
-            {
-                ContentTemplate = new DataTemplate(typeof(DestinationView))
-            };
+        }
+
+        internal void DisableAppAfterLogin()
+        {
+            throw new NotImplementedException();
         }
     }
 }

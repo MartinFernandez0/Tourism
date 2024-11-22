@@ -4,7 +4,6 @@ namespace TourismApp.Views
 {
     public partial class DestinationView : ContentPage
     {
-
         public DestinationView()
         {
             InitializeComponent();
@@ -13,12 +12,9 @@ namespace TourismApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var viewmodel = this.BindingContext as DestinationViewModel;
-            //if (viewmodel.NotaSeleccionada != null)
-            //{
-            viewmodel.GetDestinations();
-            viewmodel.SelectedDestinations = null;
-            //}
+            var viewModel = BindingContext as DestinationViewModel;
+            viewModel.GetDestinations();
+            viewModel.SelectedDestination = null;
         }
     }
 }
