@@ -3,42 +3,45 @@
     x:Class="TourismApp.TourismShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    
     xmlns:local="clr-namespace:TourismApp"
     xmlns:views="clr-namespace:TourismApp.Views"
-    xmlns:viewModels="clr-namespace:TourismApp.ViewModels"
+    xmlns:contentViews="clr-namespace:TourismApp.ContenViews"
+    Shell.FlyoutBehavior="Flyout"
     
-    Shell.FlyoutBehavior="Disabled"
-    xmlns:contentviews="clr-namespace:TourismApp.ContentViews"
-
-    Title="TourismApp">
-
-    <Shell.BindingContext>
-        <viewModels:TourismShellViewModel/>
-    </Shell.BindingContext>
+    Title="TourismApp"
+    FlyoutBackgroundImage="photo.jpg"
+    FlyoutBackgroundImageAspect="AspectFill"
+    FlyoutHeaderBehavior="CollapseOnScroll">
 
     <Shell.FlyoutHeader>
-        <contentviews:FlyoutFooter/>
+        <contentViews:FlyoutHeader />
     </Shell.FlyoutHeader>
 
     <Shell.FlyoutFooter>
-        <contentviews:FlyoutHeader/>
+        <contentViews:FlyoutFooter />
     </Shell.FlyoutFooter>
-    
+
     <FlyoutItem Route="TourismApp"
-                FlyoutDisplayOptions="AsMultipleItems" x:Name="FlyoutItemsPrincipal">
+                FlyoutDisplayOptions="AsMultipleItems">
 
         <ShellContent
                 Title="Home"
                 ContentTemplate="{DataTemplate local:MainPage}"
                 Route="MainPage" />
-        <ShellContent
-                Title="Destinations"
+
+        <Tab Title="Destinos"
+             Route="Destinos"
+             Icon="paw.png">
+
+            <ShellContent
+                Title="Destination List"
                 ContentTemplate="{DataTemplate views:DestinationView}"
-                Route="DestinationView" />
+                Route="DestinationList" />
+
+        </Tab>
 
     </FlyoutItem>
 
-    <MenuItem Text="Nos Vemos, Aguante Boca!" IconImageSource ="boca_escudo.png" />
+    <MenuItem Text="Goodbye, Go Team!" IconImageSource="team_logo.png" />
 
 </Shell>

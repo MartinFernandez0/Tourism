@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace TourismApp.Class
+namespace TourismApp.Utils
 {
     public abstract class ObjectNotification : INotifyPropertyChanged
     {

@@ -3,21 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourismApp.Views.DestinationView"
              xmlns:viewModels="clr-namespace:TourismApp.ViewModels"
-             Title="DestinationView">
+             Title="Destinos"
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
-        <viewModels:DestinationViewModel/>
+        <viewModels:DestinationViewModel />
     </ContentPage.BindingContext>
-    
-    <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Destinations}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Label Text="{Binding Name}" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+
+    <VerticalStackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
+
+        <!-- Barra Superior -->
+        <HorizontalStackLayout Padding="10" Spacing="20">
+            <SearchBar x:Name="SearchBar"
+                       Text="{Binding FilterText}"
+                       Placeholder="Buscar destinos"
+                       HorizontalOptions="FillAndExpand"
+                       BackgroundColor="#E8E8E8"
+                       TextColor="Black" />
+        </HorizontalStackLayout>
+
+        <!-- Botones -->
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button Text="Agregar"
+                    Command="{Binding AddDestinationCommand}"
+                    BackgroundColor="#1E3A5F"
+                    TextColor="White"
+                    CornerRadius="5" />
+            <Button Text="Editar"
+                    Command="{Binding UpdateDestinarionCommand}"
+                    BackgroundColor="#1E3A5F"
+                    TextColor="White"
+                    CornerRadius="5" />
+            <Button Text="Eliminar"
+                    BackgroundColor="#1E3A5F"
+                    TextColor="White"
+                    CornerRadius="5" />
+        </HorizontalStackLayout>
+
+        <!-- Lista de Destinos -->
+        <ScrollView Grid.Row="1">
+            <ListView ItemsSource="{Binding Destinations}"
+                      SelectedItem="{Binding SelectedDestinations}"
+                      SelectionMode="Single"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding GetDestinationsCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="5" BackgroundColor="White">
+                            <HorizontalStackLayout Spacing="10">
+                                <!-- Texto del destino -->
+                                <VerticalStackLayout Spacing="5" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+                                    <Label Text="{Binding Description}" 
+                                           FontSize="14" 
+                                           TextColor="Gray" 
+                                           LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+
+                                <!-- Imagen del destino -->
+                                <Image Source="{Binding URL_image}" 
+                                       WidthRequest="100" 
+                                       HeightRequest="100" 
+                                       Aspect="AspectFill" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>
