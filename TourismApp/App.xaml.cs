@@ -1,4 +1,6 @@
-﻿namespace TourismApp
+﻿using TourismApp.Views;
+
+namespace TourismApp
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new TourismShell();
         }
     }
 }

@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="TourismApp.AppShell"
+    x:Class="TourismApp.TourismShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    
     xmlns:local="clr-namespace:TourismApp"
+    xmlns:views="clr-namespace:TourismApp.Views"
+    xmlns:viewModels="clr-namespace:TourismApp.ViewModels"
+    
     Shell.FlyoutBehavior="Disabled"
+    xmlns:contentviews="clr-namespace:TourismApp.ContentViews"
+
     Title="TourismApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.BindingContext>
+        <viewModels:TourismShellViewModel/>
+    </Shell.BindingContext>
+
+    <Shell.FlyoutHeader>
+        <contentviews:FlyoutFooter/>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <contentviews:FlyoutHeader/>
+    </Shell.FlyoutFooter>
+    
+    <FlyoutItem Route="TourismApp"
+                FlyoutDisplayOptions="AsMultipleItems" x:Name="FlyoutItemsPrincipal">
+
+        <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+        <ShellContent
+                Title="Destinations"
+                ContentTemplate="{DataTemplate views:DestinationView}"
+                Route="DestinationView" />
+
+    </FlyoutItem>
+
+    <MenuItem Text="Nos Vemos, Aguante Boca!" IconImageSource ="boca_escudo.png" />
 
 </Shell>
