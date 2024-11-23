@@ -17,7 +17,7 @@ namespace TourismApp.Views
             //if (viewmodel.NotaSeleccionada != null)
             //{
             viewmodel.GetDestinations();
-            viewmodel.SelectedDestinations = null;
+            viewmodel.DestinationSelected = null;
             //}
         }
     }

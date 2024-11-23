@@ -9,51 +9,27 @@ namespace TourismApp.ViewModels
 {
     public class DestinationViewModel : ObjectNotification
     {
-        private GenericService<pfDestination> destinationService = new GenericService<pfDestination>();
+        GenericService<pfDestination> destinationService = new GenericService<pfDestination>();
 
-        public Command GetDestinationsCommand { get; set; }
-        public Command FilterDestinationCommand { get; set; }
-        public Command AddDestinationCommand { get; set; }
-        public Command UpdateDestinarionCommand { get; set; }
-
-        public DestinationViewModel()
+        private string filterDestination;
+        public string FilterDestination
         {
-            GetDestinationsCommand = new Command(async () => await GetDestinations());
-            FilterDestinationCommand = new Command(async () => await FilterTextDestination());
-            AddDestinationCommand = new Command(async () => await AddDestination());
-            UpdateDestinarionCommand = new Command(async (obj) => await UpdateDestination(), AllowEdit);
-            GetDestinations();
-        }
-
-        private string filterText;
-        public string FilterText
-        {
-            get { return filterText; }
+            get { return filterDestination; }
             set
             {
-                filterText = value;
+                filterDestination = value;
                 OnPropertyChanged();
-                _ = FilterTextDestination();
+                FilteredDestinations();
             }
         }
 
-        private async Task FilterTextDestination()
-        {
-            if (DestinationListToFilter == null) return;
-
-            var filterDestination = DestinationListToFilter
-                .Where(d => d.Name.ToUpper().Contains(FilterText.ToUpper()));
-
-            Destinations = new ObservableCollection<pfDestination>(filterDestination);
-        }
-
-        private bool isRefreshing;
+        private bool _isRefreshing;
         public bool IsRefreshing
         {
-            get => isRefreshing;
+            get => _isRefreshing;
             set
             {
-                isRefreshing = value;
+                _isRefreshing = value;
                 OnPropertyChanged();
             }
         }
@@ -69,41 +45,59 @@ namespace TourismApp.ViewModels
             }
         }
 
-        private List<pfDestination>? DestinationListToFilter;
-        private pfDestination selectedDestination;
+        private List<pfDestination>? listDestinationFilter;
 
-        public pfDestination SelectedDestinations
+        private pfDestination destinationSelected;
+        public pfDestination DestinationSelected
         {
-            get { return selectedDestination; }
+            get { return destinationSelected; }
             set
             {
-                selectedDestination = value;
+                destinationSelected = value;
                 OnPropertyChanged();
+                EditDestinationCommand.ChangeCanExecute();
+                DeleteDestinationCommand.ChangeCanExecute();
             }
         }
 
-        private bool AllowEdit(object obj)
+        public Command GetDestinationsCommnad { get; }
+        public Command FilterDestinationsCommand { get; }
+        public Command AddDestinationCommand { get; }
+        public Command EditDestinationCommand { get; }
+        public Command DeleteDestinationCommand { get; }
+
+        public DestinationViewModel()
         {
-            return SelectedDestinations != null;
+            GetDestinationsCommnad = new Command(async () => await GetDestinations());
+            FilterDestinationsCommand = new Command(async () => await FilteredDestinations());
+            AddDestinationCommand = new Command(async () => await AddDestination());
+            EditDestinationCommand = new Command(async (obj) => await EditDestination(), AllowEdit);
+            DeleteDestinationCommand = new Command(async (obj) => await DeleteDestination(), AllowEdit);
+            GetDestinations();
         }
 
-        public async Task GetDestinations()
+        private bool AllowEdit(object arg)
         {
-            try
+            return DestinationSelected != null;
+        }
+
+        private async Task EditDestination()
+        {
+            var navigationParameter = new ShellNavigationQueryParameters
             {
-                FilterText = string.Empty;
-                IsRefreshing = true;
-                DestinationListToFilter = await destinationService.GetAllAsync();
-                Destinations = new ObservableCollection<pfDestination>(DestinationListToFilter);
-            }
-            catch (Exception ex)
+                { "DestinationEdit", DestinationSelected }
+            };
+            await Shell.Current.GoToAsync($"//AddEditDestination", navigationParameter);
+        }
+
+        private async Task DeleteDestination()
+        {
+            var confirmacion = await App.Current.MainPage.DisplayAlert("Eliminar Destino", "¿Está seguro que desea eliminar el Destino?", "Si", "No");
+            if (confirmacion)
             {
-                // Manejo de errores, por ejemplo, escribir el error en los logs.
-                Debug.WriteLine($"Error al obtener destinos: {ex.Message}");
-            }
-            finally
-            {
-                IsRefreshing = false;
+                await destinationService.DeleteAsync(DestinationSelected.Id);
+                DestinationSelected = null;
+                await GetDestinations();
             }
         }
 
@@ -111,18 +105,25 @@ namespace TourismApp.ViewModels
         {
             var navigationParameter = new ShellNavigationQueryParameters
             {
-                { "DestinationToEdit", null }
+                { "DestinationEdit", null }
             };
-            await Shell.Current.GoToAsync("//AddEditDestination", navigationParameter);
+            await Shell.Current.GoToAsync($"//AddEditDestination", navigationParameter);
         }
 
-        private async Task UpdateDestination()
+        private async Task FilteredDestinations()
         {
-            var navigationParameter = new ShellNavigationQueryParameters
-            {
-                { "DestinationToEdit", SelectedDestinations }
-            };
-            await Shell.Current.GoToAsync("//AddEditDestination", navigationParameter);
+            var destinationFilter = listDestinationFilter.Where(p => p.Name.ToLower().Contains(filterDestination.ToLower())).ToList();
+            Destinations = new ObservableCollection<pfDestination>(listDestinationFilter);
         }
+
+        public async Task GetDestinations()
+        {
+            FilterDestination = string.Empty;
+            IsRefreshing = true;
+            listDestinationFilter = await destinationService.GetAllAsync();
+            Destinations = new ObservableCollection<pfDestination>(listDestinationFilter);
+            IsRefreshing = false;
+        }
+
     }
 }
