@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TourismApp.Views.DestinationView"
              xmlns:viewModels="clr-namespace:TourismApp.ViewModels"
+             
              Title="Destinos"
+             
              BackgroundColor="#F5F5F5"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
-        <viewModels:DestinationViewModel />
+        <viewModels:DestinationViewModel/>
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="10" Spacing="10" VerticalOptions="FillAndExpand">
@@ -16,7 +18,7 @@
         <!-- Barra Superior -->
         <HorizontalStackLayout Padding="10" Spacing="20">
             <SearchBar x:Name="SearchBar"
-                       Text="{Binding FilterText}"
+                       Text="{Binding FilterDestination}"
                        Placeholder="Buscar destinos"
                        HorizontalOptions="FillAndExpand"
                        BackgroundColor="#E8E8E8"
@@ -31,11 +33,12 @@
                     TextColor="White"
                     CornerRadius="5" />
             <Button Text="Editar"
-                    Command="{Binding UpdateDestinarionCommand}"
+                    Command="{Binding EditDestinationCommand}"
                     BackgroundColor="#1E3A5F"
                     TextColor="White"
                     CornerRadius="5" />
             <Button Text="Eliminar"
+                    Command="{Binding DeleteDestinationCommand }"
                     BackgroundColor="#1E3A5F"
                     TextColor="White"
                     CornerRadius="5" />
@@ -44,10 +47,10 @@
         <!-- Lista de Destinos -->
         <ScrollView Grid.Row="1">
             <ListView ItemsSource="{Binding Destinations}"
-                      SelectedItem="{Binding SelectedDestinations}"
+                      SelectedItem="{Binding DestinationSelected}"
                       SelectionMode="Single"
                       IsPullToRefreshEnabled="True"
-                      RefreshCommand="{Binding GetDestinationsCommand}">
+                      RefreshCommand="{Binding GetDestinationsCommnad}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="5" BackgroundColor="White">

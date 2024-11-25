@@ -92,7 +92,7 @@ namespace TourismApp.ViewModels
 
         private async Task DeleteDestination()
         {
-            var confirmacion = await App.Current.MainPage.DisplayAlert("Eliminar Destino", "¿Está seguro que desea eliminar el Destino?", "Si", "No");
+            var confirmacion = await Application.Current.MainPage.DisplayAlert("Eliminar Destino", "¿Está seguro que desea eliminar el Destino?", "Si", "No");
             if (confirmacion)
             {
                 await destinationService.DeleteAsync(DestinationSelected.Id);
