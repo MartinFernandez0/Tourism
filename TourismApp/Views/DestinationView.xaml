@@ -66,7 +66,8 @@
                         Padding="10"
                         CornerRadius="12"
                         HasShadow="True"
-                        BackgroundColor="#FFFFFF">
+                        BackgroundColor="#FFFFFF"
+                        InputTransparent="True">
                             <HorizontalStackLayout Spacing="10">
                                 <VerticalStackLayout Spacing="5" HorizontalOptions="StartAndExpand">
                                     <Label 
