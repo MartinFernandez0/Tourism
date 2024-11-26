@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using TourismApp.Utils;
+using TourismApp.Class;
 using TourismServices.Interfaces;
 using TourismServices.Models;
 using TourismServices.Services;
