@@ -1,4 +1,5 @@
-﻿using TourismApp.Class;
+﻿using System.Collections.ObjectModel;
+using TourismApp.Class;
 using TourismServices.Models;
 using TourismServices.Services;
 
@@ -7,8 +8,10 @@ namespace TourismApp.ViewModels
     public class AddEditDestinationViewModel : ObjectNotification
     {
         private readonly GenericService<pfDestination> destinationService = new GenericService<pfDestination>();
+        private readonly GenericService<pfItinerary> itineraryService = new GenericService<pfItinerary>();
 
         #region Properties
+
         private pfDestination editDestination;
         public pfDestination EditDestination
         {
@@ -121,6 +124,52 @@ namespace TourismApp.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private ObservableCollection<pfItinerary> listItineraries = new ObservableCollection<pfItinerary>();
+        public ObservableCollection<pfItinerary> ListItineraries
+        {
+            get { return listItineraries; }
+            set
+            {
+                listItineraries = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private pfItinerary itinerarySelected;
+        public pfItinerary ItinerarySelected
+        {
+            get { return itinerarySelected; }
+            set
+            {
+                itinerarySelected = value;
+                OnPropertyChanged();
+
+                // Actualiza el ID del itinerario seleccionado
+                if (itinerarySelected != null)
+                {
+                    ItineraryId = itinerarySelected.Id;
+                }
+            }
+        }
+
+        private int idItinerarySelected;
+        public int IdItinerarySelected
+        {
+            get { return idItinerarySelected; }
+            set
+            {
+                idItinerarySelected = value;
+                OnPropertyChanged();
+
+                // Asigna el itinerario seleccionado según el índice
+                if (ListItineraries != null && idItinerarySelected >= 0 && idItinerarySelected < ListItineraries.Count)
+                {
+                    ItinerarySelected = ListItineraries[idItinerarySelected];
+                }
+            }
+        }
+
         #endregion
 
         #region Commands
@@ -132,10 +181,31 @@ namespace TourismApp.ViewModels
         {
             SaveDestinationCommand = new Command(async () => await SaveDestination());
             BackCommand = new Command(async () => await GoBackToList());
+
+            // Inicializa la colección de itinerarios
+            ListItineraries = new ObservableCollection<pfItinerary>();
+            LoadItineraries();
+        }
+
+        private async Task LoadItineraries()
+        {
+            var itineraries = await itineraryService.GetAllAsync(); // O la llamada adecuada para obtener itinerarios
+            ListItineraries.Clear();
+            foreach (var itinerary in itineraries)
+            {
+                ListItineraries.Add(itinerary);
+            }
         }
 
         private async Task SaveDestination()
         {
+            // Validaciones básicas
+            if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Description))
+            {
+                // Muestra un mensaje de error o maneja la validación (si tu framework lo permite)
+                return;
+            }
+
             if (EditDestination != null)
             {
                 editDestination.Name = Name;
@@ -160,15 +230,17 @@ namespace TourismApp.ViewModels
                     ItineraryId = ItineraryId,
                     IsDeleted = IsDeleted
                 };
+
                 await destinationService.AddAsync(destination);
             }
+
             await GoBackToList();
         }
 
         private async Task GoBackToList()
         {
             EditDestination = null;
-            await Shell.Current.GoToAsync("//DestinationList");
+            await Shell.Current.GoToAsync("/DestinationList");
         }
     }
 }

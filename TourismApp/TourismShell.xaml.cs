@@ -15,7 +15,14 @@ namespace TourismApp
 
         private void RegisterRoutes()
         {
+            //Registrar ruta de registro y acceso
             Routing.RegisterRoute("Registrarse", typeof(RegistrarseView));
+
+            // Registrar la ruta de AddEditDestination
+            Routing.RegisterRoute("AddEditDestination", typeof(AddEditDestinationView));
+
+            // Asegúrate de registrar también la ruta de DestinationList
+            Routing.RegisterRoute("DestinationList", typeof(DestinationView));
         }
 
         public void EnableAppAfterLogin()

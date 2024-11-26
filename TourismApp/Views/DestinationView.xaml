@@ -6,7 +6,7 @@
              
              Title="Destinos"
              
-             BackgroundColor="#F5F5F5"
+             BackgroundColor="Black"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
@@ -27,55 +27,80 @@
 
         <!-- Botones -->
         <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            
             <Button Text="Agregar"
                     Command="{Binding AddDestinationCommand}"
                     BackgroundColor="#1E3A5F"
                     TextColor="White"
                     CornerRadius="5" />
+            
             <Button Text="Editar"
-                    Command="{Binding EditDestinationCommand}"
+                    Command="{Binding UpdateDestinationCommand}"
                     BackgroundColor="#1E3A5F"
                     TextColor="White"
                     CornerRadius="5" />
+            
             <Button Text="Eliminar"
                     Command="{Binding DeleteDestinationCommand}"
                     BackgroundColor="#1E3A5F"
                     TextColor="White"
                     CornerRadius="5" />
+            
         </HorizontalStackLayout>
 
         <!-- Lista de Destinos -->
-        <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" Margin="0,10">
             <ListView ItemsSource="{Binding Destinations}"
                       SelectedItem="{Binding DestinationSelected}"
                       SelectionMode="Single"
                       IsPullToRefreshEnabled="True"
                       RefreshCommand="{Binding GetDestinationsCommand}">
+
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="5">
-                            <HorizontalStackLayout Spacing="10">
+                        <Frame Margin="10" Padding="15" BorderColor="#E0E0E0" CornerRadius="10" BackgroundColor="#F5F5F5">
+                            <VerticalStackLayout Spacing="10">
                                 <!-- Texto del destino -->
+                                <Label Text="{Binding Name}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#333333" />
+                                            <Label Text="{Binding Description}" 
+                                   FontSize="14" 
+                                   TextColor="#666666" 
+                                   LineBreakMode="TailTruncation" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5" Padding="10" BorderColor="DarkBlue" CornerRadius="5" BackgroundColor="#FFFFFF">
+                            <HorizontalStackLayout Spacing="50">
+                                --><!-- Texto del destino --><!--
                                 <VerticalStackLayout Spacing="5" HorizontalOptions="FillAndExpand">
-                                    <Label Text="{Binding Name}" 
+                                    <Label Text="{Binding Name}"
+                                           WidthRequest="20"
                                            FontSize="16" 
                                            FontAttributes="Bold"
-                                           TextColor="Black" />
+                                           TextColor="White" />
                                     <Label Text="{Binding Description}" 
                                            FontSize="14" 
                                            TextColor="Gray" 
                                            LineBreakMode="WordWrap" />
                                 </VerticalStackLayout>
 
-                                <!-- Imagen del destino -->
+                                --><!-- Imagen del destino --><!--
                                 <Image Source="{Binding URL_image}" 
                                        WidthRequest="100" 
                                        HeightRequest="100" 
-                                       Aspect="AspectFill" />
+                                       Aspect="AspectFill" />--><!--
                             </HorizontalStackLayout>
                         </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
+                </ListView.ItemTemplate>-->
             </ListView>
         </ScrollView>
     </VerticalStackLayout>

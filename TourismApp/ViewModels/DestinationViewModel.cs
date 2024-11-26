@@ -55,7 +55,7 @@ namespace TourismApp.ViewModels
             {
                 destinationSelected = value;
                 OnPropertyChanged();
-                EditDestinationCommand.ChangeCanExecute();
+                UpdateDestinationCommand.ChangeCanExecute();
                 DeleteDestinationCommand.ChangeCanExecute();
             }
         }
@@ -63,7 +63,7 @@ namespace TourismApp.ViewModels
         public Command GetDestinationsCommand { get; }
         public Command FilterDestinationsCommand { get; }
         public Command AddDestinationCommand { get; }
-        public Command EditDestinationCommand { get; }
+        public Command UpdateDestinationCommand { get; }
         public Command DeleteDestinationCommand { get; }
 
         public DestinationViewModel()
@@ -71,7 +71,7 @@ namespace TourismApp.ViewModels
             GetDestinationsCommand = new Command(async () => await GetDestinations());
             FilterDestinationsCommand = new Command(async () => await FilteredDestinations());
             AddDestinationCommand = new Command(async () => await AddDestination());
-            EditDestinationCommand = new Command(async (obj) => await EditDestination(), AllowEdit);
+            UpdateDestinationCommand = new Command(async (obj) => await UpdateDestination(), AllowEdit);
             DeleteDestinationCommand = new Command(async (obj) => await DeleteDestination(), AllowEdit);
             GetDestinations();
         }
@@ -81,19 +81,25 @@ namespace TourismApp.ViewModels
             return DestinationSelected != null;
         }
 
-        private async Task EditDestination()
+        private async Task UpdateDestination()
         {
-            var navigationParameter = new ShellNavigationQueryParameters
-                {
-                    { "DestinationEdit", DestinationSelected }
-                };
-            await Shell.Current.GoToAsync($"//AddEditDestination", navigationParameter);
+            if (DestinationSelected == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "No hay destino seleccionado para actualizar.", "OK");
+                return;
+            }
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { "DestinationEdit", DestinationSelected }
+            };
+            await Shell.Current.GoToAsync("AddEditDestination", navigationParameter);
         }
 
         private async Task DeleteDestination()
         {
             var confirmacion = await Application.Current.MainPage.DisplayAlert("Eliminar Destino", "¿Está seguro que desea eliminar el Destino?", "Si", "No");
-            if (confirmacion)
+            if (confirmacion && DestinationSelected != null)
             {
                 DestinationSelected.IsDeleted = true;
                 await destinationService.UpdateAsync(DestinationSelected);
@@ -105,10 +111,10 @@ namespace TourismApp.ViewModels
         private async Task AddDestination()
         {
             var navigationParameter = new ShellNavigationQueryParameters
-                {
-                    { "DestinationEdit", null }
-                };
-            await Shell.Current.GoToAsync($"//AddEditDestination", navigationParameter);
+            {
+                { "DestinationEdit", new pfDestination() } // Asegúrate de que esto no sea null
+            };
+            await Shell.Current.GoToAsync("AddEditDestination", navigationParameter);
         }
 
         private async Task FilteredDestinations()
