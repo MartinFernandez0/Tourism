@@ -19,7 +19,7 @@
 
             <!-- Título -->
             <Label 
-            Text="Inicio de sesión a ClinicaApp"
+            Text="Login TourismApp Argentina"
             FontSize="Large" 
             FontAttributes="Bold"
             HorizontalTextAlignment="Center"
