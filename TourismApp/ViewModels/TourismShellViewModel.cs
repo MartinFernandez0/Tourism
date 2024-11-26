@@ -18,7 +18,7 @@ namespace TourismApp.ViewModels
         private void Logout()
         {
             IsUserLogout = true;
-            (App.Current.MainPage as ClinicaShell).DisableAppAfterLogin();
+            (App.Current.MainPage as TourismShell).DisableAppAfterLogin();
         }
     }
 }

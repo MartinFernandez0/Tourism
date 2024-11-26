@@ -2,8 +2,6 @@
 using TourismServices.Models;
 using TourismServices.Services;
 using System.Data;
-using System.Globalization;
-using Stripe;
 
 namespace TourismDesktop.Views
 {

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
 using System.Net.Http.Json;
 using System.Text.Json;
 using TourismServices.Class;

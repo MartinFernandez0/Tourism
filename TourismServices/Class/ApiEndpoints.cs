@@ -1,6 +1,3 @@
-using System;
-using System.Net;
-using Microsoft.EntityFrameworkCore;
 
 namespace TourismServices.Class
 {
