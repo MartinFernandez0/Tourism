@@ -77,7 +77,7 @@
                     BackgroundColor="Transparent" />
                 </Frame>
 
-                <!-- Itinerario -->
+                 <!--Itinerario--> 
                 <Frame CornerRadius="10" Padding="10" BackgroundColor="DarkGray" HasShadow="True">
                     <Picker 
                         Title="Seleccione un Itinerario"

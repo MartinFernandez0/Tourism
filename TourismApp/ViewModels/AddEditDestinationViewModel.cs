@@ -20,7 +20,11 @@ namespace TourismApp.ViewModels
             {
                 editDestination = value;
                 OnPropertyChanged();
-                SettingData();
+                // Si las listas ya están cargadas, llama a SettingData.
+                if (ListItineraries != null && ListItineraries.Any())
+                {
+                    SettingData();
+                }
             }
         }
 
@@ -35,6 +39,8 @@ namespace TourismApp.ViewModels
                 Country = editDestination.Country;
                 ItineraryId = editDestination.ItineraryId;
                 IsDeleted = editDestination.IsDeleted;
+
+                ItinerarySelected = ListItineraries?.FirstOrDefault(i => i.Id == ItineraryId);
             }
             else
             {
@@ -44,6 +50,7 @@ namespace TourismApp.ViewModels
                 CategoryName = string.Empty;
                 Country = string.Empty;
                 ItineraryId = null;
+                ItinerarySelected = null;
                 IsDeleted = false;
             }
         }
@@ -103,17 +110,6 @@ namespace TourismApp.ViewModels
             }
         }
 
-        private int? itineraryId;
-        public int? ItineraryId
-        {
-            get { return itineraryId; }
-            set
-            {
-                itineraryId = value;
-                OnPropertyChanged();
-            }
-        }
-
         private bool isDeleted;
         public bool IsDeleted
         {
@@ -121,6 +117,17 @@ namespace TourismApp.ViewModels
             set
             {
                 isDeleted = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int? itineraryId;
+        public int? ItineraryId
+        {
+            get { return itineraryId; }
+            set
+            {
+                itineraryId = value;
                 OnPropertyChanged();
             }
         }
@@ -153,23 +160,6 @@ namespace TourismApp.ViewModels
             }
         }
 
-        private int idItinerarySelected;
-        public int IdItinerarySelected
-        {
-            get { return idItinerarySelected; }
-            set
-            {
-                idItinerarySelected = value;
-                OnPropertyChanged();
-
-                // Asigna el itinerario seleccionado según el índice
-                if (ListItineraries != null && idItinerarySelected >= 0 && idItinerarySelected < ListItineraries.Count)
-                {
-                    ItinerarySelected = ListItineraries[idItinerarySelected];
-                }
-            }
-        }
-
         #endregion
 
         #region Commands
@@ -189,23 +179,24 @@ namespace TourismApp.ViewModels
 
         private async Task LoadItineraries()
         {
-            var itineraries = await itineraryService.GetAllAsync(); // O la llamada adecuada para obtener itinerarios
-            ListItineraries.Clear();
-            foreach (var itinerary in itineraries)
+            try
             {
-                ListItineraries.Add(itinerary);
+                var itineraries = await itineraryService.GetAllAsync();
+                ListItineraries = new ObservableCollection<pfItinerary>(itineraries);
+
+                if (EditDestination != null)
+                {
+                    SettingData();
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"No se pudieron cargar los datos: {ex.Message}", "OK");
             }
         }
 
         private async Task SaveDestination()
         {
-            // Validaciones básicas
-            if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Description))
-            {
-                // Muestra un mensaje de error o maneja la validación (si tu framework lo permite)
-                return;
-            }
-
             if (EditDestination != null)
             {
                 editDestination.Name = Name;
@@ -213,7 +204,8 @@ namespace TourismApp.ViewModels
                 editDestination.URL_image = URLImage;
                 editDestination.CategoryName = CategoryName;
                 editDestination.Country = Country;
-                editDestination.ItineraryId = ItineraryId;
+
+                editDestination.ItineraryId = ItinerarySelected.Id;
                 editDestination.IsDeleted = IsDeleted;
 
                 await destinationService.UpdateAsync(editDestination);

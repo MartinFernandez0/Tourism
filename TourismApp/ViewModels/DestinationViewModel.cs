@@ -98,11 +98,10 @@ namespace TourismApp.ViewModels
 
         private async Task DeleteDestination()
         {
-            var confirmacion = await Application.Current.MainPage.DisplayAlert("Eliminar Destino", "¿Está seguro que desea eliminar el Destino?", "Si", "No");
-            if (confirmacion && DestinationSelected != null)
+            var confirmacion = await App.Current.MainPage.DisplayAlert("Eliminar Destino", "¿Está seguro que desea eliminar el Destino?", "Si", "No");
+            if (confirmacion)
             {
-                DestinationSelected.IsDeleted = true;
-                await destinationService.UpdateAsync(DestinationSelected);
+                await destinationService.DeleteAsync(DestinationSelected.Id);
                 DestinationSelected = null;
                 await GetDestinations();
             }
@@ -112,7 +111,7 @@ namespace TourismApp.ViewModels
         {
             var navigationParameter = new ShellNavigationQueryParameters
             {
-                { "DestinationEdit", new pfDestination() } // Asegúrate de que esto no sea null
+                { "DestinationEdit", null } // Asegúrate de que esto no sea null
             };
             await Shell.Current.GoToAsync("AddEditDestination", navigationParameter);
         }

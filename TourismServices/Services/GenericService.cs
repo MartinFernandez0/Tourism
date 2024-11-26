@@ -74,7 +74,6 @@ namespace TourismServices.Services
         public async Task UpdateAsync(T? entity)
         {
             var idValue = entity.GetType().GetProperty("Id").GetValue(entity);
-
             var response = await client.PutAsJsonAsync($"{_endpoint}/{idValue}", entity);
             if (!response.IsSuccessStatusCode)
             {

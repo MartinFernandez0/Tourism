@@ -72,11 +72,11 @@
                                     <Label 
                                     Text="{Binding CategoryName}" 
                                     FontSize="14" 
-                                    TextColor="#222222" />
+                                    TextColor="#777777" />
                                     <Label 
                                     Text="{Binding Country}" 
                                     FontSize="14" 
-                                    TextColor="#666666" />
+                                    TextColor="#222222" />
                                 </VerticalStackLayout>
                                     <Image 
                                     Source="{Binding URLImage}" 
