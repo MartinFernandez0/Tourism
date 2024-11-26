@@ -15,13 +15,13 @@ namespace TourismServices.Class
         {
             return name switch
             {
-                nameof(pfActivity) => "api/pfActivity",
-                nameof(pfAdministrator) => "api/pfAdministrator",
-                nameof(pfDestination) => "api/pfDestination",
-                nameof(pfItinerary) => "api/pfItinerary",
-                nameof(pfReservation) => "api/pfReservation",
-                nameof(pfTransaction) => "api/pfTransaction",
-                nameof(pfClient) => "api/pfClient",
+                nameof(pfActivity) => pfActivity,
+                nameof(pfAdministrator) => pfAdministrator,
+                nameof(pfDestination) => pfDestination,
+                nameof(pfItinerary) => pfItinerary,
+                nameof(pfReservation) => pfReservation,
+                nameof(pfTransaction) => pfTransaction,
+                nameof(pfClient) => pfClient,
 
                 _ => throw new ArgumentException($"Endpoint '{name}' no está definido.")
             };
