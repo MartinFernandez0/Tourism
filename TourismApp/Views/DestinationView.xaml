@@ -43,11 +43,47 @@
             HorizontalOptions="FillAndExpand" />
         </HorizontalStackLayout>
 
+        <HorizontalStackLayout>
+            
+            <!-- Botón agregar destino -->
+            <Button 
+            Text="Agregar"
+            Command="{Binding AddDestinationCommand}"
+            BackgroundColor="#34baab"
+            TextColor="#FFFFFF"
+            FontAttributes="Bold"
+            CornerRadius="8"
+            HeightRequest="45"
+            Grid.Row="2" />
+
+            <!-- Botón editar destino -->
+            <Button 
+            Text="Editar"
+            Command="{Binding UpdateDestinationCommand}"
+            BackgroundColor="#34baab"
+            TextColor="#FFFFFF"
+            FontAttributes="Bold"
+            CornerRadius="8"
+            HeightRequest="45"
+            Grid.Row="3" />
+
+            <!-- Botón eliminar destino -->
+            <Button
+            Text="Eliminar"
+            Command="{Binding DeleteDestinationCommand}"
+            BackgroundColor="#34baab"
+            TextColor="#FFFFFF"
+            FontAttributes="Bold"
+            CornerRadius="8"
+            HeightRequest="45"
+            Grid.Row="4" />
+        </HorizontalStackLayout>
+
         <!-- Lista de destinos -->
         <ScrollView Grid.Row="1" Margin="0,10">
             <CollectionView 
             ItemsSource="{Binding Destinations}"
-            SelectedItem="{Binding DestinationSelected}"
+            SelectedItem="{Binding DestinationSelected, Mode=TwoWay}"
             SelectionMode="Single"
             Margin="0,0,0,10">
                 <CollectionView.ItemTemplate>
@@ -78,7 +114,7 @@
                                     FontSize="14" 
                                     TextColor="#222222" />
                                 </VerticalStackLayout>
-                                    <Image 
+                                <Image 
                                     Source="{Binding URLImage}" 
                                     WidthRequest="100" 
                                     HeightRequest="100" 
@@ -90,38 +126,5 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
-
-        <!-- Botón agregar destino -->
-        <Button 
-        Text="Agregar"
-        Command="{Binding AddDestinationCommand}"
-        BackgroundColor="#34baab"
-        TextColor="#FFFFFF"
-        FontAttributes="Bold"
-        CornerRadius="8"
-        HeightRequest="45"
-        Grid.Row="2" />
-
-        <!-- Botón editar destino -->
-        <Button 
-        Text="Editar"
-        Command="{Binding UpdateDestinationCommand}"
-        BackgroundColor="#34baab"
-        TextColor="#FFFFFF"
-        FontAttributes="Bold"
-        CornerRadius="8"
-        HeightRequest="45"
-        Grid.Row="3" />
-
-        <!-- Botón eliminar destino -->
-        <Button
-        Text="Eliminar"
-        Command="{Binding DeleteDestinationCommand}"
-        BackgroundColor="#34baab"
-        TextColor="#FFFFFF"
-        FontAttributes="Bold"
-        CornerRadius="8"
-        HeightRequest="45"
-        Grid.Row="4" />
     </Grid>
 </ContentPage>
