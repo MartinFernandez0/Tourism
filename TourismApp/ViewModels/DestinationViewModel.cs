@@ -124,19 +124,24 @@ namespace TourismApp.ViewModels
             try
             {
                 listDestinationFilter = await destinationService.GetAllAsync();
-                if (listDestinationFilter == null || !listDestinationFilter.Any())
+                if (listDestinationFilter == null)
                 {
-                    Debug.WriteLine("No se encontraron destinos.");
+                    Debug.Print("No se encontraron destinos.");
                     Destinations = new ObservableCollection<pfDestination>();
                 }
                 else
                 {
                     Destinations = new ObservableCollection<pfDestination>(listDestinationFilter);
+                    Debug.Print($"Destinos cargados: {Destinations.Count}");
+                    foreach (var destination in Destinations)
+                    {
+                        Debug.Print(destination.Name);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error al obtener destinos: {ex.Message}");
+                Debug.Print($"Error al obtener destinos: {ex.Message}");
                 Destinations = new ObservableCollection<pfDestination>();
             }
             finally
