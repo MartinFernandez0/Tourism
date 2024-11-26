@@ -31,7 +31,7 @@
             <Label Text="ID del Itinerario (Opcional):" Margin="5"/>
             <Entry Text="{Binding ItineraryId}" Margin="5"/>
 
-            <CheckBox IsChecked="{Binding IsDeleted}" Content="¿Eliminado?" Margin="5"/>
+            <CheckBox IsChecked="{Binding IsDeleted}" Margin="5"/>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10">
                 <Button Text="Guardar" WidthRequest="100" Margin="10" Command="{Binding SaveDestinationCommand}"/>
