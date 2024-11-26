@@ -23,7 +23,7 @@ namespace TourismServices.Class
                 nameof(pfTransaction) => pfTransaction,
                 nameof(pfClient) => pfClient,
 
-                _ => throw new ArgumentException($"Endpoint '{name}' no est· definido.")
+                _ => throw new ArgumentException($"Endpoint '{name}' no est√° definido.")
             };
         }
     }
