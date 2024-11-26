@@ -9,7 +9,7 @@
                HeightRequest="450"
                Opacity="0.3" />
         <VerticalStackLayout>
-            <Label Text="Tourismos en Argentina" 
+            <Label Text="Turismos en Argentina" 
                    TextColor="White" 
                    FontAttributes="Bold" 
                    FontSize="28"

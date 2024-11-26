@@ -6,7 +6,7 @@
 
     <VerticalStackLayout BackgroundColor="DarkCyan" Padding="10, 20">
         <StackLayout>
-            <Label Text="Tourism Application"
+            <Label Text="Aplicacion de Turismos"
                    TextColor="White"
                    FontAttributes="Bold"
                    FontSize="Large"

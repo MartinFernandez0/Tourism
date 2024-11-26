@@ -10,7 +10,7 @@
             <VerticalStackLayout Padding="30,30" Spacing="25" BackgroundColor="#80000000">
 
                 <Label
-                    Text="¡Bienvenido a TourismApp Argentina!"
+                    Text="¡Bienvenido a Turismos Argentina App!"
                     FontSize="Large"
                     FontAttributes="Bold"
                     TextColor="#34baab"
@@ -34,17 +34,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
-                <Button
-                    x:Name="CounterBtn"
-                    Text="¡Haz click aquí!"
-                    TextColor="White"
-                    BackgroundColor="#459a96"
-                    FontSize="Medium"
-                    CornerRadius="10"
-                    HeightRequest="50"
-                    Clicked="OnCounterClicked"
-                    HorizontalOptions="Fill" />
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
