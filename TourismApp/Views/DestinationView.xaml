@@ -43,49 +43,23 @@
             HorizontalOptions="FillAndExpand" />
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout>
+            <!-- Botones -->
+            <HorizontalStackLayout Grid.Row="2" Spacing="20" HorizontalOptions="Center">
+                <!-- Botón agregar destino -->
+                <Button Text="Agregar" Command="{Binding AddDestinationCommand}" BackgroundColor="#34baab" TextColor="#FFFFFF" FontAttributes="Bold" CornerRadius="8" HeightRequest="45" />
+                <!-- Botón editar destino -->
+                <Button Text="Editar" Command="{Binding UpdateDestinationCommand}" BackgroundColor="#34baab" TextColor="#FFFFFF" FontAttributes="Bold" CornerRadius="8" HeightRequest="45" />
+                <!-- Botón eliminar destino -->
+                <Button Text="Eliminar" Command="{Binding DeleteDestinationCommand}" BackgroundColor="#34baab" TextColor="#FFFFFF" FontAttributes="Bold" CornerRadius="8" HeightRequest="45" />
+            </HorizontalStackLayout>
             
-            <!-- Botón agregar destino -->
-            <Button 
-            Text="Agregar"
-            Command="{Binding AddDestinationCommand}"
-            BackgroundColor="#34baab"
-            TextColor="#FFFFFF"
-            FontAttributes="Bold"
-            CornerRadius="8"
-            HeightRequest="45"
-            Grid.Row="2" />
-
-            <!-- Botón editar destino -->
-            <Button 
-            Text="Editar"
-            Command="{Binding UpdateDestinationCommand}"
-            BackgroundColor="#34baab"
-            TextColor="#FFFFFF"
-            FontAttributes="Bold"
-            CornerRadius="8"
-            HeightRequest="45"
-            Grid.Row="3" />
-
-            <!-- Botón eliminar destino -->
-            <Button
-            Text="Eliminar"
-            Command="{Binding DeleteDestinationCommand}"
-            BackgroundColor="#34baab"
-            TextColor="#FFFFFF"
-            FontAttributes="Bold"
-            CornerRadius="8"
-            HeightRequest="45"
-            Grid.Row="4" />
-        </HorizontalStackLayout>
-
-        <!-- Lista de destinos -->
-        <ScrollView Grid.Row="1" Margin="0,10">
+            <!-- Lista de destinos -->
+        <ScrollView Grid.Row="1" Margin="10,10">
             <CollectionView 
             ItemsSource="{Binding Destinations}"
             SelectedItem="{Binding DestinationSelected, Mode=TwoWay}"
             SelectionMode="Single"
-            Margin="0,0,0,10">
+            Margin="0,10,0,10">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame  
