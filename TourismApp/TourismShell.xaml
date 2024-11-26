@@ -14,56 +14,35 @@
     FlyoutBackgroundImageAspect="AspectFill"
     FlyoutHeaderBehavior="CollapseOnScroll">
 
-    <Shell.BindingContext>
-        <viewmodels:TourismShellViewModel />
-    </Shell.BindingContext>
-
     <Shell.FlyoutHeader>
-        <contentViews:FlyoutHeader/>
+        <contentViews:FlyoutHeader />
     </Shell.FlyoutHeader>
 
     <Shell.FlyoutFooter>
-        <contentViews:FlyoutFooter/>
+        <contentViews:FlyoutFooter />
     </Shell.FlyoutFooter>
 
     <FlyoutItem Route="TourismApp"
-                FlyoutDisplayOptions="AsMultipleItems"
-                x:Name="FlyoutItemsPrincipal">
+                FlyoutDisplayOptions="AsMultipleItems">
+
         <ShellContent
-            Title="Inicio"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Icon="x.png"
-            Route="MainPage" />
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
 
-        <!--<ShellContent
-            Title="Nuevo turno"
-            ContentTemplate="{DataTemplate views:NuevoDestinoView}"
-            Icon="agregar_turno.png"
-            Route="NuevoDestino" />-->
+        <Tab Title="Destinos"
+             Route="Destinos"
+             Icon="paw.png">
 
-        <Tab Title="Destinos" Route="Destination" Icon="x.png">
             <ShellContent
-                Title="Lista"
+                Title="Destination List"
                 ContentTemplate="{DataTemplate views:DestinationView}"
-                Route="ListaDestinos" />
+                Route="DestinationList" />
 
-            <!--<ShellContent
-                Title="Agregar destinos"
-                ContentTemplate="{DataTemplate views:}"
-                Route="AgregarEditarDestino" />-->
-            
         </Tab>
+
     </FlyoutItem>
-    <MenuItem Text="Cerrar sesión"
-              Command="{Binding LogoutCommand}"
-              IconImageSource="cerrar_sesion.png"/>
-    <ShellContent
-             Title="Iniciar sesión"
-             ContentTemplate="{DataTemplate views:IniciarSesionView}"
-             Route="Login" 
-             IsVisible="{Binding IsUserLogout}"/>
-    
-    
+
     <MenuItem Text="Goodbye, Go Team!" IconImageSource="team_logo.png" />
 
 </Shell>

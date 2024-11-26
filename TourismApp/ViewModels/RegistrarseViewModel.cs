@@ -2,14 +2,20 @@
 using CommunityToolkit.Mvvm.Input;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
+using Microsoft.Maui.Storage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace TourismApp.ViewModels
+namespace ClinicaApp.ViewModels
 {
     public partial class RegistrarseViewModel : ObservableObject
     {
         private readonly FirebaseAuthClient _clientAuth;
-        private const string FirebaseApiKey = "AIzaSyCPZO7rfcyvcEQgDohrFeV69rqx043Sg6c";
+        private const string FirebaseApiKey = "AIzaSyBkrYjYPVmVjra7d9PdPAW3I-lSZNdE2aU";
         private const string RequestUri = "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + FirebaseApiKey;
 
         public IRelayCommand RegistrarseCommand { get; }
@@ -32,7 +38,7 @@ namespace TourismApp.ViewModels
             _clientAuth = new FirebaseAuthClient(new FirebaseAuthConfig()
             {
                 ApiKey = FirebaseApiKey,
-                AuthDomain = "tourismarg.firebaseapp.com",
+                AuthDomain = "clinica-5b618.firebaseapp.com",
                 Providers = new Firebase.Auth.Providers.FirebaseAuthProvider[]
                 {
                     new EmailProvider()
