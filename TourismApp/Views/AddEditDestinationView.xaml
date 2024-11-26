@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TourismApp.ViewModels"
+             x:Class="TourismApp.Views.AddEditDestinationView"
+             Title="Agregar o Editar Destino">
+
+    <ContentPage.BindingContext>
+        <vm:AddEditDestinationViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="Editar o Agregar Destino" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Nombre:" Margin="5"/>
+            <Entry Text="{Binding Name}" Margin="5"/>
+
+            <Label Text="Descripción:" Margin="5"/>
+            <Editor Text="{Binding Description}" Margin="5" HeightRequest="100"/>
+
+            <Label Text="URL de la Imagen:" Margin="5"/>
+            <Entry Text="{Binding URLImage}" Margin="5"/>
+
+            <Label Text="Nombre de la Categoría:" Margin="5"/>
+            <Entry Text="{Binding CategoryName}" Margin="5"/>
+
+            <Label Text="País:" Margin="5"/>
+            <Entry Text="{Binding Country}" Margin="5"/>
+
+            <Label Text="ID del Itinerario (Opcional):" Margin="5"/>
+            <Entry Text="{Binding ItineraryId}" Margin="5"/>
+
+            <CheckBox IsChecked="{Binding IsDeleted}" Content="¿Eliminado?" Margin="5"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10">
+                <Button Text="Guardar" WidthRequest="100" Margin="10" Command="{Binding SaveDestinationCommand}"/>
+                <Button Text="Cancelar" WidthRequest="100" Margin="10" Command="{Binding BackCommand}"/>
+            </StackLayout>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+
+</ContentPage>

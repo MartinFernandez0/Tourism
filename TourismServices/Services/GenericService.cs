@@ -28,7 +28,6 @@ namespace TourismServices.Services
 
         public async Task<List<T>?> GetAllAsync()
         {
-
             var response = await client.GetAsync(_endpoint);
             var content = await response.Content.ReadAsStringAsync();
             if (!response.IsSuccessStatusCode)
@@ -83,9 +82,9 @@ namespace TourismServices.Services
             }
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int Id)
         {
-            var response = await client.DeleteAsync($"{_endpoint}/{id}");
+            var response = await client.DeleteAsync($"{_endpoint}/{Id}");
             if (!response.IsSuccessStatusCode)
             {
                 throw new ApplicationException(response.ToString());
