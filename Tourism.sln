@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourismServices", "TourismS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourismWeb", "TourismWeb\TourismWeb.csproj", "{111D6973-3CC3-42C7-A9BC-DC1213B6ACFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourismApp", "TourismApp\TourismApp.csproj", "{EB566DCC-4BC5-4E29-B359-4CFEEA79D880}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{111D6973-3CC3-42C7-A9BC-DC1213B6ACFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{111D6973-3CC3-42C7-A9BC-DC1213B6ACFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{111D6973-3CC3-42C7-A9BC-DC1213B6ACFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB566DCC-4BC5-4E29-B359-4CFEEA79D880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB566DCC-4BC5-4E29-B359-4CFEEA79D880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB566DCC-4BC5-4E29-B359-4CFEEA79D880}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EB566DCC-4BC5-4E29-B359-4CFEEA79D880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB566DCC-4BC5-4E29-B359-4CFEEA79D880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB566DCC-4BC5-4E29-B359-4CFEEA79D880}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
