@@ -41,6 +41,31 @@ namespace TourismBackend.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "pfClients",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LastName = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Document = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PhoneNumber = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DateBirth = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pfClients", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "pfTransactions",
                 columns: table => new
                 {
@@ -165,47 +190,19 @@ namespace TourismBackend.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
-                name: "pfClients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Document = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PhoneNumber = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DateBirth = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ReservationId = table.Column<int>(type: "int", nullable: true),
-                    TransactionId = table.Column<int>(type: "int", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_pfClients", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_pfClients_pfReservations_ReservationId",
-                        column: x => x.ReservationId,
-                        principalTable: "pfReservations",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_pfClients_pfTransactions_TransactionId",
-                        column: x => x.TransactionId,
-                        principalTable: "pfTransactions",
-                        principalColumn: "Id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
             migrationBuilder.InsertData(
                 table: "pfAdministrators",
                 columns: new[] { "Id", "Email", "IsDeleted", "LastName", "Name", "Phone", "RegistrationDate" },
                 values: new object[] { 1, "martinexefe@example.com", false, "Fernandez", "Martin", "123456789", new DateTime(2024, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "pfClients",
+                columns: new[] { "Id", "DateBirth", "Document", "Email", "FirstName", "IsDeleted", "LastName", "PhoneNumber" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "12345678", "ana.gomez@example.com", "Ana", false, "Gómez", "987654321" },
+                    { 2, new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "87654321", "juanperez@example.com", "Juan", false, "Pérez", "123456789" }
+                });
 
             migrationBuilder.InsertData(
                 table: "pfDestinations",
@@ -264,29 +261,10 @@ namespace TourismBackend.Migrations
                     { 2, 2, false, 2, new DateTime(2024, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 }
                 });
 
-            migrationBuilder.InsertData(
-                table: "pfClients",
-                columns: new[] { "Id", "DateBirth", "Document", "Email", "FirstName", "IsDeleted", "LastName", "PhoneNumber", "ReservationId", "TransactionId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "12345678", "ana.gomez@example.com", "Ana", false, "Gómez", "987654321", 1, 1 },
-                    { 2, new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "87654321", "juanperez@example.com", "Juan", false, "Pérez", "123456789", 2, 2 }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_pfActivities_DestinationId",
                 table: "pfActivities",
                 column: "DestinationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pfClients_ReservationId",
-                table: "pfClients",
-                column: "ReservationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pfClients_TransactionId",
-                table: "pfClients",
-                column: "TransactionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_pfDestinations_ItineraryId",

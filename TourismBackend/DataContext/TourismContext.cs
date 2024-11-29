@@ -60,8 +60,6 @@ namespace TourismBackend.DataContext
                     Email = "ana.gomez@example.com",
                     PhoneNumber = "987654321",
                     DateBirth = new DateTime(1990, 1, 1),
-                    ReservationId = 1,
-                    TransactionId = 1,
                     IsDeleted = false
                 },
                 new pfClient
@@ -73,8 +71,6 @@ namespace TourismBackend.DataContext
                     Email = "juanperez@example.com",
                     PhoneNumber = "123456789",
                     DateBirth = new DateTime(1990, 1, 1),
-                    ReservationId = 2,
-                    TransactionId = 2,
                     IsDeleted = false
                 }
             );

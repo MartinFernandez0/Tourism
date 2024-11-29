@@ -210,17 +210,7 @@ namespace TourismBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TransactionId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ReservationId");
-
-                    b.HasIndex("TransactionId");
 
                     b.ToTable("pfClients");
 
@@ -234,9 +224,7 @@ namespace TourismBackend.Migrations
                             FirstName = "Ana",
                             IsDeleted = false,
                             LastName = "Gómez",
-                            PhoneNumber = "987654321",
-                            ReservationId = 1,
-                            TransactionId = 1
+                            PhoneNumber = "987654321"
                         },
                         new
                         {
@@ -247,9 +235,7 @@ namespace TourismBackend.Migrations
                             FirstName = "Juan",
                             IsDeleted = false,
                             LastName = "Pérez",
-                            PhoneNumber = "123456789",
-                            ReservationId = 2,
-                            TransactionId = 2
+                            PhoneNumber = "123456789"
                         });
                 });
 
@@ -562,21 +548,6 @@ namespace TourismBackend.Migrations
                         .IsRequired();
 
                     b.Navigation("Destination");
-                });
-
-            modelBuilder.Entity("TourismServices.Models.pfClient", b =>
-                {
-                    b.HasOne("TourismServices.Models.pfReservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId");
-
-                    b.HasOne("TourismServices.Models.pfTransaction", "Transaction")
-                        .WithMany()
-                        .HasForeignKey("TransactionId");
-
-                    b.Navigation("Reservation");
-
-                    b.Navigation("Transaction");
                 });
 
             modelBuilder.Entity("TourismServices.Models.pfDestination", b =>

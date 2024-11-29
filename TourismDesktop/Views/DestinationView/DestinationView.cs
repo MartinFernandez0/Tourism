@@ -36,7 +36,7 @@ namespace TourismDesktop.Views
             this.Close();
         }
 
-        #region LoadDate
+        #region LoadDate ComboBox
         private async Task LoadComboBox()
         {
             CBoxItinerary.DataSource = await ItineraryService.GetAllAsync();

@@ -82,19 +82,22 @@ namespace TourismDesktop.Views
             txtEmail.Text = string.Empty;
             txtPhoneNumber.Text = string.Empty;
             DateBirth.Value = DateTime.Now;
+            
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
         private void btnModify_Click_1(object sender, EventArgs e)
         {
+            ClientCurrent = (pfClient)ListClient.Current;
             txtFirstName.Text = ClientCurrent.FirstName;
             txtLastName.Text = ClientCurrent.LastName;
             txtDocument.Text = ClientCurrent.Document;
             txtEmail.Text = ClientCurrent.Email;
             txtPhoneNumber.Text = ClientCurrent.PhoneNumber;
-            DateBirth.Value = DateTime.Now;
+            DateBirth.Value = ClientCurrent.DateBirth;
 
             tabControl1.SelectTab(tabPageAddEdit);
+
         }
         private async void btnDelete_Click_1(object sender, EventArgs e)
         {
@@ -126,7 +129,7 @@ namespace TourismDesktop.Views
                 Document = txtDocument.Text,
                 Email = txtEmail.Text,
                 PhoneNumber = txtPhoneNumber.Text,
-                DateBirth = DateBirth.Value
+                DateBirth = DateBirth.Value,
             };
 
             if (ClientCurrent != null)
@@ -140,6 +143,8 @@ namespace TourismDesktop.Views
 
                 await ClientService.UpdateAsync(pfClient);
                 MessageBox.Show("Cliente modificado correctamente");
+
+                ClientCurrent = null;
             }
             else
             {
