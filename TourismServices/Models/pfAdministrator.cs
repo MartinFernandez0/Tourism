@@ -14,6 +14,8 @@ namespace TourismServices.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public DateTime RegistrationDate { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TourismBackend.Migrations
 {
     /// <inheritdoc />
-    public partial class InicioWb : Migration
+    public partial class OpenMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,7 +31,8 @@ namespace TourismBackend.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Phone = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    RegistrationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    RegistrationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -203,20 +204,20 @@ namespace TourismBackend.Migrations
 
             migrationBuilder.InsertData(
                 table: "pfAdministrators",
-                columns: new[] { "Id", "Email", "LastName", "Name", "Phone", "RegistrationDate" },
-                values: new object[] { 1, "martinexefe@example.com", "Fernandez", "Martin", "123456789", new DateTime(2024, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "Id", "Email", "IsDeleted", "LastName", "Name", "Phone", "RegistrationDate" },
+                values: new object[] { 1, "martinexefe@example.com", false, "Fernandez", "Martin", "123456789", new DateTime(2024, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "pfDestinations",
                 columns: new[] { "Id", "CategoryName", "Country", "Description", "IsDeleted", "ItineraryId", "Name", "URL_image" },
                 values: new object[,]
                 {
-                    { 1, "Cultural", "Perú", "Antigua ciudad inca.", false, null, "Machu Picchu", "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" },
-                    { 2, "Cultural", "Perú", "Antigua ciudad inca.", false, null, "Machu Picchu", "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" },
-                    { 3, "Landmark", "Francia", "Icono arquitectónico de París, Francia.", false, null, "Eiffel Tower", "https://upload.wikimedia.org/wikipedia/commons/a/a8/Eiffel_Tower_Paris_2011.jpg" },
-                    { 4, "Historic", "China", "Murallas que se extienden por miles de kilómetros.", false, null, "Great Wall of China", "https://upload.wikimedia.org/wikipedia/commons/4/43/Great_Wall_of_China_Mutianyu_Section.jpg" },
-                    { 5, "Cultural", "Australia", "Famoso centro de artes escénicas en Australia.", false, null, "Sydney Opera House", "https://upload.wikimedia.org/wikipedia/commons/4/4e/Sydney_Opera_House_Sails.jpg" },
-                    { 6, "Historic", "Italia", "Antiguo anfiteatro romano en el centro de Roma.", false, null, "Colosseum", "https://upload.wikimedia.org/wikipedia/commons/7/7f/Colosseo_2020.jpg" }
+                    { 1, "Natural", "Argentina", "Maravilla natural en la provincia de Misiones.", false, null, "Cataratas del Iguazú", "https://www.iguazujungle.com/esp/web2/images/Web%20192016.jpg" },
+                    { 2, "Cultural", "Argentina", "Capital cosmopolita de Argentina con rica vida cultural.", false, null, "Buenos Aires", "https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/07/03201757/Ciudades-mas-caras-de-America-Latina-Buenos-Aires.jpg" },
+                    { 3, "Natural", "Argentina", "Destino destacado para el avistamiento de fauna marina.", false, null, "Puerto Madryn", "https://contrapunto.digital/madryn/wp-content/uploads/2024/03/puerto-madryn.webp" },
+                    { 4, "Natural", "Argentina", "Capital nacional del trekking, ubicada en el Parque Nacional Los Glaciares.", false, null, "El Chaltén", "https://imgs1000.s3.sa-east-1.amazonaws.com/arroyo-del-salto2.jpg" },
+                    { 5, "Gastronomical", "Argentina", "Región vinícola famosa por sus bodegas y paisajes andinos.", false, null, "Mendoza", "https://fotos.perfil.com/2023/07/13/bodega-catena-zapata-1609412.jpg" },
+                    { 6, "Natural", "Argentina", "Hermoso delta con numerosos canales e islas cerca de Buenos Aires.", false, null, "Delta del Tigre", "https://universes.art/fileadmin/user_upload/Art-Destinations/Argentina/Buenos-Aires/Tigre-Delta/00-IMG_6089-2000-750.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -233,12 +234,12 @@ namespace TourismBackend.Migrations
                 columns: new[] { "Id", "ActivityName", "Cost", "Description", "DestinationId", "Duration", "IsDeleted", "URLimage" },
                 values: new object[,]
                 {
-                    { 1, "Visita a las Ruinas", 50.00m, "Recorrido por las ruinas antiguas.", 1, 120, false, "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" },
-                    { 2, "Visita a la Ciudad", 50.00m, "Recorrido por la ciudad antigua.", 2, 120, false, "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" },
-                    { 3, "Visita a la Montaña", 50.00m, "Recorrido por la montaña antigua.", 3, 120, false, "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" },
-                    { 4, "Visita a la Playa", 50.00m, "Recorrido por la playa antigua.", 4, 120, false, "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" },
-                    { 5, "Visita a la Ciudad", 50.00m, "Recorrido por la ciudad antigua.", 5, 120, false, "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" },
-                    { 6, "Visita a la Ciudad", 50.00m, "Recorrido por la ciudad antigua.", 6, 120, false, "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197" }
+                    { 1, "Caminata por las Cataratas del Iguazú", 75.00m, "Exploración a pie por los senderos de las Cataratas del Iguazú.", 1, 180, false, "https://media.tacdn.com/media/attractions-splice-spp-360x240/0a/dd/10/25.jpg" },
+                    { 2, "Tour por la Ciudad de Buenos Aires", 30.00m, "Visita guiada por los principales puntos turísticos de la capital.", 2, 240, false, "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/5f/c2.jpg" },
+                    { 3, "Avistamiento de Ballenas en Puerto Madryn", 90.00m, "Excursión en barco para avistar ballenas y otros animales marinos.", 3, 150, false, "https://allpeninsulavaldes.com/sistema/img/excursiones/grandes/263-3.jpg" },
+                    { 4, "Trekking en El Chaltén", 50.00m, "Caminata de montaña en el Parque Nacional Los Glaciares.", 4, 240, false, "https://www.plataforma10.com.ar/viajes/wp-content/uploads/2023/06/trekking.webp" },
+                    { 5, "Visita a la Ruta del Vino en Mendoza", 100.00m, "Tour por las bodegas y viñedos de Mendoza con degustación incluida.", 5, 180, false, "https://media.ambito.com/p/e8fc9ddae9ad73bb1106428b5ecc8df0/adjuntos/239/imagenes/040/285/0040285478/1200x675/smart/ruta-del-vinojpg.jpg" },
+                    { 6, "Navegación por el Delta del Tigre", 40.00m, "Paseo en lancha por los canales del Delta del Tigre.", 6, 120, false, "https://www.patagoniatraveler.com/images/modulos/turismo/excursiones/40/galeria/693_02Banner.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -246,12 +247,12 @@ namespace TourismBackend.Migrations
                 columns: new[] { "Id", "ActivityId", "DepartureDate", "Description", "IsDeleted", "Name", "ReturnDate" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Viaje a Perú con actividades de aventura.", false, "Itinerario de Aventura", new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 2, new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Viaje a Perú con actividades de aventura.", false, "Itinerario de Aventura", new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 3, new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Recorrido cultural por los monumentos más emblemáticos de París.", false, "Tour Cultural por París", new DateTime(2024, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, 4, new DateTime(2024, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Exploración de la Gran Muralla y sitios históricos de China.", false, "Ruta Histórica en China", new DateTime(2024, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, 5, new DateTime(2024, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Visita a los paisajes naturales y culturales de Australia.", false, "Aventura Australiana", new DateTime(2024, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 6, 6, new DateTime(2024, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Viaje guiado a través de los monumentos de la Roma Imperial.", false, "Recorrido por la Roma Antigua", new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, 1, new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Viaje a las Cataratas del Iguazú con actividades de aventura.", false, "Aventura en las Cataratas", new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 2, new DateTime(2024, 12, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "Recorrido por los principales puntos turísticos de Buenos Aires.", false, "Tour Cultural por Buenos Aires", new DateTime(2024, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 3, new DateTime(2024, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Excursión para avistar ballenas y explorar la fauna marina.", false, "Exploración Marina en Puerto Madryn", new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, 4, new DateTime(2024, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), "Caminata de montaña en el Parque Nacional Los Glaciares.", false, "Trekking en El Chaltén", new DateTime(2024, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, 5, new DateTime(2024, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tour por las bodegas y viñedos de Mendoza con degustación incluida.", false, "Ruta del Vino en Mendoza", new DateTime(2024, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 6, 6, new DateTime(2024, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "Paseo en lancha por los canales del Delta del Tigre.", false, "Navegación por el Delta del Tigre", new DateTime(2024, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(

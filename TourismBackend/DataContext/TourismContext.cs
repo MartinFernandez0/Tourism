@@ -36,76 +36,6 @@ namespace TourismBackend.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Datos semilla para pfActivity
-            modelBuilder.Entity<pfActivity>().HasData(
-                new pfActivity
-                {
-                    Id = 1,
-                    ActivityName = "Visita a las Ruinas",
-                    URLimage = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    Duration = 120,
-                    Cost = 50.00m,
-                    Description = "Recorrido por las ruinas antiguas.",
-                    DestinationId = 1,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 2,
-                    ActivityName = "Visita a la Ciudad",
-                    URLimage = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    Duration = 120,
-                    Cost = 50.00m,
-                    Description = "Recorrido por la ciudad antigua.",
-                    DestinationId = 2,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 3,
-                    ActivityName = "Visita a la Montaña",
-                    URLimage = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    Duration = 120,
-                    Cost = 50.00m,
-                    Description = "Recorrido por la montaña antigua.",
-                    DestinationId = 3,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 4,
-                    ActivityName = "Visita a la Playa",
-                    URLimage = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    Duration = 120,
-                    Cost = 50.00m,
-                    Description = "Recorrido por la playa antigua.",
-                    DestinationId = 4,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 5,
-                    ActivityName = "Visita a la Ciudad",
-                    URLimage = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    Duration = 120,
-                    Cost = 50.00m,
-                    Description = "Recorrido por la ciudad antigua.",
-                    DestinationId = 5,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 6,
-                    ActivityName = "Visita a la Ciudad",
-                    URLimage = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    Duration = 120,
-                    Cost = 50.00m,
-                    Description = "Recorrido por la ciudad antigua.",
-                    DestinationId = 6,
-                    IsDeleted = false
-                }
-            );
-
             // Datos semilla para pfAdministrator
             modelBuilder.Entity<pfAdministrator>().HasData(
                 new pfAdministrator
@@ -147,143 +77,6 @@ namespace TourismBackend.DataContext
                     TransactionId = 2,
                     IsDeleted = false
                 }
-            );
-
-            // Datos semilla para pfDestination
-            modelBuilder.Entity<pfDestination>().HasData(
-                new pfDestination
-                {
-                    Id = 1,
-                    Name = "Machu Picchu",
-                    Description = "Antigua ciudad inca.",
-                    URL_image = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    CategoryName = "Cultural",
-                    Country = "Perú",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 2,
-                    Name = "Machu Picchu",
-                    Description = "Antigua ciudad inca.",
-                    URL_image = "https://images.adsttc.com/media/images/5d85/0ef9/284d/d153/e100/0165/newsletter/San_Ignacio_Min%C3%AD_mission_ruins.jpg?1569001197",
-                    CategoryName = "Cultural",
-                    Country = "Perú",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 3,
-                    Name = "Eiffel Tower",
-                    Description = "Icono arquitectónico de París, Francia.",
-                    URL_image = "https://upload.wikimedia.org/wikipedia/commons/a/a8/Eiffel_Tower_Paris_2011.jpg",
-                    CategoryName = "Landmark",
-                    Country = "Francia",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 4,
-                    Name = "Great Wall of China",
-                    Description = "Murallas que se extienden por miles de kilómetros.",
-                    URL_image = "https://upload.wikimedia.org/wikipedia/commons/4/43/Great_Wall_of_China_Mutianyu_Section.jpg",
-                    CategoryName = "Historic",
-                    Country = "China",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 5,
-                    Name = "Sydney Opera House",
-                    Description = "Famoso centro de artes escénicas en Australia.",
-                    URL_image = "https://upload.wikimedia.org/wikipedia/commons/4/4e/Sydney_Opera_House_Sails.jpg",
-                    CategoryName = "Cultural",
-                    Country = "Australia",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 6,
-                    Name = "Colosseum",
-                    Description = "Antiguo anfiteatro romano en el centro de Roma.",
-                    URL_image = "https://upload.wikimedia.org/wikipedia/commons/7/7f/Colosseo_2020.jpg",
-                    CategoryName = "Historic",
-                    Country = "Italia",
-                    ItineraryId = null,
-                    IsDeleted = false
-                }
-
-
-            );
-
-            // Datos semilla para pfItinerary
-            modelBuilder.Entity<pfItinerary>().HasData(
-                new pfItinerary
-                {
-                    Id = 1,
-                    Name = "Itinerario de Aventura",
-                    DepartureDate = new DateTime(2024, 12, 1),
-                    ReturnDate = new DateTime(2024, 12, 15),
-                    Description = "Viaje a Perú con actividades de aventura.",
-                    ActivityId = 1,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 2,
-                    Name = "Itinerario de Aventura",
-                    DepartureDate = new DateTime(2024, 12, 1),
-                    ReturnDate = new DateTime(2024, 12, 15),
-                    Description = "Viaje a Perú con actividades de aventura.",
-                    ActivityId = 2,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 3,
-                    Name = "Tour Cultural por París",
-                    DepartureDate = new DateTime(2024, 12, 5),
-                    ReturnDate = new DateTime(2024, 12, 12),
-                    Description = "Recorrido cultural por los monumentos más emblemáticos de París.",
-                    ActivityId = 3,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 4,
-                    Name = "Ruta Histórica en China",
-                    DepartureDate = new DateTime(2024, 11, 20),
-                    ReturnDate = new DateTime(2024, 12, 3),
-                    Description = "Exploración de la Gran Muralla y sitios históricos de China.",
-                    ActivityId = 4,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 5,
-                    Name = "Aventura Australiana",
-                    DepartureDate = new DateTime(2024, 12, 10),
-                    ReturnDate = new DateTime(2024, 12, 18),
-                    Description = "Visita a los paisajes naturales y culturales de Australia.",
-                    ActivityId = 5,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 6,
-                    Name = "Recorrido por la Roma Antigua",
-                    DepartureDate = new DateTime(2024, 11, 25),
-                    ReturnDate = new DateTime(2024, 12, 5),
-                    Description = "Viaje guiado a través de los monumentos de la Roma Imperial.",
-                    ActivityId = 6,
-                    IsDeleted = false
-                }
-
             );
 
             // Datos semilla para pfReservation
@@ -329,7 +122,210 @@ namespace TourismBackend.DataContext
                     IsDeleted = false
                 }
             );
-        }
 
+            // Datos semilla para pfActivity
+            modelBuilder.Entity<pfActivity>().HasData(
+                new pfActivity
+                {
+                    Id = 1,
+                    ActivityName = "Caminata por las Cataratas del Iguazú",
+                    URLimage = "https://media.tacdn.com/media/attractions-splice-spp-360x240/0a/dd/10/25.jpg",
+                    Duration = 180,
+                    Cost = 75.00m,
+                    Description = "Exploración a pie por los senderos de las Cataratas del Iguazú.",
+                    DestinationId = 1,
+                    IsDeleted = false
+                },
+                new pfActivity
+                {
+                    Id = 2,
+                    ActivityName = "Tour por la Ciudad de Buenos Aires",
+                    URLimage = "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/5f/c2.jpg",
+                    Duration = 240,
+                    Cost = 30.00m,
+                    Description = "Visita guiada por los principales puntos turísticos de la capital.",
+                    DestinationId = 2,
+                    IsDeleted = false
+                },
+                new pfActivity
+                {
+                    Id = 3,
+                    ActivityName = "Avistamiento de Ballenas en Puerto Madryn",
+                    URLimage = "https://allpeninsulavaldes.com/sistema/img/excursiones/grandes/263-3.jpg",
+                    Duration = 150,
+                    Cost = 90.00m,
+                    Description = "Excursión en barco para avistar ballenas y otros animales marinos.",
+                    DestinationId = 3,
+                    IsDeleted = false
+                },
+                new pfActivity
+                {
+                    Id = 4,
+                    ActivityName = "Trekking en El Chaltén",
+                    URLimage = "https://www.plataforma10.com.ar/viajes/wp-content/uploads/2023/06/trekking.webp",
+                    Duration = 240,
+                    Cost = 50.00m,
+                    Description = "Caminata de montaña en el Parque Nacional Los Glaciares.",
+                    DestinationId = 4,
+                    IsDeleted = false
+                },
+                new pfActivity
+                {
+                    Id = 5,
+                    ActivityName = "Visita a la Ruta del Vino en Mendoza",
+                    URLimage = "https://media.ambito.com/p/e8fc9ddae9ad73bb1106428b5ecc8df0/adjuntos/239/imagenes/040/285/0040285478/1200x675/smart/ruta-del-vinojpg.jpg",
+                    Duration = 180,
+                    Cost = 100.00m,
+                    Description = "Tour por las bodegas y viñedos de Mendoza con degustación incluida.",
+                    DestinationId = 5,
+                    IsDeleted = false
+                },
+                new pfActivity
+                {
+                    Id = 6,
+                    ActivityName = "Navegación por el Delta del Tigre",
+                    URLimage = "https://www.patagoniatraveler.com/images/modulos/turismo/excursiones/40/galeria/693_02Banner.jpg",
+                    Duration = 120,
+                    Cost = 40.00m,
+                    Description = "Paseo en lancha por los canales del Delta del Tigre.",
+                    DestinationId = 6,
+                    IsDeleted = false
+                }
+            );
+
+            // Datos semilla para pfDestination
+            modelBuilder.Entity<pfDestination>().HasData(
+                new pfDestination
+                {
+                    Id = 1,
+                    Name = "Cataratas del Iguazú",
+                    Description = "Maravilla natural en la provincia de Misiones.",
+                    URL_image = "https://www.iguazujungle.com/esp/web2/images/Web%20192016.jpg",
+                    CategoryName = "Natural",
+                    Country = "Argentina",
+                    ItineraryId = null,
+                    IsDeleted = false
+                },
+                new pfDestination
+                {
+                    Id = 2,
+                    Name = "Buenos Aires",
+                    Description = "Capital cosmopolita de Argentina con rica vida cultural.",
+                    URL_image = "https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/07/03201757/Ciudades-mas-caras-de-America-Latina-Buenos-Aires.jpg",
+                    CategoryName = "Cultural",
+                    Country = "Argentina",
+                    ItineraryId = null,
+                    IsDeleted = false
+                },
+                new pfDestination
+                {
+                    Id = 3,
+                    Name = "Puerto Madryn",
+                    Description = "Destino destacado para el avistamiento de fauna marina.",
+                    URL_image = "https://contrapunto.digital/madryn/wp-content/uploads/2024/03/puerto-madryn.webp",
+                    CategoryName = "Natural",
+                    Country = "Argentina",
+                    ItineraryId = null,
+                    IsDeleted = false
+                },
+                new pfDestination
+                {
+                    Id = 4,
+                    Name = "El Chaltén",
+                    Description = "Capital nacional del trekking, ubicada en el Parque Nacional Los Glaciares.",
+                    URL_image = "https://imgs1000.s3.sa-east-1.amazonaws.com/arroyo-del-salto2.jpg",
+                    CategoryName = "Natural",
+                    Country = "Argentina",
+                    ItineraryId = null,
+                    IsDeleted = false
+                },
+                new pfDestination
+                {
+                    Id = 5,
+                    Name = "Mendoza",
+                    Description = "Región vinícola famosa por sus bodegas y paisajes andinos.",
+                    URL_image = "https://fotos.perfil.com/2023/07/13/bodega-catena-zapata-1609412.jpg",
+                    CategoryName = "Gastronomical",
+                    Country = "Argentina",
+                    ItineraryId = null,
+                    IsDeleted = false
+                },
+                new pfDestination
+                {
+                    Id = 6,
+                    Name = "Delta del Tigre",
+                    Description = "Hermoso delta con numerosos canales e islas cerca de Buenos Aires.",
+                    URL_image = "https://universes.art/fileadmin/user_upload/Art-Destinations/Argentina/Buenos-Aires/Tigre-Delta/00-IMG_6089-2000-750.jpg",
+                    CategoryName = "Natural",
+                    Country = "Argentina",
+                    ItineraryId = null,
+                    IsDeleted = false
+                }
+            );
+
+            // Datos semilla para pfItinerary
+            modelBuilder.Entity<pfItinerary>().HasData(
+                new pfItinerary
+                {
+                    Id = 1,
+                    Name = "Aventura en las Cataratas",
+                    DepartureDate = new DateTime(2024, 12, 1),
+                    ReturnDate = new DateTime(2024, 12, 5),
+                    Description = "Viaje a las Cataratas del Iguazú con actividades de aventura.",
+                    ActivityId = 1,
+                    IsDeleted = false
+                },
+                new pfItinerary
+                {
+                    Id = 2,
+                    Name = "Tour Cultural por Buenos Aires",
+                    DepartureDate = new DateTime(2024, 12, 7),
+                    ReturnDate = new DateTime(2024, 12, 10),
+                    Description = "Recorrido por los principales puntos turísticos de Buenos Aires.",
+                    ActivityId = 2,
+                    IsDeleted = false
+                },
+                new pfItinerary
+                {
+                    Id = 3,
+                    Name = "Exploración Marina en Puerto Madryn",
+                    DepartureDate = new DateTime(2024, 12, 12),
+                    ReturnDate = new DateTime(2024, 12, 15),
+                    Description = "Excursión para avistar ballenas y explorar la fauna marina.",
+                    ActivityId = 3,
+                    IsDeleted = false
+                },
+                new pfItinerary
+                {
+                    Id = 4,
+                    Name = "Trekking en El Chaltén",
+                    DepartureDate = new DateTime(2024, 12, 17),
+                    ReturnDate = new DateTime(2024, 12, 20),
+                    Description = "Caminata de montaña en el Parque Nacional Los Glaciares.",
+                    ActivityId = 4,
+                    IsDeleted = false
+                },
+                new pfItinerary
+                {
+                    Id = 5,
+                    Name = "Ruta del Vino en Mendoza",
+                    DepartureDate = new DateTime(2024, 12, 22),
+                    ReturnDate = new DateTime(2024, 12, 25),
+                    Description = "Tour por las bodegas y viñedos de Mendoza con degustación incluida.",
+                    ActivityId = 5,
+                    IsDeleted = false
+                },
+                new pfItinerary
+                {
+                    Id = 6,
+                    Name = "Navegación por el Delta del Tigre",
+                    DepartureDate = new DateTime(2024, 12, 27),
+                    ReturnDate = new DateTime(2024, 12, 30),
+                    Description = "Paseo en lancha por los canales del Delta del Tigre.",
+                    ActivityId = 6,
+                    IsDeleted = false
+                }
+            );
+        }
     }
 }
