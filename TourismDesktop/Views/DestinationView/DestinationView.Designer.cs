@@ -38,7 +38,6 @@
             tabPageList = new TabPage();
             dataGridDestinationView = new DataGridView();
             tabPageAddEdit = new TabPage();
-            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             btnCancel = new FontAwesome.Sharp.IconButton();
             btnSave = new FontAwesome.Sharp.IconButton();
             label6 = new Label();
@@ -54,6 +53,7 @@
             label4 = new Label();
             txtFirstName = new TextBox();
             label2 = new Label();
+            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             btnDelete = new FontAwesome.Sharp.IconButton();
             btnModify = new FontAwesome.Sharp.IconButton();
             btnAdd = new FontAwesome.Sharp.IconButton();
@@ -69,7 +69,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(237, 91);
+            label3.Location = new Point(17, 86);
             label3.Name = "label3";
             label3.Size = new Size(113, 15);
             label3.TabIndex = 51;
@@ -77,9 +77,9 @@
             // 
             // txtFilter
             // 
-            txtFilter.Location = new Point(378, 86);
+            txtFilter.Location = new Point(158, 81);
             txtFilter.Name = "txtFilter";
-            txtFilter.Size = new Size(278, 23);
+            txtFilter.Size = new Size(175, 23);
             txtFilter.TabIndex = 50;
             txtFilter.TextChanged += txtFilter_TextChanged;
             // 
@@ -126,10 +126,10 @@
             // 
             tabControl1.Controls.Add(tabPageList);
             tabControl1.Controls.Add(tabPageAddEdit);
-            tabControl1.Location = new Point(15, 94);
+            tabControl1.Location = new Point(12, 125);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(641, 328);
+            tabControl1.Size = new Size(876, 328);
             tabControl1.TabIndex = 44;
             // 
             // tabPageList
@@ -138,7 +138,7 @@
             tabPageList.Location = new Point(4, 24);
             tabPageList.Name = "tabPageList";
             tabPageList.Padding = new Padding(3);
-            tabPageList.Size = new Size(633, 300);
+            tabPageList.Size = new Size(868, 300);
             tabPageList.TabIndex = 0;
             tabPageList.Text = "Lista";
             tabPageList.UseVisualStyleBackColor = true;
@@ -168,7 +168,6 @@
             // 
             // tabPageAddEdit
             // 
-            tabPageAddEdit.Controls.Add(btnSeeEliminated);
             tabPageAddEdit.Controls.Add(btnCancel);
             tabPageAddEdit.Controls.Add(btnSave);
             tabPageAddEdit.Controls.Add(label6);
@@ -187,43 +186,26 @@
             tabPageAddEdit.Location = new Point(4, 24);
             tabPageAddEdit.Name = "tabPageAddEdit";
             tabPageAddEdit.Padding = new Padding(3);
-            tabPageAddEdit.Size = new Size(633, 300);
+            tabPageAddEdit.Size = new Size(868, 300);
             tabPageAddEdit.TabIndex = 1;
             tabPageAddEdit.Text = "Agregar/Editar";
             tabPageAddEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnSeeEliminated
-            // 
-            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnSeeEliminated.IconColor = Color.Black;
-            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSeeEliminated.IconSize = 20;
-            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSeeEliminated.Location = new Point(306, 257);
-            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
-            btnSeeEliminated.Name = "btnSeeEliminated";
-            btnSeeEliminated.Size = new Size(100, 33);
-            btnSeeEliminated.TabIndex = 63;
-            btnSeeEliminated.UseVisualStyleBackColor = true;
-            btnSeeEliminated.Click += btnSeeEliminated_Click;
             // 
             // btnCancel
             // 
             btnCancel.BackColor = Color.Brown;
             btnCancel.FlatStyle = FlatStyle.Popup;
             btnCancel.ForeColor = SystemColors.Control;
-            btnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.Cancel;
             btnCancel.IconColor = Color.Black;
             btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancel.IconSize = 20;
+            btnCancel.IconSize = 30;
             btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(527, 261);
+            btnCancel.Location = new Point(304, 235);
             btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(100, 25);
+            btnCancel.Size = new Size(43, 36);
             btnCancel.TabIndex = 62;
-            btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
@@ -233,24 +215,23 @@
             btnSave.FlatStyle = FlatStyle.Popup;
             btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave.ForeColor = SystemColors.Control;
-            btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnSave.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             btnSave.IconColor = SystemColors.ActiveCaptionText;
             btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSave.IconSize = 20;
+            btnSave.IconSize = 30;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(421, 261);
+            btnSave.Location = new Point(256, 235);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(100, 25);
+            btnSave.Size = new Size(42, 36);
             btnSave.TabIndex = 64;
-            btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(447, 181);
+            label6.Location = new Point(46, 248);
             label6.Name = "label6";
             label6.Size = new Size(116, 15);
             label6.TabIndex = 55;
@@ -258,40 +239,44 @@
             // 
             // CBoxItinerary
             // 
+            CBoxItinerary.BackColor = SystemColors.InactiveCaption;
             CBoxItinerary.FormattingEnabled = true;
-            CBoxItinerary.Location = new Point(421, 199);
+            CBoxItinerary.Location = new Point(20, 266);
             CBoxItinerary.Name = "CBoxItinerary";
             CBoxItinerary.Size = new Size(177, 23);
             CBoxItinerary.TabIndex = 54;
             // 
             // pictureBoxDestinationList
             // 
-            pictureBoxDestinationList.Location = new Point(421, 28);
+            pictureBoxDestinationList.Location = new Point(243, 21);
             pictureBoxDestinationList.Name = "pictureBoxDestinationList";
-            pictureBoxDestinationList.Size = new Size(189, 126);
+            pictureBoxDestinationList.Size = new Size(619, 268);
+            pictureBoxDestinationList.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxDestinationList.TabIndex = 53;
             pictureBoxDestinationList.TabStop = false;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(101, 70);
+            txtDescription.BackColor = SystemColors.InactiveCaption;
+            txtDescription.Location = new Point(6, 75);
             txtDescription.Margin = new Padding(3, 2, 3, 2);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(269, 23);
+            txtDescription.Size = new Size(209, 23);
             txtDescription.TabIndex = 30;
             // 
             // txtCountry
             // 
-            txtCountry.Location = new Point(101, 184);
+            txtCountry.BackColor = SystemColors.InactiveCaption;
+            txtCountry.Location = new Point(6, 220);
             txtCountry.Margin = new Padding(3, 2, 3, 2);
             txtCountry.Name = "txtCountry";
-            txtCountry.Size = new Size(269, 23);
+            txtCountry.Size = new Size(209, 23);
             txtCountry.TabIndex = 29;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(18, 195);
+            label7.Location = new Point(27, 197);
             label7.Name = "label7";
             label7.Size = new Size(31, 15);
             label7.TabIndex = 28;
@@ -299,16 +284,17 @@
             // 
             // txtURL_image
             // 
-            txtURL_image.Location = new Point(101, 107);
+            txtURL_image.BackColor = SystemColors.InactiveCaption;
+            txtURL_image.Location = new Point(6, 124);
             txtURL_image.Margin = new Padding(3, 2, 3, 2);
             txtURL_image.Name = "txtURL_image";
-            txtURL_image.Size = new Size(269, 23);
+            txtURL_image.Size = new Size(209, 23);
             txtURL_image.TabIndex = 27;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(18, 118);
+            label8.Location = new Point(25, 106);
             label8.Name = "label8";
             label8.Size = new Size(67, 15);
             label8.TabIndex = 26;
@@ -316,16 +302,17 @@
             // 
             // txtCategoryName
             // 
-            txtCategoryName.Location = new Point(101, 146);
+            txtCategoryName.BackColor = SystemColors.InactiveCaption;
+            txtCategoryName.Location = new Point(6, 168);
             txtCategoryName.Margin = new Padding(3, 2, 3, 2);
             txtCategoryName.Name = "txtCategoryName";
-            txtCategoryName.Size = new Size(269, 23);
+            txtCategoryName.Size = new Size(209, 23);
             txtCategoryName.TabIndex = 21;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(18, 157);
+            label5.Location = new Point(24, 149);
             label5.Name = "label5";
             label5.Size = new Size(61, 15);
             label5.TabIndex = 20;
@@ -334,7 +321,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(18, 76);
+            label4.Location = new Point(23, 55);
             label4.Name = "label4";
             label4.Size = new Size(72, 15);
             label4.TabIndex = 18;
@@ -342,20 +329,37 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(101, 28);
+            txtFirstName.BackColor = SystemColors.InactiveCaption;
+            txtFirstName.Location = new Point(6, 24);
             txtFirstName.Margin = new Padding(3, 2, 3, 2);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(269, 23);
+            txtFirstName.Size = new Size(209, 23);
             txtFirstName.TabIndex = 15;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 39);
+            label2.Location = new Point(25, 7);
             label2.Name = "label2";
             label2.Size = new Size(54, 15);
             label2.TabIndex = 14;
             label2.Text = "Nombre:";
+            // 
+            // btnSeeEliminated
+            // 
+            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnSeeEliminated.IconColor = Color.Black;
+            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSeeEliminated.IconSize = 20;
+            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSeeEliminated.Location = new Point(348, 77);
+            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
+            btnSeeEliminated.Name = "btnSeeEliminated";
+            btnSeeEliminated.Size = new Size(100, 33);
+            btnSeeEliminated.TabIndex = 63;
+            btnSeeEliminated.UseVisualStyleBackColor = true;
+            btnSeeEliminated.Click += btnSeeEliminated_Click;
             // 
             // btnDelete
             // 
@@ -368,10 +372,10 @@
             btnDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDelete.IconSize = 20;
             btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDelete.Location = new Point(721, 295);
+            btnDelete.Location = new Point(768, 77);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(130, 45);
+            btnDelete.Size = new Size(116, 33);
             btnDelete.TabIndex = 59;
             btnDelete.Text = "Eliminar";
             btnDelete.UseVisualStyleBackColor = false;
@@ -388,10 +392,10 @@
             btnModify.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModify.IconSize = 20;
             btnModify.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModify.Location = new Point(721, 209);
+            btnModify.Location = new Point(623, 77);
             btnModify.Margin = new Padding(3, 2, 3, 2);
             btnModify.Name = "btnModify";
-            btnModify.Size = new Size(130, 45);
+            btnModify.Size = new Size(116, 33);
             btnModify.TabIndex = 58;
             btnModify.Text = "Modificar";
             btnModify.UseVisualStyleBackColor = false;
@@ -408,10 +412,10 @@
             btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAdd.IconSize = 20;
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(721, 121);
+            btnAdd.Location = new Point(473, 77);
             btnAdd.Margin = new Padding(3, 2, 3, 2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(130, 45);
+            btnAdd.Size = new Size(116, 33);
             btnAdd.TabIndex = 57;
             btnAdd.Text = "Agregar";
             btnAdd.UseVisualStyleBackColor = false;
@@ -422,6 +426,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 465);
+            Controls.Add(btnSeeEliminated);
             Controls.Add(btnDelete);
             Controls.Add(label3);
             Controls.Add(btnModify);

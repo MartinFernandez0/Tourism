@@ -186,7 +186,7 @@
             btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSeeEliminated.IconSize = 20;
             btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSeeEliminated.Location = new Point(306, 261);
+            btnSeeEliminated.Location = new Point(732, 366);
             btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
             btnSeeEliminated.Name = "btnSeeEliminated";
             btnSeeEliminated.Size = new Size(100, 33);
@@ -196,7 +196,6 @@
             // 
             // tabPageAddEdit
             // 
-            tabPageAddEdit.Controls.Add(btnSeeEliminated);
             tabPageAddEdit.Controls.Add(label7);
             tabPageAddEdit.Controls.Add(label5);
             tabPageAddEdit.Controls.Add(ReturnDate);
@@ -220,7 +219,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(464, 15);
+            label7.Location = new Point(463, 25);
             label7.Name = "label7";
             label7.Size = new Size(57, 15);
             label7.TabIndex = 63;
@@ -246,14 +245,16 @@
             // 
             // CBoxActivity
             // 
+            CBoxActivity.BackColor = SystemColors.InactiveCaption;
             CBoxActivity.FormattingEnabled = true;
-            CBoxActivity.Location = new Point(339, 38);
+            CBoxActivity.Location = new Point(346, 43);
             CBoxActivity.Name = "CBoxActivity";
             CBoxActivity.Size = new Size(269, 23);
             CBoxActivity.TabIndex = 31;
             // 
             // txtDescription
             // 
+            txtDescription.BackColor = SystemColors.InactiveCaption;
             txtDescription.Location = new Point(100, 80);
             txtDescription.Margin = new Padding(3, 2, 3, 2);
             txtDescription.Name = "txtDescription";
@@ -262,6 +263,7 @@
             // 
             // txtName
             // 
+            txtName.BackColor = SystemColors.InactiveCaption;
             txtName.Location = new Point(100, 38);
             txtName.Margin = new Padding(3, 2, 3, 2);
             txtName.Name = "txtName";
@@ -291,17 +293,15 @@
             btnCancel.BackColor = Color.Brown;
             btnCancel.FlatStyle = FlatStyle.Popup;
             btnCancel.ForeColor = SystemColors.Control;
-            btnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.Cancel;
             btnCancel.IconColor = Color.Black;
             btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancel.IconSize = 20;
-            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(527, 265);
+            btnCancel.IconSize = 30;
+            btnCancel.Location = new Point(566, 246);
             btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(100, 25);
+            btnCancel.Size = new Size(49, 41);
             btnCancel.TabIndex = 17;
-            btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
@@ -311,17 +311,15 @@
             btnSave.FlatStyle = FlatStyle.Popup;
             btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave.ForeColor = SystemColors.Control;
-            btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnSave.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             btnSave.IconColor = SystemColors.ActiveCaptionText;
             btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSave.IconSize = 20;
-            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(421, 265);
+            btnSave.IconSize = 30;
+            btnSave.Location = new Point(511, 245);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(100, 25);
+            btnSave.Size = new Size(49, 42);
             btnSave.TabIndex = 61;
-            btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
@@ -392,6 +390,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 465);
+            Controls.Add(btnSeeEliminated);
             Controls.Add(label3);
             Controls.Add(txtFilter);
             Controls.Add(btnDelete);

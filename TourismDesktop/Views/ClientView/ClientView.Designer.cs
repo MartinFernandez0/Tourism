@@ -169,7 +169,6 @@
             tabPageAddEdit.Controls.Add(txtLastName);
             tabPageAddEdit.Controls.Add(txtPhoneNumber);
             tabPageAddEdit.Controls.Add(label7);
-            tabPageAddEdit.Controls.Add(btnSeeEliminated);
             tabPageAddEdit.Controls.Add(txtDocument);
             tabPageAddEdit.Controls.Add(btnCancel);
             tabPageAddEdit.Controls.Add(btnSave);
@@ -191,6 +190,7 @@
             // 
             // txtLastName
             // 
+            txtLastName.BackColor = SystemColors.InactiveCaption;
             txtLastName.Location = new Point(94, 63);
             txtLastName.Margin = new Padding(3, 2, 3, 2);
             txtLastName.Name = "txtLastName";
@@ -199,6 +199,7 @@
             // 
             // txtPhoneNumber
             // 
+            txtPhoneNumber.BackColor = SystemColors.InactiveCaption;
             txtPhoneNumber.Location = new Point(94, 177);
             txtPhoneNumber.Margin = new Padding(3, 2, 3, 2);
             txtPhoneNumber.Name = "txtPhoneNumber";
@@ -222,7 +223,7 @@
             btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSeeEliminated.IconSize = 20;
             btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSeeEliminated.Location = new Point(303, 258);
+            btnSeeEliminated.Location = new Point(740, 358);
             btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
             btnSeeEliminated.Name = "btnSeeEliminated";
             btnSeeEliminated.Size = new Size(100, 33);
@@ -232,6 +233,7 @@
             // 
             // txtDocument
             // 
+            txtDocument.BackColor = SystemColors.InactiveCaption;
             txtDocument.Location = new Point(94, 100);
             txtDocument.Margin = new Padding(3, 2, 3, 2);
             txtDocument.Name = "txtDocument";
@@ -243,17 +245,15 @@
             btnCancel.BackColor = Color.Brown;
             btnCancel.FlatStyle = FlatStyle.Popup;
             btnCancel.ForeColor = SystemColors.Control;
-            btnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.Cancel;
             btnCancel.IconColor = Color.Black;
             btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancel.IconSize = 20;
-            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(524, 262);
+            btnCancel.IconSize = 30;
+            btnCancel.Location = new Point(565, 252);
             btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(100, 25);
+            btnCancel.Size = new Size(42, 39);
             btnCancel.TabIndex = 62;
-            btnCancel.Text = "Cancelar";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
@@ -263,17 +263,16 @@
             btnSave.FlatStyle = FlatStyle.Popup;
             btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSave.ForeColor = SystemColors.Control;
-            btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnSave.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             btnSave.IconColor = SystemColors.ActiveCaptionText;
             btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSave.IconSize = 20;
+            btnSave.IconSize = 30;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(418, 262);
+            btnSave.Location = new Point(517, 252);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(100, 25);
+            btnSave.Size = new Size(42, 39);
             btnSave.TabIndex = 64;
-            btnSave.Text = "Guardar";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
@@ -306,6 +305,7 @@
             // 
             // txtEmail
             // 
+            txtEmail.BackColor = SystemColors.InactiveCaption;
             txtEmail.Location = new Point(94, 139);
             txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
@@ -332,6 +332,7 @@
             // 
             // txtFirstName
             // 
+            txtFirstName.BackColor = SystemColors.InactiveCaption;
             txtFirstName.Location = new Point(94, 21);
             txtFirstName.Margin = new Padding(3, 2, 3, 2);
             txtFirstName.Name = "txtFirstName";
@@ -415,6 +416,7 @@
             Controls.Add(btnDelete);
             Controls.Add(btnModify);
             Controls.Add(btnAdd);
+            Controls.Add(btnSeeEliminated);
             Controls.Add(label3);
             Controls.Add(txtFilter);
             Controls.Add(panel1);

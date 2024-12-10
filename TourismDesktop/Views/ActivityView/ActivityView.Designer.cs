@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label3 = new Label();
             txtFilter = new TextBox();
             panel1 = new Panel();
@@ -38,31 +38,31 @@
             tabPageList = new TabPage();
             dataGridActivityView = new DataGridView();
             tabPageAddEdit = new TabPage();
-            CBoxDestination = new ComboBox();
-            label8 = new Label();
-            textBox1 = new TextBox();
-            label7 = new Label();
-            numericUpDown2 = new NumericUpDown();
-            label5 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             btnCancel = new FontAwesome.Sharp.IconButton();
             btnSave = new FontAwesome.Sharp.IconButton();
+            label6 = new Label();
+            CBoxDestination = new ComboBox();
+            label8 = new Label();
+            txtDescription = new TextBox();
+            label7 = new Label();
+            NumCost = new NumericUpDown();
+            label5 = new Label();
+            TimeDuration = new NumericUpDown();
             txtURL_image = new TextBox();
             label4 = new Label();
             txtActivityName = new TextBox();
             label2 = new Label();
+            btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             btnDelete = new FontAwesome.Sharp.IconButton();
             btnModify = new FontAwesome.Sharp.IconButton();
             btnAdd = new FontAwesome.Sharp.IconButton();
-            label6 = new Label();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridActivityView).BeginInit();
             tabPageAddEdit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumCost).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TimeDuration).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -81,6 +81,7 @@
             txtFilter.Name = "txtFilter";
             txtFilter.Size = new Size(278, 23);
             txtFilter.TabIndex = 50;
+            txtFilter.TextChanged += txtFilter_TextChanged_1;
             // 
             // panel1
             // 
@@ -149,14 +150,14 @@
             dataGridActivityView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridActivityView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridActivityView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridActivityView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridActivityView.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridActivityView.Location = new Point(0, 0);
             dataGridActivityView.Margin = new Padding(3, 2, 3, 2);
             dataGridActivityView.Name = "dataGridActivityView";
@@ -167,17 +168,16 @@
             // 
             // tabPageAddEdit
             // 
+            tabPageAddEdit.Controls.Add(btnCancel);
+            tabPageAddEdit.Controls.Add(btnSave);
             tabPageAddEdit.Controls.Add(label6);
             tabPageAddEdit.Controls.Add(CBoxDestination);
             tabPageAddEdit.Controls.Add(label8);
-            tabPageAddEdit.Controls.Add(textBox1);
+            tabPageAddEdit.Controls.Add(txtDescription);
             tabPageAddEdit.Controls.Add(label7);
-            tabPageAddEdit.Controls.Add(numericUpDown2);
+            tabPageAddEdit.Controls.Add(NumCost);
             tabPageAddEdit.Controls.Add(label5);
-            tabPageAddEdit.Controls.Add(numericUpDown1);
-            tabPageAddEdit.Controls.Add(btnSeeEliminated);
-            tabPageAddEdit.Controls.Add(btnCancel);
-            tabPageAddEdit.Controls.Add(btnSave);
+            tabPageAddEdit.Controls.Add(TimeDuration);
             tabPageAddEdit.Controls.Add(txtURL_image);
             tabPageAddEdit.Controls.Add(label4);
             tabPageAddEdit.Controls.Add(txtActivityName);
@@ -190,8 +190,55 @@
             tabPageAddEdit.Text = "Agregar/Editar";
             tabPageAddEdit.UseVisualStyleBackColor = true;
             // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Brown;
+            btnCancel.FlatStyle = FlatStyle.Popup;
+            btnCancel.ForeColor = SystemColors.Control;
+            btnCancel.IconChar = FontAwesome.Sharp.IconChar.Cancel;
+            btnCancel.IconColor = Color.Black;
+            btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancel.IconSize = 30;
+            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancel.Location = new Point(568, 257);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(43, 36);
+            btnCancel.TabIndex = 76;
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click_1;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.SeaGreen;
+            btnSave.FlatStyle = FlatStyle.Popup;
+            btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = SystemColors.Control;
+            btnSave.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            btnSave.IconColor = SystemColors.ActiveCaptionText;
+            btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSave.IconSize = 30;
+            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSave.Location = new Point(520, 257);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(42, 36);
+            btnSave.TabIndex = 77;
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click_1;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(498, 15);
+            label6.Name = "label6";
+            label6.Size = new Size(55, 15);
+            label6.TabIndex = 75;
+            label6.Text = "Destinos:";
+            // 
             // CBoxDestination
             // 
+            CBoxDestination.BackColor = SystemColors.InactiveCaption;
             CBoxDestination.FormattingEnabled = true;
             CBoxDestination.Location = new Point(448, 33);
             CBoxDestination.Name = "CBoxDestination";
@@ -207,14 +254,15 @@
             label8.TabIndex = 73;
             label8.Text = "Descripción:";
             // 
-            // textBox1
+            // txtDescription
             // 
-            textBox1.Location = new Point(140, 177);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(269, 65);
-            textBox1.TabIndex = 72;
+            txtDescription.BackColor = SystemColors.InactiveCaption;
+            txtDescription.Location = new Point(140, 177);
+            txtDescription.Margin = new Padding(3, 2, 3, 2);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(269, 65);
+            txtDescription.TabIndex = 72;
             // 
             // label7
             // 
@@ -225,12 +273,13 @@
             label7.TabIndex = 71;
             label7.Text = "COSTO:";
             // 
-            // numericUpDown2
+            // NumCost
             // 
-            numericUpDown2.Location = new Point(140, 134);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(60, 23);
-            numericUpDown2.TabIndex = 70;
+            NumCost.BackColor = SystemColors.InactiveCaption;
+            NumCost.Location = new Point(140, 134);
+            NumCost.Name = "NumCost";
+            NumCost.Size = new Size(60, 23);
+            NumCost.TabIndex = 70;
             // 
             // label5
             // 
@@ -241,69 +290,17 @@
             label5.TabIndex = 69;
             label5.Text = "Cantidad MESES:";
             // 
-            // numericUpDown1
+            // TimeDuration
             // 
-            numericUpDown1.Location = new Point(140, 104);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(60, 23);
-            numericUpDown1.TabIndex = 68;
-            // 
-            // btnSeeEliminated
-            // 
-            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnSeeEliminated.IconColor = Color.Black;
-            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSeeEliminated.IconSize = 20;
-            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSeeEliminated.Location = new Point(304, 259);
-            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
-            btnSeeEliminated.Name = "btnSeeEliminated";
-            btnSeeEliminated.Size = new Size(100, 33);
-            btnSeeEliminated.TabIndex = 66;
-            btnSeeEliminated.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            btnCancel.BackColor = Color.Brown;
-            btnCancel.FlatStyle = FlatStyle.Popup;
-            btnCancel.ForeColor = SystemColors.Control;
-            btnCancel.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnCancel.IconColor = Color.Black;
-            btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancel.IconSize = 20;
-            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(525, 263);
-            btnCancel.Margin = new Padding(3, 2, 3, 2);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(100, 25);
-            btnCancel.TabIndex = 65;
-            btnCancel.Text = "Cancelar";
-            btnCancel.UseVisualStyleBackColor = false;
-            btnCancel.Click += btnCancel_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.SeaGreen;
-            btnSave.FlatStyle = FlatStyle.Popup;
-            btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSave.ForeColor = SystemColors.Control;
-            btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnSave.IconColor = SystemColors.ActiveCaptionText;
-            btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSave.IconSize = 20;
-            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(419, 263);
-            btnSave.Margin = new Padding(3, 2, 3, 2);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(100, 25);
-            btnSave.TabIndex = 67;
-            btnSave.Text = "Guardar";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
+            TimeDuration.BackColor = SystemColors.InactiveCaption;
+            TimeDuration.Location = new Point(140, 104);
+            TimeDuration.Name = "TimeDuration";
+            TimeDuration.Size = new Size(60, 23);
+            TimeDuration.TabIndex = 68;
             // 
             // txtURL_image
             // 
+            txtURL_image.BackColor = SystemColors.InactiveCaption;
             txtURL_image.Location = new Point(140, 65);
             txtURL_image.Margin = new Padding(3, 2, 3, 2);
             txtURL_image.Name = "txtURL_image";
@@ -321,6 +318,7 @@
             // 
             // txtActivityName
             // 
+            txtActivityName.BackColor = SystemColors.InactiveCaption;
             txtActivityName.Location = new Point(140, 33);
             txtActivityName.Margin = new Padding(3, 2, 3, 2);
             txtActivityName.Name = "txtActivityName";
@@ -335,6 +333,21 @@
             label2.Size = new Size(107, 15);
             label2.TabIndex = 14;
             label2.Text = "Nombre Actividad:";
+            // 
+            // btnSeeEliminated
+            // 
+            btnSeeEliminated.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSeeEliminated.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnSeeEliminated.IconColor = Color.Black;
+            btnSeeEliminated.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSeeEliminated.IconSize = 20;
+            btnSeeEliminated.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSeeEliminated.Location = new Point(732, 358);
+            btnSeeEliminated.Margin = new Padding(3, 2, 3, 2);
+            btnSeeEliminated.Name = "btnSeeEliminated";
+            btnSeeEliminated.Size = new Size(100, 33);
+            btnSeeEliminated.TabIndex = 66;
+            btnSeeEliminated.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
@@ -396,15 +409,6 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(498, 15);
-            label6.Name = "label6";
-            label6.Size = new Size(55, 15);
-            label6.TabIndex = 75;
-            label6.Text = "Destinos:";
-            // 
             // ActivityView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -417,6 +421,7 @@
             Controls.Add(txtFilter);
             Controls.Add(panel1);
             Controls.Add(tabControl1);
+            Controls.Add(btnSeeEliminated);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ActivityView";
             StartPosition = FormStartPosition.CenterScreen;
@@ -428,8 +433,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridActivityView).EndInit();
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumCost).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TimeDuration).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -453,15 +458,15 @@
         private FontAwesome.Sharp.IconButton btnModify;
         private FontAwesome.Sharp.IconButton btnAdd;
         private FontAwesome.Sharp.IconButton btnSeeEliminated;
-        private FontAwesome.Sharp.IconButton btnCancel;
-        private FontAwesome.Sharp.IconButton btnSave;
         private Label label5;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown TimeDuration;
         private Label label8;
-        private TextBox textBox1;
+        private TextBox txtDescription;
         private Label label7;
-        private NumericUpDown numericUpDown2;
+        private NumericUpDown NumCost;
         private ComboBox CBoxDestination;
         private Label label6;
+        private FontAwesome.Sharp.IconButton btnCancel;
+        private FontAwesome.Sharp.IconButton btnSave;
     }
 }

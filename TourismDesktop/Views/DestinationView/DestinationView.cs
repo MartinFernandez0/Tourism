@@ -141,7 +141,7 @@ namespace TourismDesktop.Views
 
                     await DestinationService.UpdateAsync(pfDestination);
                     await LoadGrid();
-                    MessageBox.Show("Destino ocultado correctamente");
+                    MessageBox.Show("Destino eliminado correctamente");
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace TourismDesktop.Views
         #region BtnSaveCandel
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            var pfDesination = new pfDestination
+            var pfDestination = new pfDestination
             {
                 Name = txtFirstName.Text,
                 Description = txtDescription.Text,
@@ -172,14 +172,14 @@ namespace TourismDesktop.Views
 
                 DestinationCurrent.ItineraryId = (int)CBoxItinerary.SelectedValue;
 
-                await DestinationService.UpdateAsync(pfDesination);
+                await DestinationService.UpdateAsync(DestinationCurrent);
                 MessageBox.Show("Destino modificado correctamente");
 
                 DestinationCurrent = null;
             }
             else
             {
-                await DestinationService.AddAsync(pfDesination);
+                await DestinationService.AddAsync(pfDestination);
                 MessageBox.Show("Destino agregado correctamente");
             }
 
