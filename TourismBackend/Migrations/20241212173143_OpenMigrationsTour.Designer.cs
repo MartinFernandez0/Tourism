@@ -12,8 +12,8 @@ using TourismBackend.DataContext;
 namespace TourismBackend.Migrations
 {
     [DbContext(typeof(TourismContext))]
-    [Migration("20241212024424_Open")]
-    partial class Open
+    [Migration("20241212173143_OpenMigrationsTour")]
+    partial class OpenMigrationsTour
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace TourismBackend.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("DestinationId")
+                    b.Property<int?>("DestinationId")
                         .HasColumnType("int");
 
                     b.Property<int>("Duration")
@@ -210,6 +210,9 @@ namespace TourismBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("PreferenceTransport")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ReservationDate")
                         .HasColumnType("datetime(6)");
 
@@ -256,10 +259,11 @@ namespace TourismBackend.Migrations
                             PaymentMethod = 0,
                             PhoneNumber = "987654321",
                             PostalCode = "12345",
-                            ReservationDate = new DateTime(2024, 12, 11, 23, 44, 21, 362, DateTimeKind.Local).AddTicks(542),
+                            PreferenceTransport = 0,
+                            ReservationDate = new DateTime(2024, 12, 12, 14, 31, 39, 397, DateTimeKind.Local).AddTicks(5214),
                             ReservationStatus = 0,
                             TotalAmount = 150000.00m,
-                            TransactionDate = new DateTime(2024, 12, 11, 23, 44, 21, 362, DateTimeKind.Local).AddTicks(555)
+                            TransactionDate = new DateTime(2024, 12, 12, 14, 31, 39, 397, DateTimeKind.Local).AddTicks(5230)
                         });
                 });
 
@@ -335,7 +339,7 @@ namespace TourismBackend.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("DestinationId")
+                    b.Property<int?>("DestinationId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -377,73 +381,12 @@ namespace TourismBackend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TourismServices.Models.pfTravel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ActivityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DestinationId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("ItineraryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("TravelName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityId");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("DestinationId");
-
-                    b.HasIndex("ItineraryId");
-
-                    b.ToTable("pfTravels");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ActivityId = 1,
-                            ClientId = 1,
-                            DestinationId = 1,
-                            EndDate = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
-                            ItineraryId = 1,
-                            StartDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TravelName = "Viaje a las Cataratas del Iguazú"
-                        });
-                });
-
             modelBuilder.Entity("TourismServices.Models.pfActivity", b =>
                 {
                     b.HasOne("TourismServices.Models.pfDestination", "Destination")
                         .WithMany("Activities")
                         .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Destination");
                 });
@@ -474,45 +417,9 @@ namespace TourismBackend.Migrations
                     b.HasOne("TourismServices.Models.pfDestination", "Destination")
                         .WithMany("Itineraries")
                         .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Destination");
-                });
-
-            modelBuilder.Entity("TourismServices.Models.pfTravel", b =>
-                {
-                    b.HasOne("TourismServices.Models.pfActivity", "Activity")
-                        .WithMany()
-                        .HasForeignKey("ActivityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TourismServices.Models.pfClient", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TourismServices.Models.pfDestination", "Destination")
-                        .WithMany()
-                        .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TourismServices.Models.pfItinerary", "Itinerary")
-                        .WithMany()
-                        .HasForeignKey("ItineraryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Activity");
-
-                    b.Navigation("Client");
-
-                    b.Navigation("Destination");
-
-                    b.Navigation("Itinerary");
                 });
 
             modelBuilder.Entity("TourismServices.Models.pfDestination", b =>

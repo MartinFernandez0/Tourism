@@ -79,6 +79,15 @@ namespace TourismDesktop.Views
             var clients = await ClientService.GetAllAsync();
             ListClient.DataSource = clients?.Where(i => !i.IsDeleted).ToList();
             Filterlist = (List<pfClient>)ListClient.DataSource;
+
+            // Ocultar la primera columna (por índice)
+            dataGridClientView.Columns[0].Visible = false;
+            dataGridClientView.Columns[15].Visible = false;
+            dataGridClientView.Columns[17].Visible = false;
+            dataGridClientView.Columns[22].Visible = false;
+            dataGridClientView.Columns[28].Visible = false;
+
+            dataGridClientView.Columns[27].DefaultCellStyle.Format = "N2";
         }
         #endregion
 
@@ -194,6 +203,9 @@ namespace TourismDesktop.Views
                 }
             }
         }
+        #endregion
+
+        #region Save Cancel
         private async void btnSave_Click(object sender, EventArgs e)
         {
             // Obtener valores de los controles
@@ -334,6 +346,7 @@ namespace TourismDesktop.Views
             ListClient.DataSource = new BindingSource(filteredClient, null);
         }
         #endregion
+
     }
 }
 

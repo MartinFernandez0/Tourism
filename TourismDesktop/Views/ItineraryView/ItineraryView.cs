@@ -49,6 +49,11 @@ namespace TourismDesktop.Views
             var itineraries = await ItineraryService.GetAllAsync();
             ListItinerary.DataSource = itineraries?.Where(i => !i.IsDeleted).ToList();
             FilterList = (List<pfItinerary>)ListItinerary.DataSource;
+
+            //Ocultar Columns
+            dataGridItineraryView.Columns[0].Visible = false;
+            dataGridItineraryView.Columns[5].Visible = false;
+            dataGridItineraryView.Columns[7].Visible = false;
         }
         #endregion
 

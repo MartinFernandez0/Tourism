@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TourismBackend.Migrations
 {
     /// <inheritdoc />
-    public partial class Open : Migration
+    public partial class OpenMigrationsTour : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,7 +78,7 @@ namespace TourismBackend.Migrations
                     Cost = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Description = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DestinationId = table.Column<int>(type: "int", nullable: false),
+                    DestinationId = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -105,7 +105,7 @@ namespace TourismBackend.Migrations
                     ReturnDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Description = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DestinationId = table.Column<int>(type: "int", nullable: false),
+                    DestinationId = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -148,6 +148,7 @@ namespace TourismBackend.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AccommodationPreference = table.Column<int>(type: "int", nullable: false),
                     FoodPreference = table.Column<int>(type: "int", nullable: false),
+                    PreferenceTransport = table.Column<int>(type: "int", nullable: false),
                     DestinationId = table.Column<int>(type: "int", nullable: true),
                     ActivityId = table.Column<int>(type: "int", nullable: true),
                     NumberOfPeople = table.Column<int>(type: "int", nullable: false),
@@ -178,52 +179,6 @@ namespace TourismBackend.Migrations
                         column: x => x.ItineraryId,
                         principalTable: "pfItineraries",
                         principalColumn: "Id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "pfTravels",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    TravelName = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: false),
-                    DestinationId = table.Column<int>(type: "int", nullable: false),
-                    ItineraryId = table.Column<int>(type: "int", nullable: false),
-                    ActivityId = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_pfTravels", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_pfTravels_pfActivities_ActivityId",
-                        column: x => x.ActivityId,
-                        principalTable: "pfActivities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_pfTravels_pfClients_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "pfClients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_pfTravels_pfDestinations_DestinationId",
-                        column: x => x.DestinationId,
-                        principalTable: "pfDestinations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_pfTravels_pfItineraries_ItineraryId",
-                        column: x => x.ItineraryId,
-                        principalTable: "pfItineraries",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -261,13 +216,8 @@ namespace TourismBackend.Migrations
 
             migrationBuilder.InsertData(
                 table: "pfClients",
-                columns: new[] { "Id", "AccommodationPreference", "ActivityId", "Address", "Birthdate", "City", "Country", "CustomerGender", "DestinationId", "Document", "Email", "FirstName", "FoodPreference", "IsDeleted", "ItineraryId", "LastName", "NumberOfPeople", "PaymentConfirmation", "PaymentMethod", "PhoneNumber", "PostalCode", "ReservationDate", "ReservationStatus", "TotalAmount", "TransactionDate" },
-                values: new object[] { 1, 0, 1, "Calle Falsa 123", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Springfield", "Estados Unidos", 1, 1, "12345678", "ana.gomez@example.com", "Ana", 0, false, 1, "Gómez", 2, 1, 0, "987654321", "12345", new DateTime(2024, 12, 11, 23, 44, 21, 362, DateTimeKind.Local).AddTicks(542), 0, 150000.00m, new DateTime(2024, 12, 11, 23, 44, 21, 362, DateTimeKind.Local).AddTicks(555) });
-
-            migrationBuilder.InsertData(
-                table: "pfTravels",
-                columns: new[] { "Id", "ActivityId", "ClientId", "DestinationId", "EndDate", "IsDeleted", "ItineraryId", "StartDate", "TravelName" },
-                values: new object[] { 1, 1, 1, 1, new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), false, 1, new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Viaje a las Cataratas del Iguazú" });
+                columns: new[] { "Id", "AccommodationPreference", "ActivityId", "Address", "Birthdate", "City", "Country", "CustomerGender", "DestinationId", "Document", "Email", "FirstName", "FoodPreference", "IsDeleted", "ItineraryId", "LastName", "NumberOfPeople", "PaymentConfirmation", "PaymentMethod", "PhoneNumber", "PostalCode", "PreferenceTransport", "ReservationDate", "ReservationStatus", "TotalAmount", "TransactionDate" },
+                values: new object[] { 1, 0, 1, "Calle Falsa 123", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Springfield", "Estados Unidos", 1, 1, "12345678", "ana.gomez@example.com", "Ana", 0, false, 1, "Gómez", 2, 1, 0, "987654321", "12345", 0, new DateTime(2024, 12, 12, 14, 31, 39, 397, DateTimeKind.Local).AddTicks(5214), 0, 150000.00m, new DateTime(2024, 12, 12, 14, 31, 39, 397, DateTimeKind.Local).AddTicks(5230) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_pfActivities_DestinationId",
@@ -293,26 +243,6 @@ namespace TourismBackend.Migrations
                 name: "IX_pfItineraries_DestinationId",
                 table: "pfItineraries",
                 column: "DestinationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pfTravels_ActivityId",
-                table: "pfTravels",
-                column: "ActivityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pfTravels_ClientId",
-                table: "pfTravels",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pfTravels_DestinationId",
-                table: "pfTravels",
-                column: "DestinationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pfTravels_ItineraryId",
-                table: "pfTravels",
-                column: "ItineraryId");
         }
 
         /// <inheritdoc />
@@ -320,9 +250,6 @@ namespace TourismBackend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "pfAdministrators");
-
-            migrationBuilder.DropTable(
-                name: "pfTravels");
 
             migrationBuilder.DropTable(
                 name: "pfClients");

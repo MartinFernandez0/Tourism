@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using TourismServices.Interfaces;
 using TourismServices.Models;
@@ -42,6 +43,8 @@ namespace TourismDesktop.Views.ActivityView
         {
             this.Close();
         }
+
+
         #region LoadDate ComboBox
         private async Task LoadComboBox()
         {
@@ -56,6 +59,17 @@ namespace TourismDesktop.Views.ActivityView
             var activities = await ActivityService.GetAllAsync();
             ListActivity.DataSource = activities?.Where(i => !i.IsDeleted).ToList();
             FilterList = (List<pfActivity>)ListActivity.DataSource;
+
+            // Ocultar columnas por índice
+            if (dataGridActivityView.Columns.Count > 0)
+            {
+                //Ocultar la primera columna(por índice)
+                dataGridActivityView.Columns[0].Visible = false;
+                dataGridActivityView.Columns[6].Visible = false;
+                dataGridActivityView.Columns[8].Visible = false;
+
+                dataGridActivityView.Columns[4].DefaultCellStyle.Format = "N2";
+            }
         }
 
         #endregion
@@ -88,19 +102,15 @@ namespace TourismDesktop.Views.ActivityView
             FilterList = (List<pfActivity>)ListActivity.DataSource;
             showingDeleted = !showingDeleted;
         }
-        #endregion
-
-        #region C.R.U.D
         private void btnAdd_Click(object sender, EventArgs e)
         {
             txtActivityName.Text = string.Empty;
             txtURL_image.Text = string.Empty;
             txtDescription.Text = string.Empty;
-            TimeDuration.Value = 0;
+            NumDuration.Value = 0;
             NumCost.Value = 0;
 
             tabControl1.SelectTab(tabPageAddEdit);
-
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -110,7 +120,7 @@ namespace TourismDesktop.Views.ActivityView
             txtActivityName.Text = ActivityCurrent.ActivityName;
             txtDescription.Text = ActivityCurrent.Description;
             txtURL_image.Text = ActivityCurrent.URLimage;
-            TimeDuration.Value = ActivityCurrent.Duration;
+            NumDuration.Value = ActivityCurrent.Duration;
             NumCost.Value = ActivityCurrent.Cost;
 
             tabControl1.SelectTab(tabPageAddEdit);

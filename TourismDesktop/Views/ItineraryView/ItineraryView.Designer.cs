@@ -39,6 +39,7 @@
             label1 = new Label();
             btnSeeEliminated = new FontAwesome.Sharp.IconButton();
             tabPageAddEdit = new TabPage();
+            pictureBox1 = new PictureBox();
             label7 = new Label();
             label5 = new Label();
             ReturnDate = new DateTimePicker();
@@ -56,6 +57,7 @@
             tabControl1 = new TabControl();
             panel1.SuspendLayout();
             tabPageAddEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridItineraryView).BeginInit();
             tabControl1.SuspendLayout();
@@ -196,6 +198,7 @@
             // 
             // tabPageAddEdit
             // 
+            tabPageAddEdit.Controls.Add(pictureBox1);
             tabPageAddEdit.Controls.Add(label7);
             tabPageAddEdit.Controls.Add(label5);
             tabPageAddEdit.Controls.Add(ReturnDate);
@@ -215,6 +218,16 @@
             tabPageAddEdit.TabIndex = 1;
             tabPageAddEdit.Text = "Agregar/Editar";
             tabPageAddEdit.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.WEB_LOGO;
+            pictureBox1.Location = new Point(359, 72);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(251, 163);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 79;
+            pictureBox1.TabStop = false;
             // 
             // label7
             // 
@@ -297,7 +310,7 @@
             btnCancel.IconColor = Color.Black;
             btnCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancel.IconSize = 30;
-            btnCancel.Location = new Point(566, 246);
+            btnCancel.Location = new Point(554, 242);
             btnCancel.Margin = new Padding(3, 2, 3, 2);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(49, 41);
@@ -315,7 +328,7 @@
             btnSave.IconColor = SystemColors.ActiveCaptionText;
             btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSave.IconSize = 30;
-            btnSave.Location = new Point(511, 245);
+            btnSave.Location = new Point(375, 240);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(49, 42);
@@ -357,7 +370,7 @@
             dataGridItineraryView.AllowUserToAddRows = false;
             dataGridItineraryView.AllowUserToDeleteRows = false;
             dataGridItineraryView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridItineraryView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridItineraryView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridItineraryView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -372,7 +385,7 @@
             dataGridItineraryView.Name = "dataGridItineraryView";
             dataGridItineraryView.ReadOnly = true;
             dataGridItineraryView.RowHeadersWidth = 51;
-            dataGridItineraryView.Size = new Size(608, 219);
+            dataGridItineraryView.Size = new Size(633, 300);
             dataGridItineraryView.TabIndex = 16;
             // 
             // tabControl1
@@ -406,6 +419,7 @@
             panel1.PerformLayout();
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabPageList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridItineraryView).EndInit();
             tabControl1.ResumeLayout(false);
@@ -440,5 +454,6 @@
         private TabPage tabPageList;
         private DataGridView dataGridItineraryView;
         private TabControl tabControl1;
+        private PictureBox pictureBox1;
     }
 }

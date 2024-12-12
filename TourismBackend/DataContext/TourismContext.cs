@@ -20,7 +20,6 @@ namespace TourismBackend.DataContext
         public DbSet<pfActivity> pfActivities { get; set; }
         public DbSet<pfDestination> pfDestinations { get; set; }
         public DbSet<pfItinerary> pfItineraries { get; set; }
-        public DbSet<pfTravel> pfTravels { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -177,24 +176,6 @@ namespace TourismBackend.DataContext
 
                     IsDeleted = false
                 }
-            );
-
-
-            // Datos semilla para pfTravel
-            modelBuilder.Entity<pfTravel>().HasData(
-                new pfTravel
-                {
-                    Id = 1,
-                    TravelName = "Viaje a las Cataratas del Iguazú",
-                    StartDate = new DateTime(2024, 12, 1),
-                    EndDate = new DateTime(2024, 12, 5),
-                    ClientId = 1,
-                    DestinationId = 1,
-                    ItineraryId = 1,
-                    ActivityId = 1,
-                    IsDeleted = false
-                }
-
             );
         }
     }

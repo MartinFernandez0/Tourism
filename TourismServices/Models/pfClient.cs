@@ -39,8 +39,9 @@ namespace TourismServices.Models
         //Information Tourist
         public AccommodationPreferenceEnum AccommodationPreference { get; set; }
         public FoodPreferenceEnum FoodPreference { get; set; }
+        public PreferenceTransportEnum PreferenceTransport { get; set; }
 
-            // Relación con Destinos
+        // Relación con Destinos
         public int? DestinationId { get; set; }
         public virtual pfDestination? Destination { get; set; }
 

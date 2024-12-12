@@ -50,6 +50,12 @@ namespace TourismDesktop.Views
             var destinations = await DestinationService.GetAllAsync();
             ListDestination.DataSource = destinations?.Where(i => !i.IsDeleted).ToList();
             FilterList = (List<pfDestination>)ListDestination.DataSource;
+
+            // Ocultar la primera columna (por índice)
+            dataGridDestinationView.Columns[0].Visible = false;
+            dataGridDestinationView.Columns[6].Visible = false;
+            dataGridDestinationView.Columns[7].Visible = false;
+            dataGridDestinationView.Columns[8].Visible = false;
         }
 
         #endregion

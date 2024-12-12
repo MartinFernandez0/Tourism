@@ -148,7 +148,7 @@
             dataGridDestinationView.AllowUserToAddRows = false;
             dataGridDestinationView.AllowUserToDeleteRows = false;
             dataGridDestinationView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridDestinationView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridDestinationView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridDestinationView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -163,7 +163,7 @@
             dataGridDestinationView.Name = "dataGridDestinationView";
             dataGridDestinationView.ReadOnly = true;
             dataGridDestinationView.RowHeadersWidth = 51;
-            dataGridDestinationView.Size = new Size(633, 298);
+            dataGridDestinationView.Size = new Size(868, 298);
             dataGridDestinationView.TabIndex = 16;
             // 
             // tabPageAddEdit

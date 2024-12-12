@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label3 = new Label();
             txtFilter = new TextBox();
             panel1 = new Panel();
@@ -38,6 +38,7 @@
             tabPageList = new TabPage();
             dataGridActivityView = new DataGridView();
             tabPageAddEdit = new TabPage();
+            pictureBox1 = new PictureBox();
             btnCancel = new FontAwesome.Sharp.IconButton();
             btnSave = new FontAwesome.Sharp.IconButton();
             label6 = new Label();
@@ -47,7 +48,7 @@
             label7 = new Label();
             NumCost = new NumericUpDown();
             label5 = new Label();
-            TimeDuration = new NumericUpDown();
+            NumDuration = new NumericUpDown();
             txtURL_image = new TextBox();
             label4 = new Label();
             txtActivityName = new TextBox();
@@ -61,8 +62,9 @@
             tabPageList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridActivityView).BeginInit();
             tabPageAddEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumCost).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)TimeDuration).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumDuration).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -148,16 +150,16 @@
             dataGridActivityView.AllowUserToAddRows = false;
             dataGridActivityView.AllowUserToDeleteRows = false;
             dataGridActivityView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridActivityView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridActivityView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridActivityView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridActivityView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridActivityView.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridActivityView.Location = new Point(0, 0);
             dataGridActivityView.Margin = new Padding(3, 2, 3, 2);
             dataGridActivityView.Name = "dataGridActivityView";
@@ -168,6 +170,7 @@
             // 
             // tabPageAddEdit
             // 
+            tabPageAddEdit.Controls.Add(pictureBox1);
             tabPageAddEdit.Controls.Add(btnCancel);
             tabPageAddEdit.Controls.Add(btnSave);
             tabPageAddEdit.Controls.Add(label6);
@@ -177,7 +180,7 @@
             tabPageAddEdit.Controls.Add(label7);
             tabPageAddEdit.Controls.Add(NumCost);
             tabPageAddEdit.Controls.Add(label5);
-            tabPageAddEdit.Controls.Add(TimeDuration);
+            tabPageAddEdit.Controls.Add(NumDuration);
             tabPageAddEdit.Controls.Add(txtURL_image);
             tabPageAddEdit.Controls.Add(label4);
             tabPageAddEdit.Controls.Add(txtActivityName);
@@ -189,6 +192,16 @@
             tabPageAddEdit.TabIndex = 1;
             tabPageAddEdit.Text = "Agregar/Editar";
             tabPageAddEdit.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.WEB_LOGO;
+            pictureBox1.Location = new Point(415, 81);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(212, 141);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 78;
+            pictureBox1.TabStop = false;
             // 
             // btnCancel
             // 
@@ -219,7 +232,7 @@
             btnSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSave.IconSize = 30;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(520, 257);
+            btnSave.Location = new Point(448, 256);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(42, 36);
@@ -276,7 +289,9 @@
             // NumCost
             // 
             NumCost.BackColor = SystemColors.InactiveCaption;
+            NumCost.DecimalPlaces = 2;
             NumCost.Location = new Point(140, 134);
+            NumCost.Maximum = new decimal(new int[] { -1486618624, 232830643, 0, 0 });
             NumCost.Name = "NumCost";
             NumCost.Size = new Size(60, 23);
             NumCost.TabIndex = 70;
@@ -290,13 +305,15 @@
             label5.TabIndex = 69;
             label5.Text = "Cantidad MESES:";
             // 
-            // TimeDuration
+            // NumDuration
             // 
-            TimeDuration.BackColor = SystemColors.InactiveCaption;
-            TimeDuration.Location = new Point(140, 104);
-            TimeDuration.Name = "TimeDuration";
-            TimeDuration.Size = new Size(60, 23);
-            TimeDuration.TabIndex = 68;
+            NumDuration.BackColor = SystemColors.InactiveCaption;
+            NumDuration.DecimalPlaces = 2;
+            NumDuration.Location = new Point(140, 104);
+            NumDuration.Maximum = new decimal(new int[] { -1486618624, 232830643, 0, 0 });
+            NumDuration.Name = "NumDuration";
+            NumDuration.Size = new Size(60, 23);
+            NumDuration.TabIndex = 68;
             // 
             // txtURL_image
             // 
@@ -433,8 +450,9 @@
             ((System.ComponentModel.ISupportInitialize)dataGridActivityView).EndInit();
             tabPageAddEdit.ResumeLayout(false);
             tabPageAddEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumCost).EndInit();
-            ((System.ComponentModel.ISupportInitialize)TimeDuration).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumDuration).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -468,5 +486,7 @@
         private Label label6;
         private FontAwesome.Sharp.IconButton btnCancel;
         private FontAwesome.Sharp.IconButton btnSave;
+        private PictureBox pictureBox1;
+        private NumericUpDown NumDuration;
     }
 }

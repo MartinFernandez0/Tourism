@@ -1,7 +1,6 @@
 
 using TourismDesktop.Views;
 using TourismDesktop.Views.ActivityView;
-using TourismDesktop.Views.TravelView;
 
 namespace TourismDesktop
 {
@@ -77,17 +76,6 @@ namespace TourismDesktop
         {
             ActivityView activityView = new ActivityView();
             activityView.ShowDialog();
-        }
-
-        private void btnNewTravel_Click(object sender, EventArgs e)
-        {
-            TravelView travelView = new TravelView();
-            travelView.ShowDialog();
-        }
-
-        private void btnTravelList_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
