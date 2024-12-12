@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TourismDesktop.Views.Trips
+namespace TourismDesktop.Views.TravelView
 {
-    public partial class TripsView : Form
+    public partial class TravelView : Form
     {
-        public TripsView()
+        public TravelView()
         {
             InitializeComponent();
         }

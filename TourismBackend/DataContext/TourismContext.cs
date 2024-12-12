@@ -20,9 +20,7 @@ namespace TourismBackend.DataContext
         public DbSet<pfActivity> pfActivities { get; set; }
         public DbSet<pfDestination> pfDestinations { get; set; }
         public DbSet<pfItinerary> pfItineraries { get; set; }
-        public DbSet<pfReservation> pfReservations { get; set; }
-        public DbSet<pfTransaction> pfTransactions { get; set; }
-
+        public DbSet<pfTravel> pfTravels { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,6 +34,22 @@ namespace TourismBackend.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Configuracion de modelos
+
+            //Configurar la relación uno a muchos entre pfDestination y pfItinerary
+            modelBuilder.Entity<pfItinerary>()
+                .HasOne(i => i.Destination)
+                .WithMany(d => d.Itineraries)
+                .HasForeignKey(i => i.DestinationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            // Configurar la relación uno a muchos entre pfDestination y pfActivity
+            modelBuilder.Entity<pfActivity>()
+                .HasOne(a => a.Destination)
+                .WithMany(d => d.Activities)
+                .HasForeignKey(a => a.DestinationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             // Datos semilla para pfAdministrator
             modelBuilder.Entity<pfAdministrator>().HasData(
                 new pfAdministrator
@@ -49,75 +63,56 @@ namespace TourismBackend.DataContext
                 }
             );
 
-            // Datos semilla para pfClient
-            modelBuilder.Entity<pfClient>().HasData(
-                new pfClient
+
+            // Datos semilla para pfDestination
+            modelBuilder.Entity<pfDestination>().HasData(
+                new pfDestination
                 {
                     Id = 1,
-                    FirstName = "Ana",
-                    LastName = "Gómez",
-                    Document = "12345678",
-                    Email = "ana.gomez@example.com",
-                    PhoneNumber = "987654321",
-                    DateBirth = new DateTime(1990, 1, 1),
+                    Name = "Cataratas del Iguazú",
+                    Description = "Maravilla natural en la provincia de Misiones.",
+                    URL_image = "https://www.iguazujungle.com/esp/web2/images/Web%20192016.jpg",
+                    CategoryName = "Natural",
+                    Country = "Argentina",
                     IsDeleted = false
                 },
-                new pfClient
+                new pfDestination
                 {
                     Id = 2,
-                    FirstName = "Juan",
-                    LastName = "Pérez",
-                    Document = "87654321",
-                    Email = "juanperez@example.com",
-                    PhoneNumber = "123456789",
-                    DateBirth = new DateTime(1990, 1, 1),
+                    Name = "Buenos Aires",
+                    Description = "Capital cosmopolita de Argentina con rica vida cultural.",
+                    URL_image = "https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/07/03201757/Ciudades-mas-caras-de-America-Latina-Buenos-Aires.jpg",
+                    CategoryName = "Cultural",
+                    Country = "Argentina",
                     IsDeleted = false
                 }
             );
 
-            // Datos semilla para pfReservation
-            modelBuilder.Entity<pfReservation>().HasData(
-                new pfReservation
+            // Datos semilla para pfItinerary
+            modelBuilder.Entity<pfItinerary>().HasData(
+                new pfItinerary
                 {
                     Id = 1,
-                    ReservationDate = new DateTime(2024, 11, 2),
-                    ReservationStatus = ReservationStatusEnum.Confirmed,
-                    ItineraryId = 1,
+                    Name = "Aventura en las Cataratas",
+                    DepartureDate = new DateTime(2024, 12, 1),
+                    ReturnDate = new DateTime(2024, 12, 5),
+                    Description = "Viaje a las Cataratas del Iguazú con actividades de aventura.",
                     DestinationId = 1,
                     IsDeleted = false
                 },
-                new pfReservation
+
+                new pfItinerary
                 {
                     Id = 2,
-                    ReservationDate = new DateTime(2024, 11, 2),
-                    ReservationStatus = ReservationStatusEnum.Confirmed,
-                    ItineraryId = 2,
+                    Name = "Cultura en Buenos Aires",
+                    DepartureDate = new DateTime(2024, 12, 10),
+                    ReturnDate = new DateTime(2024, 12, 15),
+                    Description = "Viaje a Buenos Aires con actividades culturales.",
                     DestinationId = 2,
                     IsDeleted = false
                 }
             );
 
-            // Datos semilla para pfTransaction
-            modelBuilder.Entity<pfTransaction>().HasData(
-                new pfTransaction
-                {
-                    Id = 1,
-                    Amount = 100.00m,
-                    TransactionDate = new DateTime(2024, 11, 3),
-                    PaymentMethod = PaymentMethodEnum.CreditCard,
-                    PaymentConfirmation = PaymentConfirmationEnum.Confirmed,
-                    IsDeleted = false
-                },
-                new pfTransaction
-                {
-                    Id = 2,
-                    Amount = 100.00m,
-                    TransactionDate = new DateTime(2024, 11, 3),
-                    PaymentMethod = PaymentMethodEnum.CreditCard,
-                    PaymentConfirmation = PaymentConfirmationEnum.Confirmed,
-                    IsDeleted = false
-                }
-            );
 
             // Datos semilla para pfActivity
             modelBuilder.Entity<pfActivity>().HasData(
@@ -132,195 +127,74 @@ namespace TourismBackend.DataContext
                     DestinationId = 1,
                     IsDeleted = false
                 },
+
                 new pfActivity
                 {
                     Id = 2,
-                    ActivityName = "Tour por la Ciudad de Buenos Aires",
+                    ActivityName = "Visita a la Casa Rosada",
                     URLimage = "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/5f/c2.jpg",
-                    Duration = 240,
-                    Cost = 30.00m,
-                    Description = "Visita guiada por los principales puntos turísticos de la capital.",
+                    Duration = 120,
+                    Cost = 50.00m,
+                    Description = "Visita a la Casa Rosada de Buenos Aires.",
                     DestinationId = 2,
                     IsDeleted = false
-                },
-                new pfActivity
+                }
+            );
+
+
+            // Datos semilla para pfClient
+            modelBuilder.Entity<pfClient>().HasData(
+                new pfClient
                 {
-                    Id = 3,
-                    ActivityName = "Avistamiento de Ballenas en Puerto Madryn",
-                    URLimage = "https://allpeninsulavaldes.com/sistema/img/excursiones/grandes/263-3.jpg",
-                    Duration = 150,
-                    Cost = 90.00m,
-                    Description = "Excursión en barco para avistar ballenas y otros animales marinos.",
-                    DestinationId = 3,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 4,
-                    ActivityName = "Trekking en El Chaltén",
-                    URLimage = "https://www.plataforma10.com.ar/viajes/wp-content/uploads/2023/06/trekking.webp",
-                    Duration = 240,
-                    Cost = 50.00m,
-                    Description = "Caminata de montaña en el Parque Nacional Los Glaciares.",
-                    DestinationId = 4,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 5,
-                    ActivityName = "Visita a la Ruta del Vino en Mendoza",
-                    URLimage = "https://media.ambito.com/p/e8fc9ddae9ad73bb1106428b5ecc8df0/adjuntos/239/imagenes/040/285/0040285478/1200x675/smart/ruta-del-vinojpg.jpg",
-                    Duration = 180,
-                    Cost = 100.00m,
-                    Description = "Tour por las bodegas y viñedos de Mendoza con degustación incluida.",
-                    DestinationId = 5,
-                    IsDeleted = false
-                },
-                new pfActivity
-                {
-                    Id = 6,
-                    ActivityName = "Navegación por el Delta del Tigre",
-                    URLimage = "https://www.patagoniatraveler.com/images/modulos/turismo/excursiones/40/galeria/693_02Banner.jpg",
-                    Duration = 120,
-                    Cost = 40.00m,
-                    Description = "Paseo en lancha por los canales del Delta del Tigre.",
-                    DestinationId = 6,
+                    Id = 1,
+                    FirstName = "Ana",
+                    LastName = "Gómez",
+                    Document = "12345678",
+                    Birthdate = new DateTime(1990, 1, 1),
+                    CustomerGender = CustomerGenderEnum.Femenino,
+
+                    Email = "ana.gomez@example.com",
+                    PhoneNumber = "987654321",
+                    Address = "Calle Falsa 123",
+                    City = "Springfield",
+                    Country = "Estados Unidos",
+                    PostalCode = "12345",
+
+                    AccommodationPreference = AccommodationPreferenceEnum.Hotel,
+                    FoodPreference = FoodPreferenceEnum.Vegetariano,
+                    DestinationId = 1,
+                    ActivityId = 1,
+
+                    NumberOfPeople = 2,
+                    ReservationDate = DateTime.Now,
+                    ReservationStatus = ReservationStatusEnum.Confirmado,
+                    ItineraryId = 1,
+
+                    PaymentMethod = PaymentMethodEnum.Efectivo,
+                    PaymentConfirmation = PaymentConfirmationEnum.Confirmado,
+                    TransactionDate = DateTime.Now,
+                    TotalAmount = 150000.00m,
+
                     IsDeleted = false
                 }
             );
 
-            // Datos semilla para pfDestination
-            modelBuilder.Entity<pfDestination>().HasData(
-                new pfDestination
-                {
-                    Id = 1,
-                    Name = "Cataratas del Iguazú",
-                    Description = "Maravilla natural en la provincia de Misiones.",
-                    URL_image = "https://www.iguazujungle.com/esp/web2/images/Web%20192016.jpg",
-                    CategoryName = "Natural",
-                    Country = "Argentina",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 2,
-                    Name = "Buenos Aires",
-                    Description = "Capital cosmopolita de Argentina con rica vida cultural.",
-                    URL_image = "https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/07/03201757/Ciudades-mas-caras-de-America-Latina-Buenos-Aires.jpg",
-                    CategoryName = "Cultural",
-                    Country = "Argentina",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 3,
-                    Name = "Puerto Madryn",
-                    Description = "Destino destacado para el avistamiento de fauna marina.",
-                    URL_image = "https://contrapunto.digital/madryn/wp-content/uploads/2024/03/puerto-madryn.webp",
-                    CategoryName = "Natural",
-                    Country = "Argentina",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 4,
-                    Name = "El Chaltén",
-                    Description = "Capital nacional del trekking, ubicada en el Parque Nacional Los Glaciares.",
-                    URL_image = "https://imgs1000.s3.sa-east-1.amazonaws.com/arroyo-del-salto2.jpg",
-                    CategoryName = "Natural",
-                    Country = "Argentina",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 5,
-                    Name = "Mendoza",
-                    Description = "Región vinícola famosa por sus bodegas y paisajes andinos.",
-                    URL_image = "https://fotos.perfil.com/2023/07/13/bodega-catena-zapata-1609412.jpg",
-                    CategoryName = "Gastronomical",
-                    Country = "Argentina",
-                    ItineraryId = null,
-                    IsDeleted = false
-                },
-                new pfDestination
-                {
-                    Id = 6,
-                    Name = "Delta del Tigre",
-                    Description = "Hermoso delta con numerosos canales e islas cerca de Buenos Aires.",
-                    URL_image = "https://universes.art/fileadmin/user_upload/Art-Destinations/Argentina/Buenos-Aires/Tigre-Delta/00-IMG_6089-2000-750.jpg",
-                    CategoryName = "Natural",
-                    Country = "Argentina",
-                    ItineraryId = null,
-                    IsDeleted = false
-                }
-            );
 
-            // Datos semilla para pfItinerary
-            modelBuilder.Entity<pfItinerary>().HasData(
-                new pfItinerary
+            // Datos semilla para pfTravel
+            modelBuilder.Entity<pfTravel>().HasData(
+                new pfTravel
                 {
                     Id = 1,
-                    Name = "Aventura en las Cataratas",
-                    DepartureDate = new DateTime(2024, 12, 1),
-                    ReturnDate = new DateTime(2024, 12, 5),
-                    Description = "Viaje a las Cataratas del Iguazú con actividades de aventura.",
+                    TravelName = "Viaje a las Cataratas del Iguazú",
+                    StartDate = new DateTime(2024, 12, 1),
+                    EndDate = new DateTime(2024, 12, 5),
+                    ClientId = 1,
+                    DestinationId = 1,
+                    ItineraryId = 1,
                     ActivityId = 1,
                     IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 2,
-                    Name = "Tour Cultural por Buenos Aires",
-                    DepartureDate = new DateTime(2024, 12, 7),
-                    ReturnDate = new DateTime(2024, 12, 10),
-                    Description = "Recorrido por los principales puntos turísticos de Buenos Aires.",
-                    ActivityId = 2,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 3,
-                    Name = "Exploración Marina en Puerto Madryn",
-                    DepartureDate = new DateTime(2024, 12, 12),
-                    ReturnDate = new DateTime(2024, 12, 15),
-                    Description = "Excursión para avistar ballenas y explorar la fauna marina.",
-                    ActivityId = 3,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 4,
-                    Name = "Trekking en El Chaltén",
-                    DepartureDate = new DateTime(2024, 12, 17),
-                    ReturnDate = new DateTime(2024, 12, 20),
-                    Description = "Caminata de montaña en el Parque Nacional Los Glaciares.",
-                    ActivityId = 4,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 5,
-                    Name = "Ruta del Vino en Mendoza",
-                    DepartureDate = new DateTime(2024, 12, 22),
-                    ReturnDate = new DateTime(2024, 12, 25),
-                    Description = "Tour por las bodegas y viñedos de Mendoza con degustación incluida.",
-                    ActivityId = 5,
-                    IsDeleted = false
-                },
-                new pfItinerary
-                {
-                    Id = 6,
-                    Name = "Navegación por el Delta del Tigre",
-                    DepartureDate = new DateTime(2024, 12, 27),
-                    ReturnDate = new DateTime(2024, 12, 30),
-                    Description = "Paseo en lancha por los canales del Delta del Tigre.",
-                    ActivityId = 6,
-                    IsDeleted = false
                 }
+
             );
         }
     }

@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TourismServices.Models;
 
 namespace TourismServices.Enums
 {
-    public enum ExpenseCategoryEnum
+    public enum CustomerGenderEnum
     {
-        Accommodation,
-        Food,
-        Transportation,
-        Activities,
-        Others
+        Masculino,
+        Femenino
     }
-
 }

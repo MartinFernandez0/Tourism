@@ -9,9 +9,9 @@ using TourismServices.Models;
 
 namespace TourismServices.Services
 {
-    public class ReservationService : GenericService<pfReservation>, IReservationService
+    public class TravelService : GenericService<pfTravel>, ITravelService
     {
-        public async Task<List<pfReservation>?> GetAllAsync(string? filtro)
+        public async Task<List<pfTravel>?> GetAllAsync(string? filtro)
         {
             var response = await client.GetAsync($"{_endpoint}?filtro={filtro}");
             var content = await response.Content.ReadAsStringAsync();
@@ -19,20 +19,24 @@ namespace TourismServices.Services
             {
                 throw new ApplicationException(content?.ToString());
             }
-            return JsonSerializer.Deserialize<List<pfReservation>>(content, options); ;
+            return JsonSerializer.Deserialize<List<pfTravel>>(content, options); ;
         }
-        public async Task<List<pfReservation>?> GetAllDeletedAsync(string? filtro)
+
+        public async Task<List<pfTravel>?> GetAllDeletedAsync(string? filtro)
         {
             var response = await client.GetAsync($"{_endpoint}?filtro={filtro}");
             var content = await response.Content.ReadAsStringAsync();
+
             if (!response.IsSuccessStatusCode)
             {
                 throw new ApplicationException(content?.ToString());
             }
-            //Deserializamos las actividades
-            var reservations = JsonSerializer.Deserialize<List<pfReservation>>(content, options);
-            //Filtramos las actividades eliminadas (IsDeleted = true)
-            return reservations?.Where(a => a.IsDeleted).ToList();
+
+            //Deserializamos los viajes
+            var travels = JsonSerializer.Deserialize<List<pfTravel>>(content, options);
+
+            //Filtramos los viajes eliminadas (IsDeleted = true)
+            return travels?.Where(a => a.IsDeleted).ToList();
         }
     }
 }

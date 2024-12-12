@@ -105,7 +105,7 @@ namespace TourismDesktop.Views
             DepartureDate.Value = ItineraryCurrent.DepartureDate;
             ReturnDate.Value = ItineraryCurrent.ReturnDate;
 
-            CBoxActivity.SelectedValue = ItineraryCurrent.ActivityId;
+            //CBoxActivity.SelectedValue = ItineraryCurrent.ActivityId;
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
@@ -138,7 +138,7 @@ namespace TourismDesktop.Views
                 DepartureDate = DepartureDate.Value,
                 ReturnDate = ReturnDate.Value,
 
-                ActivityId = (int)CBoxActivity.SelectedValue
+                //ActivityId = (int)CBoxActivity.SelectedValue
 
             };
 
@@ -150,7 +150,7 @@ namespace TourismDesktop.Views
                 ItineraryCurrent.DepartureDate = DepartureDate.Value;
                 ItineraryCurrent.ReturnDate = ReturnDate.Value;
 
-                ItineraryCurrent.ActivityId = (int)CBoxActivity.SelectedValue;
+                //ItineraryCurrent.ActivityId = (int)CBoxActivity.SelectedValue;
 
                 await ItineraryService.UpdateAsync(ItineraryCurrent);
                 MessageBox.Show("Itinerario modificado correctamente");

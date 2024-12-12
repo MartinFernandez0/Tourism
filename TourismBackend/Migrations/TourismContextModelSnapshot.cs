@@ -38,7 +38,6 @@ namespace TourismBackend.Migrations
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("DestinationId")
@@ -51,7 +50,6 @@ namespace TourismBackend.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("URLimage")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -75,57 +73,13 @@ namespace TourismBackend.Migrations
                         new
                         {
                             Id = 2,
-                            ActivityName = "Tour por la Ciudad de Buenos Aires",
-                            Cost = 30.00m,
-                            Description = "Visita guiada por los principales puntos turísticos de la capital.",
-                            DestinationId = 2,
-                            Duration = 240,
-                            IsDeleted = false,
-                            URLimage = "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/5f/c2.jpg"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ActivityName = "Avistamiento de Ballenas en Puerto Madryn",
-                            Cost = 90.00m,
-                            Description = "Excursión en barco para avistar ballenas y otros animales marinos.",
-                            DestinationId = 3,
-                            Duration = 150,
-                            IsDeleted = false,
-                            URLimage = "https://allpeninsulavaldes.com/sistema/img/excursiones/grandes/263-3.jpg"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ActivityName = "Trekking en El Chaltén",
+                            ActivityName = "Visita a la Casa Rosada",
                             Cost = 50.00m,
-                            Description = "Caminata de montaña en el Parque Nacional Los Glaciares.",
-                            DestinationId = 4,
-                            Duration = 240,
-                            IsDeleted = false,
-                            URLimage = "https://www.plataforma10.com.ar/viajes/wp-content/uploads/2023/06/trekking.webp"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ActivityName = "Visita a la Ruta del Vino en Mendoza",
-                            Cost = 100.00m,
-                            Description = "Tour por las bodegas y viñedos de Mendoza con degustación incluida.",
-                            DestinationId = 5,
-                            Duration = 180,
-                            IsDeleted = false,
-                            URLimage = "https://media.ambito.com/p/e8fc9ddae9ad73bb1106428b5ecc8df0/adjuntos/239/imagenes/040/285/0040285478/1200x675/smart/ruta-del-vinojpg.jpg"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ActivityName = "Navegación por el Delta del Tigre",
-                            Cost = 40.00m,
-                            Description = "Paseo en lancha por los canales del Delta del Tigre.",
-                            DestinationId = 6,
+                            Description = "Visita a la Casa Rosada de Buenos Aires.",
+                            DestinationId = 2,
                             Duration = 120,
                             IsDeleted = false,
-                            URLimage = "https://www.patagoniatraveler.com/images/modulos/turismo/excursiones/40/galeria/693_02Banner.jpg"
+                            URLimage = "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/70/5f/c2.jpg"
                         });
                 });
 
@@ -184,8 +138,32 @@ namespace TourismBackend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DateBirth")
+                    b.Property<int>("AccommodationPreference")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ActivityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Birthdate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("CustomerGender")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DestinationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Document")
                         .IsRequired()
@@ -199,18 +177,55 @@ namespace TourismBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("FoodPreference")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("ItineraryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("NumberOfPeople")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentConfirmation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentMethod")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("ReservationDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("ReservationStatus")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("datetime(6)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ActivityId");
+
+                    b.HasIndex("DestinationId");
+
+                    b.HasIndex("ItineraryId");
 
                     b.ToTable("pfClients");
 
@@ -218,24 +233,30 @@ namespace TourismBackend.Migrations
                         new
                         {
                             Id = 1,
-                            DateBirth = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            AccommodationPreference = 0,
+                            ActivityId = 1,
+                            Address = "Calle Falsa 123",
+                            Birthdate = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            City = "Springfield",
+                            Country = "Estados Unidos",
+                            CustomerGender = 1,
+                            DestinationId = 1,
                             Document = "12345678",
                             Email = "ana.gomez@example.com",
                             FirstName = "Ana",
+                            FoodPreference = 0,
                             IsDeleted = false,
+                            ItineraryId = 1,
                             LastName = "Gómez",
-                            PhoneNumber = "987654321"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DateBirth = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Document = "87654321",
-                            Email = "juanperez@example.com",
-                            FirstName = "Juan",
-                            IsDeleted = false,
-                            LastName = "Pérez",
-                            PhoneNumber = "123456789"
+                            NumberOfPeople = 2,
+                            PaymentConfirmation = 1,
+                            PaymentMethod = 0,
+                            PhoneNumber = "987654321",
+                            PostalCode = "12345",
+                            ReservationDate = new DateTime(2024, 12, 11, 23, 44, 21, 362, DateTimeKind.Local).AddTicks(542),
+                            ReservationStatus = 0,
+                            TotalAmount = 150000.00m,
+                            TransactionDate = new DateTime(2024, 12, 11, 23, 44, 21, 362, DateTimeKind.Local).AddTicks(555)
                         });
                 });
 
@@ -262,9 +283,6 @@ namespace TourismBackend.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("ItineraryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -274,8 +292,6 @@ namespace TourismBackend.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ItineraryId");
 
                     b.ToTable("pfDestinations");
 
@@ -299,46 +315,6 @@ namespace TourismBackend.Migrations
                             IsDeleted = false,
                             Name = "Buenos Aires",
                             URL_image = "https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/07/03201757/Ciudades-mas-caras-de-America-Latina-Buenos-Aires.jpg"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryName = "Natural",
-                            Country = "Argentina",
-                            Description = "Destino destacado para el avistamiento de fauna marina.",
-                            IsDeleted = false,
-                            Name = "Puerto Madryn",
-                            URL_image = "https://contrapunto.digital/madryn/wp-content/uploads/2024/03/puerto-madryn.webp"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryName = "Natural",
-                            Country = "Argentina",
-                            Description = "Capital nacional del trekking, ubicada en el Parque Nacional Los Glaciares.",
-                            IsDeleted = false,
-                            Name = "El Chaltén",
-                            URL_image = "https://imgs1000.s3.sa-east-1.amazonaws.com/arroyo-del-salto2.jpg"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryName = "Gastronomical",
-                            Country = "Argentina",
-                            Description = "Región vinícola famosa por sus bodegas y paisajes andinos.",
-                            IsDeleted = false,
-                            Name = "Mendoza",
-                            URL_image = "https://fotos.perfil.com/2023/07/13/bodega-catena-zapata-1609412.jpg"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryName = "Natural",
-                            Country = "Argentina",
-                            Description = "Hermoso delta con numerosos canales e islas cerca de Buenos Aires.",
-                            IsDeleted = false,
-                            Name = "Delta del Tigre",
-                            URL_image = "https://universes.art/fileadmin/user_upload/Art-Destinations/Argentina/Buenos-Aires/Tigre-Delta/00-IMG_6089-2000-750.jpg"
                         });
                 });
 
@@ -350,15 +326,14 @@ namespace TourismBackend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ActivityId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int>("DestinationId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -372,7 +347,7 @@ namespace TourismBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ActivityId");
+                    b.HasIndex("DestinationId");
 
                     b.ToTable("pfItineraries");
 
@@ -380,9 +355,9 @@ namespace TourismBackend.Migrations
                         new
                         {
                             Id = 1,
-                            ActivityId = 1,
                             DepartureDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Viaje a las Cataratas del Iguazú con actividades de aventura.",
+                            DestinationId = 1,
                             IsDeleted = false,
                             Name = "Aventura en las Cataratas",
                             ReturnDate = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -390,56 +365,16 @@ namespace TourismBackend.Migrations
                         new
                         {
                             Id = 2,
-                            ActivityId = 2,
-                            DepartureDate = new DateTime(2024, 12, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Recorrido por los principales puntos turísticos de Buenos Aires.",
+                            DepartureDate = new DateTime(2024, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Viaje a Buenos Aires con actividades culturales.",
+                            DestinationId = 2,
                             IsDeleted = false,
-                            Name = "Tour Cultural por Buenos Aires",
-                            ReturnDate = new DateTime(2024, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ActivityId = 3,
-                            DepartureDate = new DateTime(2024, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Excursión para avistar ballenas y explorar la fauna marina.",
-                            IsDeleted = false,
-                            Name = "Exploración Marina en Puerto Madryn",
+                            Name = "Cultura en Buenos Aires",
                             ReturnDate = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ActivityId = 4,
-                            DepartureDate = new DateTime(2024, 12, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Caminata de montaña en el Parque Nacional Los Glaciares.",
-                            IsDeleted = false,
-                            Name = "Trekking en El Chaltén",
-                            ReturnDate = new DateTime(2024, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ActivityId = 5,
-                            DepartureDate = new DateTime(2024, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Tour por las bodegas y viñedos de Mendoza con degustación incluida.",
-                            IsDeleted = false,
-                            Name = "Ruta del Vino en Mendoza",
-                            ReturnDate = new DateTime(2024, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ActivityId = 6,
-                            DepartureDate = new DateTime(2024, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Paseo en lancha por los canales del Delta del Tigre.",
-                            IsDeleted = false,
-                            Name = "Navegación por el Delta del Tigre",
-                            ReturnDate = new DateTime(2024, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
-            modelBuilder.Entity("TourismServices.Models.pfReservation", b =>
+            modelBuilder.Entity("TourismServices.Models.pfTravel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -447,129 +382,75 @@ namespace TourismBackend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("DestinationId")
+                    b.Property<int>("ActivityId")
                         .HasColumnType("int");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DestinationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("ItineraryId")
+                    b.Property<int>("ItineraryId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReservationDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("ReservationStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("TravelName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ActivityId");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("DestinationId");
 
                     b.HasIndex("ItineraryId");
 
-                    b.ToTable("pfReservations");
+                    b.ToTable("pfTravels");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            ActivityId = 1,
+                            ClientId = 1,
                             DestinationId = 1,
+                            EndDate = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             ItineraryId = 1,
-                            ReservationDate = new DateTime(2024, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReservationStatus = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DestinationId = 2,
-                            IsDeleted = false,
-                            ItineraryId = 2,
-                            ReservationDate = new DateTime(2024, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReservationStatus = 0
-                        });
-                });
-
-            modelBuilder.Entity("TourismServices.Models.pfTransaction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("PaymentConfirmation")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PaymentMethod")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("pfTransactions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Amount = 100.00m,
-                            IsDeleted = false,
-                            PaymentConfirmation = 1,
-                            PaymentMethod = 1,
-                            TransactionDate = new DateTime(2024, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Amount = 100.00m,
-                            IsDeleted = false,
-                            PaymentConfirmation = 1,
-                            PaymentMethod = 1,
-                            TransactionDate = new DateTime(2024, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TravelName = "Viaje a las Cataratas del Iguazú"
                         });
                 });
 
             modelBuilder.Entity("TourismServices.Models.pfActivity", b =>
                 {
                     b.HasOne("TourismServices.Models.pfDestination", "Destination")
-                        .WithMany()
+                        .WithMany("Activities")
                         .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Destination");
                 });
 
-            modelBuilder.Entity("TourismServices.Models.pfDestination", b =>
-                {
-                    b.HasOne("TourismServices.Models.pfItinerary", "Itinerary")
-                        .WithMany()
-                        .HasForeignKey("ItineraryId");
-
-                    b.Navigation("Itinerary");
-                });
-
-            modelBuilder.Entity("TourismServices.Models.pfItinerary", b =>
+            modelBuilder.Entity("TourismServices.Models.pfClient", b =>
                 {
                     b.HasOne("TourismServices.Models.pfActivity", "Activity")
                         .WithMany()
                         .HasForeignKey("ActivityId");
 
-                    b.Navigation("Activity");
-                });
-
-            modelBuilder.Entity("TourismServices.Models.pfReservation", b =>
-                {
                     b.HasOne("TourismServices.Models.pfDestination", "Destination")
                         .WithMany()
                         .HasForeignKey("DestinationId");
@@ -578,9 +459,64 @@ namespace TourismBackend.Migrations
                         .WithMany()
                         .HasForeignKey("ItineraryId");
 
+                    b.Navigation("Activity");
+
                     b.Navigation("Destination");
 
                     b.Navigation("Itinerary");
+                });
+
+            modelBuilder.Entity("TourismServices.Models.pfItinerary", b =>
+                {
+                    b.HasOne("TourismServices.Models.pfDestination", "Destination")
+                        .WithMany("Itineraries")
+                        .HasForeignKey("DestinationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Destination");
+                });
+
+            modelBuilder.Entity("TourismServices.Models.pfTravel", b =>
+                {
+                    b.HasOne("TourismServices.Models.pfActivity", "Activity")
+                        .WithMany()
+                        .HasForeignKey("ActivityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TourismServices.Models.pfClient", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TourismServices.Models.pfDestination", "Destination")
+                        .WithMany()
+                        .HasForeignKey("DestinationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TourismServices.Models.pfItinerary", "Itinerary")
+                        .WithMany()
+                        .HasForeignKey("ItineraryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Activity");
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Destination");
+
+                    b.Navigation("Itinerary");
+                });
+
+            modelBuilder.Entity("TourismServices.Models.pfDestination", b =>
+                {
+                    b.Navigation("Activities");
+
+                    b.Navigation("Itineraries");
                 });
 #pragma warning restore 612, 618
         }

@@ -42,7 +42,7 @@ namespace TourismDesktop.Views
             CBoxItinerary.DataSource = await ItineraryService.GetAllAsync();
             CBoxItinerary.DisplayMember = "Name";
             CBoxItinerary.ValueMember = "Id";
-            CBoxItinerary.SelectedIndex = 0;
+            CBoxItinerary.SelectedIndex = 0;  
         }
 
         private async Task LoadGrid()
@@ -105,7 +105,7 @@ namespace TourismDesktop.Views
             txtCategoryName.Text = DestinationCurrent.CategoryName;
             txtCountry.Text = DestinationCurrent.Country;
 
-            CBoxItinerary.SelectedValue = DestinationCurrent.ItineraryId;
+            //CBoxItinerary.SelectedValue = DestinationCurrent.ItineraryId;
 
 
             //Image List addEditt
@@ -158,7 +158,7 @@ namespace TourismDesktop.Views
                 CategoryName = txtCategoryName.Text,
                 Country = txtCountry.Text,
 
-                ItineraryId = (int)CBoxItinerary.SelectedValue
+                //ItineraryId = (int)CBoxItinerary.SelectedValue
             };
 
             if (DestinationCurrent != null)
@@ -170,7 +170,7 @@ namespace TourismDesktop.Views
                 DestinationCurrent.CategoryName = txtCategoryName.Text;
                 DestinationCurrent.Country = txtCountry.Text;
 
-                DestinationCurrent.ItineraryId = (int)CBoxItinerary.SelectedValue;
+                //DestinationCurrent.ItineraryId = (int)CBoxItinerary.SelectedValue;
 
                 await DestinationService.UpdateAsync(DestinationCurrent);
                 MessageBox.Show("Destino modificado correctamente");

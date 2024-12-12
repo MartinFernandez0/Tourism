@@ -12,10 +12,10 @@ namespace TourismServices.Models
     {
         public int Id { get; set; }
         public string ActivityName { get; set; }
-        public string URLimage { get; set; }
+        public string? URLimage { get; set; }
         public int Duration { get; set; }
         public decimal Cost { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         // Relación con Destino
         public int DestinationId { get; set; }

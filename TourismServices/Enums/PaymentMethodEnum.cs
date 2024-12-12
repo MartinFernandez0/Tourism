@@ -8,12 +8,12 @@ namespace TourismServices.Enums
 {
     public enum PaymentMethodEnum
     {
-        Cash,
-        CreditCard,
-        DebitCard,
-        BankTransfer,
+        Efectivo,
+        TarjetaDeCredito,
+        TarjetaDeDebito,
+        TransferenciaBancaria,
         PayPal,
-        Others
+        Otros
     }
 
 }

@@ -8,10 +8,9 @@ namespace TourismServices.Enums
 {
     public enum PaymentConfirmationEnum
     {
-        Pending,
-        Confirmed,
-        Rejected,
-        Refunded
+        Pendiente,
+        Confirmado,
+        Rechazado,
+        Reembolsado
     }
-
 }

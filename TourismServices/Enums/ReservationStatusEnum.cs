@@ -8,8 +8,8 @@ namespace TourismServices.Enums
 {
     public enum ReservationStatusEnum
     {
-        Confirmed,
-        Pending,
-        Cancelled
+        Confirmado,
+        Pendiente,
+        Cancelado
     }
 }

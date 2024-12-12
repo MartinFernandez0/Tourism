@@ -35,6 +35,7 @@
             label1 = new Label();
             menubutton = new FontAwesome.Sharp.IconPictureBox();
             panel3 = new Panel();
+            btnNewTravel = new FontAwesome.Sharp.IconButton();
             label2 = new Label();
             btnItineraryMain = new FontAwesome.Sharp.IconButton();
             btnDestinationMain = new FontAwesome.Sharp.IconButton();
@@ -45,17 +46,16 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnClientMain = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
-            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             btnCloseMain = new FontAwesome.Sharp.IconPictureBox();
             sidebarTimer = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
-            btnTrips = new FontAwesome.Sharp.IconButton();
+            btnTravelList = new FontAwesome.Sharp.IconButton();
+            label3 = new Label();
             sidebar.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menubutton).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseMain).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -70,10 +70,10 @@
             sidebar.Dock = DockStyle.Left;
             sidebar.FlowDirection = FlowDirection.TopDown;
             sidebar.Location = new Point(0, 0);
-            sidebar.MaximumSize = new Size(240, 465);
+            sidebar.MaximumSize = new Size(385, 554);
             sidebar.MinimumSize = new Size(64, 465);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(240, 465);
+            sidebar.Size = new Size(385, 554);
             sidebar.TabIndex = 2;
             // 
             // panel1
@@ -83,7 +83,7 @@
             panel1.Cursor = Cursors.Hand;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(237, 59);
+            panel1.Size = new Size(382, 59);
             panel1.TabIndex = 3;
             // 
             // label1
@@ -91,7 +91,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Rockwell", 14F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(69, 21);
+            label1.Location = new Point(145, 16);
             label1.Name = "label1";
             label1.Size = new Size(147, 21);
             label1.TabIndex = 3;
@@ -114,7 +114,9 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(btnTrips);
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(btnTravelList);
+            panel3.Controls.Add(btnNewTravel);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(btnItineraryMain);
             panel3.Controls.Add(btnDestinationMain);
@@ -127,15 +129,38 @@
             panel3.Cursor = Cursors.Hand;
             panel3.Location = new Point(3, 68);
             panel3.Name = "panel3";
-            panel3.Size = new Size(237, 327);
+            panel3.Size = new Size(382, 418);
             panel3.TabIndex = 4;
+            // 
+            // btnNewTravel
+            // 
+            btnNewTravel.BackColor = Color.Teal;
+            btnNewTravel.Cursor = Cursors.Hand;
+            btnNewTravel.FlatAppearance.BorderSize = 0;
+            btnNewTravel.FlatStyle = FlatStyle.Popup;
+            btnNewTravel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNewTravel.ForeColor = Color.Transparent;
+            btnNewTravel.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnNewTravel.IconColor = Color.White;
+            btnNewTravel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnNewTravel.IconSize = 30;
+            btnNewTravel.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNewTravel.Location = new Point(81, 98);
+            btnNewTravel.Margin = new Padding(8, 15, 3, 3);
+            btnNewTravel.Name = "btnNewTravel";
+            btnNewTravel.Padding = new Padding(7, 0, 0, 0);
+            btnNewTravel.Size = new Size(100, 34);
+            btnNewTravel.TabIndex = 16;
+            btnNewTravel.Text = "Nuevo Viaje";
+            btnNewTravel.UseVisualStyleBackColor = false;
+            btnNewTravel.Click += btnNewTravel_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe Print", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(90, 11);
+            label2.Location = new Point(165, 36);
             label2.Name = "label2";
             label2.Size = new Size(109, 23);
             label2.TabIndex = 4;
@@ -154,7 +179,7 @@
             btnItineraryMain.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnItineraryMain.IconSize = 30;
             btnItineraryMain.ImageAlign = ContentAlignment.MiddleLeft;
-            btnItineraryMain.Location = new Point(90, 277);
+            btnItineraryMain.Location = new Point(239, 369);
             btnItineraryMain.Margin = new Padding(8, 15, 3, 3);
             btnItineraryMain.Name = "btnItineraryMain";
             btnItineraryMain.Padding = new Padding(7, 0, 0, 0);
@@ -177,7 +202,7 @@
             btnDestinationMain.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDestinationMain.IconSize = 30;
             btnDestinationMain.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDestinationMain.Location = new Point(90, 225);
+            btnDestinationMain.Location = new Point(81, 324);
             btnDestinationMain.Margin = new Padding(8, 15, 3, 3);
             btnDestinationMain.Name = "btnDestinationMain";
             btnDestinationMain.Padding = new Padding(7, 0, 0, 0);
@@ -200,7 +225,7 @@
             btnActivityMain.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnActivityMain.IconSize = 30;
             btnActivityMain.ImageAlign = ContentAlignment.MiddleLeft;
-            btnActivityMain.Location = new Point(90, 173);
+            btnActivityMain.Location = new Point(239, 279);
             btnActivityMain.Margin = new Padding(8, 15, 3, 3);
             btnActivityMain.Name = "btnActivityMain";
             btnActivityMain.Padding = new Padding(7, 0, 0, 0);
@@ -222,7 +247,7 @@
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 30;
             iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton4.Location = new Point(6, 277);
+            iconButton4.Location = new Point(4, 369);
             iconButton4.Margin = new Padding(8, 15, 3, 3);
             iconButton4.Name = "iconButton4";
             iconButton4.Padding = new Padding(7, 0, 0, 0);
@@ -243,7 +268,7 @@
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton3.IconSize = 30;
             iconButton3.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton3.Location = new Point(6, 225);
+            iconButton3.Location = new Point(4, 324);
             iconButton3.Margin = new Padding(8, 15, 3, 3);
             iconButton3.Name = "iconButton3";
             iconButton3.Padding = new Padding(7, 0, 0, 0);
@@ -264,7 +289,7 @@
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 30;
             iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton2.Location = new Point(6, 173);
+            iconButton2.Location = new Point(4, 279);
             iconButton2.Margin = new Padding(8, 15, 3, 3);
             iconButton2.Name = "iconButton2";
             iconButton2.Padding = new Padding(7, 0, 0, 0);
@@ -285,7 +310,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 30;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(6, 126);
+            iconButton1.Location = new Point(4, 233);
             iconButton1.Margin = new Padding(8, 15, 3, 3);
             iconButton1.Name = "iconButton1";
             iconButton1.Padding = new Padding(7, 0, 0, 0);
@@ -307,40 +332,24 @@
             btnClientMain.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClientMain.IconSize = 30;
             btnClientMain.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClientMain.Location = new Point(90, 126);
+            btnClientMain.Location = new Point(81, 233);
             btnClientMain.Margin = new Padding(8, 15, 3, 3);
             btnClientMain.Name = "btnClientMain";
             btnClientMain.Padding = new Padding(7, 0, 0, 0);
             btnClientMain.Size = new Size(100, 34);
             btnClientMain.TabIndex = 4;
-            btnClientMain.Text = "Usuarios";
+            btnClientMain.Text = "Clientes";
             btnClientMain.UseVisualStyleBackColor = false;
             btnClientMain.Click += btnClientMain_Click;
             // 
             // panel2
             // 
-            panel2.Controls.Add(iconPictureBox1);
             panel2.Controls.Add(btnCloseMain);
             panel2.Cursor = Cursors.Hand;
-            panel2.Location = new Point(3, 401);
+            panel2.Location = new Point(3, 492);
             panel2.Name = "panel2";
-            panel2.Size = new Size(237, 59);
+            panel2.Size = new Size(382, 59);
             panel2.TabIndex = 28;
-            // 
-            // iconPictureBox1
-            // 
-            iconPictureBox1.BackColor = Color.FromArgb(24, 24, 29);
-            iconPictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            iconPictureBox1.ForeColor = SystemColors.ControlLightLight;
-            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Gavel;
-            iconPictureBox1.IconColor = SystemColors.ControlLightLight;
-            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox1.IconSize = 38;
-            iconPictureBox1.Location = new Point(181, 12);
-            iconPictureBox1.Name = "iconPictureBox1";
-            iconPictureBox1.Size = new Size(42, 38);
-            iconPictureBox1.TabIndex = 5;
-            iconPictureBox1.TabStop = false;
             // 
             // btnCloseMain
             // 
@@ -351,7 +360,7 @@
             btnCloseMain.IconColor = Color.Brown;
             btnCloseMain.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCloseMain.IconSize = 38;
-            btnCloseMain.Location = new Point(14, 12);
+            btnCloseMain.Location = new Point(11, 12);
             btnCloseMain.Name = "btnCloseMain";
             btnCloseMain.Size = new Size(42, 38);
             btnCloseMain.TabIndex = 4;
@@ -368,32 +377,44 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(901, 465);
+            pictureBox1.Size = new Size(1105, 555);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
-            // btnTrips
+            // btnTravelList
             // 
-            btnTrips.BackColor = Color.Teal;
-            btnTrips.Cursor = Cursors.Hand;
-            btnTrips.FlatAppearance.BorderSize = 0;
-            btnTrips.FlatStyle = FlatStyle.Popup;
-            btnTrips.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTrips.ForeColor = Color.Transparent;
-            btnTrips.IconChar = FontAwesome.Sharp.IconChar.None;
-            btnTrips.IconColor = Color.White;
-            btnTrips.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnTrips.IconSize = 30;
-            btnTrips.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTrips.Location = new Point(90, 39);
-            btnTrips.Margin = new Padding(8, 15, 3, 3);
-            btnTrips.Name = "btnTrips";
-            btnTrips.Padding = new Padding(7, 0, 0, 0);
-            btnTrips.Size = new Size(100, 34);
-            btnTrips.TabIndex = 16;
-            btnTrips.Text = "+ VIAJE";
-            btnTrips.UseVisualStyleBackColor = false;
+            btnTravelList.BackColor = Color.Teal;
+            btnTravelList.Cursor = Cursors.Hand;
+            btnTravelList.FlatAppearance.BorderSize = 0;
+            btnTravelList.FlatStyle = FlatStyle.Popup;
+            btnTravelList.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTravelList.ForeColor = Color.Transparent;
+            btnTravelList.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnTravelList.IconColor = Color.White;
+            btnTravelList.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnTravelList.IconSize = 30;
+            btnTravelList.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTravelList.Location = new Point(239, 98);
+            btnTravelList.Margin = new Padding(8, 15, 3, 3);
+            btnTravelList.Name = "btnTravelList";
+            btnTravelList.Padding = new Padding(7, 0, 0, 0);
+            btnTravelList.Size = new Size(100, 34);
+            btnTravelList.TabIndex = 17;
+            btnTravelList.Text = "Ver Viajes";
+            btnTravelList.UseVisualStyleBackColor = false;
+            btnTravelList.Click += btnTravelList_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe Print", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(145, 169);
+            label3.Name = "label3";
+            label3.Size = new Size(136, 23);
+            label3.TabIndex = 18;
+            label3.Text = "Gestion del sistema";
             // 
             // MainMenuView
             // 
@@ -401,13 +422,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(900, 465);
+            ClientSize = new Size(1103, 554);
             Controls.Add(sidebar);
             Controls.Add(pictureBox1);
             ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(900, 465);
             Name = "MainMenuView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagina Principal";
@@ -418,7 +438,6 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseMain).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -438,12 +457,13 @@
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconButton btnActivityMain;
         private FontAwesome.Sharp.IconButton btnItineraryMain;
         private FontAwesome.Sharp.IconButton btnDestinationMain;
         private Label label2;
         private PictureBox pictureBox1;
-        private FontAwesome.Sharp.IconButton btnTrips;
+        private FontAwesome.Sharp.IconButton btnNewTravel;
+        private FontAwesome.Sharp.IconButton btnTravelList;
+        private Label label3;
     }
 }
