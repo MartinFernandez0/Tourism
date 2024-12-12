@@ -15,8 +15,8 @@ namespace TourismServices.Models
         public string? Description { get; set; }
 
         // Relación con Destino
-        public int DestinationId { get; set; } 
-        public virtual pfDestination Destination { get; set; }
+        public int? DestinationId { get; set; } 
+        public virtual pfDestination? Destination { get; set; }
 
         // Eliminado
         public bool IsDeleted { get; set; } = false;

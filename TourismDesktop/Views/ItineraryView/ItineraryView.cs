@@ -8,7 +8,7 @@ namespace TourismDesktop.Views
     public partial class ItineraryView : Form
     {
         IItineraryService ItineraryService = new ItineraryService();
-        IActivityService ActivityService = new ActivityService();
+        IDestinationService DestinationService = new DestinationService();
 
         BindingSource ListItinerary = new BindingSource();
         List<pfItinerary> FilterList = new List<pfItinerary>();
@@ -36,19 +36,18 @@ namespace TourismDesktop.Views
             this.Close();
         }
 
-        #region LoadDate
-
+        #region LoadData ComboBox
         private async Task LoadComboBox()
         {
-            CBoxActivity.DataSource = await ActivityService.GetAllAsync();
-            CBoxActivity.DisplayMember = "ActivityName";
-            CBoxActivity.ValueMember = "Id";
-            CBoxActivity.SelectedIndex = 0;
+            CBoxDestination.DataSource = await DestinationService.GetAllAsync();
+            CBoxDestination.DisplayMember = "Name";
+            CBoxDestination.ValueMember = "Id";
+            CBoxDestination.SelectedIndex = 0;
         }
         private async Task LoadGrid()
         {
             var itineraries = await ItineraryService.GetAllAsync();
-            ListItinerary.DataSource = itineraries?.Where(i => !i.IsDeleted).ToList(); // Filtra los itinerarios no eliminados
+            ListItinerary.DataSource = itineraries?.Where(i => !i.IsDeleted).ToList();
             FilterList = (List<pfItinerary>)ListItinerary.DataSource;
         }
         #endregion
@@ -97,18 +96,20 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
+
         private void btnModify_Click(object sender, EventArgs e)
         {
             ItineraryCurrent = (pfItinerary)ListItinerary.Current;
+
             txtName.Text = ItineraryCurrent.Name;
             txtDescription.Text = ItineraryCurrent.Description;
             DepartureDate.Value = ItineraryCurrent.DepartureDate;
             ReturnDate.Value = ItineraryCurrent.ReturnDate;
 
-            //CBoxActivity.SelectedValue = ItineraryCurrent.ActivityId;
-
             tabControl1.SelectTab(tabPageAddEdit);
+
         }
+
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (ListItinerary.Current is pfItinerary pfItinerary)
@@ -125,38 +126,37 @@ namespace TourismDesktop.Views
                 }
             }
         }
-
         #endregion
 
-        #region BtnSaveCancel
+        #region Save Cancel
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            int? destinationId = (int?)CBoxDestination.SelectedValue;
+
             var pfItinerary = new pfItinerary
             {
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 DepartureDate = DepartureDate.Value,
                 ReturnDate = ReturnDate.Value,
-
-                //ActivityId = (int)CBoxActivity.SelectedValue
-
+                DestinationId = destinationId
             };
 
             if (ItineraryCurrent != null)
             {
-
                 ItineraryCurrent.Name = txtName.Text;
                 ItineraryCurrent.Description = txtDescription.Text;
                 ItineraryCurrent.DepartureDate = DepartureDate.Value;
                 ItineraryCurrent.ReturnDate = ReturnDate.Value;
 
-                //ItineraryCurrent.ActivityId = (int)CBoxActivity.SelectedValue;
+                ItineraryCurrent.DestinationId = destinationId;
 
                 await ItineraryService.UpdateAsync(ItineraryCurrent);
                 MessageBox.Show("Itinerario modificado correctamente");
 
                 ItineraryCurrent = null;
             }
+
             else
             {
                 await ItineraryService.AddAsync(pfItinerary);
@@ -164,13 +164,17 @@ namespace TourismDesktop.Views
             }
 
             await LoadGrid();
+
             txtName.Text = string.Empty;
             txtDescription.Text = string.Empty;
             DepartureDate.Value = DateTime.Now;
             ReturnDate.Value = DateTime.Now;
 
+            CBoxDestination.SelectedIndex = -1;
+
             tabControl1.SelectTab(tabPageList);
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Operación cancelada");

@@ -36,7 +36,12 @@ namespace TourismDesktop.Views
             btnSeeEliminated.BackColor = System.Drawing.Color.LightCoral;
             btnSeeEliminated.ForeColor = System.Drawing.Color.White;
         }
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        #region ComboBox y Enums Load
         private async Task LoadCBoxs()
         {
             // ComboBox Itinerarios Actividades y Destinos
@@ -66,12 +71,7 @@ namespace TourismDesktop.Views
             CBoxPaymentMethod.DataSource = Enum.GetValues(typeof(PaymentMethodEnum));
             CBoxPaymentConfirmation.DataSource = Enum.GetValues(typeof(PaymentConfirmationEnum));
         }
-
-
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
 
         #region LoadDate
         private async Task LoadGrid()
@@ -148,39 +148,52 @@ namespace TourismDesktop.Views
 
             tabControl1.SelectTab(tabPageAddEdit);
         }
-        //private void btnModify_Click_1(object sender, EventArgs e)
-        //{
-        //    ClientCurrent = (pfClient)ListClient.Current;
-        //    txtFirstName.Text = ClientCurrent.FirstName;
-        //    txtLastName.Text = ClientCurrent.LastName;
-        //    txtDocument.Text = ClientCurrent.Document;
-        //    txtEmail.Text = ClientCurrent.Email;
-        //    txtPhoneNumber.Text = ClientCurrent.PhoneNumber;
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            ClientCurrent = (pfClient)ListClient.Current;
 
-        //    tabControl1.SelectTab(tabPageAddEdit);
+            txtFirstName.Text = ClientCurrent.FirstName;
+            txtLastName.Text = ClientCurrent.LastName;
+            txtDocument.Text = ClientCurrent.Document;
+            Birthdate.Value = ClientCurrent.Birthdate;
+            CBoxGender.SelectedItem = ClientCurrent.CustomerGender;
 
-        //}
-        //private async void btnDelete_Click_1(object sender, EventArgs e)
-        //{
-        //    if (ListClient.Current is pfClient pfClient)
-        //    {
-        //        var results = MessageBox.Show($"¿Está seguro que desea eliminar el cliente {pfClient.FirstName}?", "Eliminar", MessageBoxButtons.YesNo);
+            txtEmail.Text = ClientCurrent.Email;
+            txtPhoneNumber.Text = ClientCurrent.PhoneNumber;
+            txtAddress.Text = ClientCurrent.Address;
+            txtCity.Text = ClientCurrent.City;
+            txtCountry.Text = ClientCurrent.Country;
+            txtPostalCode.Text = ClientCurrent.PostalCode;
 
-        //        if (results == DialogResult.Yes)
-        //        {
-        //            pfClient.IsDeleted = true;
+            CBoxAccommodationPreference.SelectedItem = ClientCurrent.AccommodationPreference;
+            CBoxFoodPreference.SelectedItem = ClientCurrent.FoodPreference;
+            NumberOfPeople.Value = ClientCurrent.NumberOfPeople;
+            dateTimeReservation.Value = ClientCurrent.ReservationDate;
+            CBoxReservationStatus.SelectedItem = ClientCurrent.ReservationStatus;
 
-        //            await ClientService.UpdateAsync(pfClient);
-        //            await LoadGrid();
-        //            MessageBox.Show("Cliente ocultado correctamente");
-        //        }
-        //    }
-        //}
-        #endregion
+            CBoxPaymentMethod.SelectedItem = ClientCurrent.PaymentMethod;
+            CBoxPaymentConfirmation.SelectedItem = ClientCurrent.PaymentConfirmation;
+            dateTimeTransactionDate.Value = ClientCurrent.TransactionDate;
+            NumberTotalAmount.Value = ClientCurrent.TotalAmount;
 
-        #region BtnSaveCancel
+            tabControl1.SelectTab(tabPageAddEdit);
+        }
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (ListClient.Current is pfClient pfClient)
+            {
+                var results = MessageBox.Show($"¿Está seguro que desea eliminar el cliente {pfClient.FirstName}?", "Eliminar", MessageBoxButtons.YesNo);
 
+                if (results == DialogResult.Yes)
+                {
+                    pfClient.IsDeleted = true;
 
+                    await ClientService.UpdateAsync(pfClient);
+                    await LoadGrid();
+                    MessageBox.Show("Cliente ocultado correctamente");
+                }
+            }
+        }
         private async void btnSave_Click(object sender, EventArgs e)
         {
             // Obtener valores de los controles
@@ -191,8 +204,12 @@ namespace TourismDesktop.Views
             PaymentMethodEnum paymentMethod = (PaymentMethodEnum)CBoxPaymentMethod.SelectedItem;
             PaymentConfirmationEnum paymentConfirmation = (PaymentConfirmationEnum)CBoxPaymentConfirmation.SelectedItem;
 
-            int numberOfPeople = (int) NumberOfPeople.Value;
-            decimal totalAmount = (decimal) NumberTotalAmount.Value;
+            int numberOfPeople = (int)NumberOfPeople.Value;
+            decimal totalAmount = (decimal)NumberTotalAmount.Value;
+
+            int? destinationId = (int?)CBoxDestination.SelectedValue;
+            int? activityId = (int?)CBoxActivity.SelectedValue;
+            int? itineraryId = (int?)CBoxItinerary.SelectedValue;
 
             var pfClient = new pfClient
             {
@@ -209,7 +226,6 @@ namespace TourismDesktop.Views
                 Country = txtCountry.Text,
                 PostalCode = txtPostalCode.Text,
 
-
                 AccommodationPreference = accommodationPreference, // Asigna el valor del enum
                 FoodPreference = foodPreference, // Asigna el valor del enum
                 NumberOfPeople = numberOfPeople, // Valor Numerico
@@ -220,6 +236,10 @@ namespace TourismDesktop.Views
                 PaymentConfirmation = paymentConfirmation, // Asigna el valor del enum
                 TransactionDate = dateTimeTransactionDate.Value,
                 TotalAmount = totalAmount, // Valor Numerico
+
+                DestinationId = destinationId,
+                ActivityId = activityId,
+                ItineraryId = itineraryId
             };
 
             if (ClientCurrent != null)
@@ -242,12 +262,15 @@ namespace TourismDesktop.Views
                 ClientCurrent.NumberOfPeople = numberOfPeople;
                 ClientCurrent.ReservationDate = dateTimeReservation.Value;
 
-
                 ClientCurrent.ReservationStatus = reservationStatus;
                 ClientCurrent.PaymentMethod = paymentMethod;
                 ClientCurrent.PaymentConfirmation = paymentConfirmation;
                 ClientCurrent.TransactionDate = dateTimeTransactionDate.Value;
                 ClientCurrent.TotalAmount = totalAmount;
+
+                ClientCurrent.DestinationId = destinationId;
+                ClientCurrent.ActivityId = activityId;
+                ClientCurrent.ItineraryId = itineraryId;
 
                 await ClientService.UpdateAsync(ClientCurrent);
                 MessageBox.Show("Cliente modificado correctamente");
@@ -286,6 +309,10 @@ namespace TourismDesktop.Views
             dateTimeTransactionDate.Value = DateTime.Now;
             totalAmount = 0;
 
+            CBoxDestination.SelectedIndex = -1;
+            CBoxActivity.SelectedIndex = -1;
+            CBoxItinerary.SelectedIndex = -1;
+
             tabControl1.SelectTab(tabPageList);
         }
 
@@ -294,57 +321,6 @@ namespace TourismDesktop.Views
             MessageBox.Show("Operación cancelada");
             tabControl1.SelectTab(tabPageList);
         }
-
-
-
-
-
-
-        //private async void btnSave_Click(object sender, EventArgs e)
-        //{
-
-        //    var pfClient = new pfClient
-        //    {
-        //        FirstName = txtFirstName.Text,
-        //        LastName = txtLastName.Text,
-        //        Document = txtDocument.Text,
-        //        birthdate = Birthdate.Value,
-
-
-
-        //        Email = txtEmail.Text,
-        //        PhoneNumber = txtPhoneNumber.Text,
-        //    };
-
-        //    if (ClientCurrent != null)
-        //    {
-        //        ClientCurrent.FirstName = txtFirstName.Text;
-        //        ClientCurrent.LastName = txtLastName.Text;
-        //        ClientCurrent.Document = txtDocument.Text;
-        //        ClientCurrent.Email = txtEmail.Text;
-        //        ClientCurrent.PhoneNumber = txtPhoneNumber.Text;
-
-        //        await ClientService.UpdateAsync(pfClient);
-        //        MessageBox.Show("Cliente modificado correctamente");
-
-        //        ClientCurrent = null;
-        //    }
-        //    else
-        //    {
-        //        await ClientService.AddAsync(pfClient);
-        //        MessageBox.Show("Cliente agregado correctamente");
-
-        //    }
-
-        //    await LoadGrid();
-        //    txtFirstName.Text = string.Empty;
-        //    txtLastName.Text = string.Empty;
-        //    txtDocument.Text = string.Empty;
-        //    txtEmail.Text = string.Empty;
-        //    txtPhoneNumber.Text = string.Empty;
-
-        //    tabControl1.SelectTab(tabPageList);
-        //}
         #endregion
 
         #region TxtFilterTextChanged
@@ -358,7 +334,6 @@ namespace TourismDesktop.Views
             ListClient.DataSource = new BindingSource(filteredClient, null);
         }
         #endregion
-
     }
 }
 

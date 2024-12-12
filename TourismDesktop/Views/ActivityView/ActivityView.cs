@@ -105,24 +105,15 @@ namespace TourismDesktop.Views.ActivityView
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivityCurrent = (pfActivity)ListActivity.Current;
+            ActivityCurrent = (pfActivity)ListActivity.Current;
 
-                txtActivityName.Text = ActivityCurrent.ActivityName;
-                txtURL_image.Text = ActivityCurrent.URLimage;
-                txtDescription.Text = ActivityCurrent.Description;
-                TimeDuration.Value = ActivityCurrent.Duration;
-                NumCost.Value = ActivityCurrent.Cost;
+            txtActivityName.Text = ActivityCurrent.ActivityName;
+            txtDescription.Text = ActivityCurrent.Description;
+            txtURL_image.Text = ActivityCurrent.URLimage;
+            TimeDuration.Value = ActivityCurrent.Duration;
+            NumCost.Value = ActivityCurrent.Cost;
 
-                CBoxDestination.SelectedValue = ActivityCurrent.DestinationId;
-
-                tabControl1.SelectTab(tabPageAddEdit);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("No se ha seleccionado ninguna actividad");
-            }
+            tabControl1.SelectTab(tabPageAddEdit);
         }
 
         private async void btnDelete_Click(object sender, EventArgs e)
@@ -137,7 +128,7 @@ namespace TourismDesktop.Views.ActivityView
 
                     await ActivityService.UpdateAsync(pfActivity);
                     LoadGrid();
-                    MessageBox.Show("Actividad ocultada correctamente");
+                    MessageBox.Show("Actividad eliminada correctamente");
                 }
             }
         }
@@ -146,6 +137,8 @@ namespace TourismDesktop.Views.ActivityView
         #region Save/Cancel
         private async void btnSave_Click_1(object sender, EventArgs e)
         {
+            int? destinationId = (int?)CBoxDestination.SelectedValue;
+
             var pfActivity = new pfActivity
             {
                 ActivityName = txtActivityName.Text,
@@ -153,7 +146,8 @@ namespace TourismDesktop.Views.ActivityView
                 URLimage = txtURL_image.Text,
                 Duration = (int)TimeDuration.Value,
                 Cost = NumCost.Value,
-                DestinationId = (int)CBoxDestination.SelectedValue
+                DestinationId = destinationId
+
             };
 
             if (ActivityCurrent != null)
@@ -163,7 +157,8 @@ namespace TourismDesktop.Views.ActivityView
                 ActivityCurrent.URLimage = txtURL_image.Text;
                 ActivityCurrent.Duration = (int)TimeDuration.Value;
                 ActivityCurrent.Cost = NumCost.Value;
-                ActivityCurrent.DestinationId = (int)CBoxDestination.SelectedValue;
+
+                ActivityCurrent.DestinationId = destinationId;
 
                 await ActivityService.UpdateAsync(ActivityCurrent);
                 MessageBox.Show("Actividad modificada correctamente");
@@ -177,11 +172,14 @@ namespace TourismDesktop.Views.ActivityView
             }
 
             LoadGrid();
+
             txtActivityName.Text = string.Empty;
             txtDescription.Text = string.Empty;
             txtURL_image.Text = string.Empty;
             TimeDuration.Value = 0;
             NumCost.Value = 0;
+
+            CBoxDestination.SelectedIndex = -1;
 
             tabControl1.SelectTab(tabPageList);
 

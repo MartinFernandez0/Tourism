@@ -42,7 +42,7 @@
             label7 = new Label();
             label5 = new Label();
             ReturnDate = new DateTimePicker();
-            CBoxActivity = new ComboBox();
+            CBoxDestination = new ComboBox();
             txtDescription = new TextBox();
             txtName = new TextBox();
             DepartureDate = new DateTimePicker();
@@ -199,7 +199,7 @@
             tabPageAddEdit.Controls.Add(label7);
             tabPageAddEdit.Controls.Add(label5);
             tabPageAddEdit.Controls.Add(ReturnDate);
-            tabPageAddEdit.Controls.Add(CBoxActivity);
+            tabPageAddEdit.Controls.Add(CBoxDestination);
             tabPageAddEdit.Controls.Add(txtDescription);
             tabPageAddEdit.Controls.Add(txtName);
             tabPageAddEdit.Controls.Add(DepartureDate);
@@ -221,9 +221,9 @@
             label7.AutoSize = true;
             label7.Location = new Point(463, 25);
             label7.Name = "label7";
-            label7.Size = new Size(57, 15);
+            label7.Size = new Size(47, 15);
             label7.TabIndex = 63;
-            label7.Text = "Actividad";
+            label7.Text = "Destino";
             // 
             // label5
             // 
@@ -243,14 +243,14 @@
             ReturnDate.TabIndex = 32;
             ReturnDate.Value = new DateTime(2024, 10, 9, 0, 0, 0, 0);
             // 
-            // CBoxActivity
+            // CBoxDestination
             // 
-            CBoxActivity.BackColor = SystemColors.InactiveCaption;
-            CBoxActivity.FormattingEnabled = true;
-            CBoxActivity.Location = new Point(346, 43);
-            CBoxActivity.Name = "CBoxActivity";
-            CBoxActivity.Size = new Size(269, 23);
-            CBoxActivity.TabIndex = 31;
+            CBoxDestination.BackColor = SystemColors.InactiveCaption;
+            CBoxDestination.FormattingEnabled = true;
+            CBoxDestination.Location = new Point(346, 43);
+            CBoxDestination.Name = "CBoxDestination";
+            CBoxDestination.Size = new Size(269, 23);
+            CBoxDestination.TabIndex = 31;
             // 
             // txtDescription
             // 
@@ -372,7 +372,7 @@
             dataGridItineraryView.Name = "dataGridItineraryView";
             dataGridItineraryView.ReadOnly = true;
             dataGridItineraryView.RowHeadersWidth = 51;
-            dataGridItineraryView.Size = new Size(633, 300);
+            dataGridItineraryView.Size = new Size(608, 219);
             dataGridItineraryView.TabIndex = 16;
             // 
             // tabControl1
@@ -428,7 +428,7 @@
         private Label label7;
         private Label label5;
         private DateTimePicker ReturnDate;
-        private ComboBox CBoxActivity;
+        private ComboBox CBoxDestination;
         private TextBox txtDescription;
         private TextBox txtName;
         private DateTimePicker DepartureDate;

@@ -729,6 +729,7 @@
             btnDelete.TabIndex = 67;
             btnDelete.Text = "Eliminar";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnModify
             // 
@@ -748,6 +749,7 @@
             btnModify.TabIndex = 66;
             btnModify.Text = "Modificar";
             btnModify.UseVisualStyleBackColor = false;
+            btnModify.Click += btnModify_Click;
             // 
             // btnAdd
             // 
