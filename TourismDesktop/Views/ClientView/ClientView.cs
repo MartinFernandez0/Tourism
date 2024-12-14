@@ -70,6 +70,7 @@ namespace TourismDesktop.Views
             CBoxReservationStatus.DataSource = Enum.GetValues(typeof(ReservationStatusEnum));
             CBoxPaymentMethod.DataSource = Enum.GetValues(typeof(PaymentMethodEnum));
             CBoxPaymentConfirmation.DataSource = Enum.GetValues(typeof(PaymentConfirmationEnum));
+            CBoxPreferenceTransport.DataSource = Enum.GetValues(typeof(PreferenceTransportEnum));
         }
         #endregion
 
@@ -143,6 +144,7 @@ namespace TourismDesktop.Views
             //Information Tourist
             AccommodationPreferenceEnum accommodationPreference;
             FoodPreferenceEnum foodPreference;
+            PreferenceTransportEnum preferenceTransportEnum;
 
             //Information Reservation
             NumberOfPeople.Value = 0;
@@ -176,6 +178,7 @@ namespace TourismDesktop.Views
 
             CBoxAccommodationPreference.SelectedItem = ClientCurrent.AccommodationPreference;
             CBoxFoodPreference.SelectedItem = ClientCurrent.FoodPreference;
+            CBoxPreferenceTransport.SelectedItem = ClientCurrent.PreferenceTransport;
             NumberOfPeople.Value = ClientCurrent.NumberOfPeople;
             dateTimeReservation.Value = ClientCurrent.ReservationDate;
             CBoxReservationStatus.SelectedItem = ClientCurrent.ReservationStatus;
@@ -215,6 +218,7 @@ namespace TourismDesktop.Views
             ReservationStatusEnum reservationStatus = (ReservationStatusEnum)CBoxReservationStatus.SelectedItem;
             PaymentMethodEnum paymentMethod = (PaymentMethodEnum)CBoxPaymentMethod.SelectedItem;
             PaymentConfirmationEnum paymentConfirmation = (PaymentConfirmationEnum)CBoxPaymentConfirmation.SelectedItem;
+            PreferenceTransportEnum preferenceTransport = (PreferenceTransportEnum)CBoxPreferenceTransport.SelectedItem;
 
             int numberOfPeople = (int)NumberOfPeople.Value;
             decimal totalAmount = (decimal)NumberTotalAmount.Value;
@@ -240,6 +244,7 @@ namespace TourismDesktop.Views
 
                 AccommodationPreference = accommodationPreference, // Asigna el valor del enum
                 FoodPreference = foodPreference, // Asigna el valor del enum
+                PreferenceTransport = preferenceTransport, // Asigna el valor del enum
                 NumberOfPeople = numberOfPeople, // Valor Numerico
                 ReservationDate = dateTimeReservation.Value,
 
@@ -271,6 +276,7 @@ namespace TourismDesktop.Views
 
                 ClientCurrent.AccommodationPreference = accommodationPreference;
                 ClientCurrent.FoodPreference = foodPreference;
+                ClientCurrent.PreferenceTransport = preferenceTransport;
                 ClientCurrent.NumberOfPeople = numberOfPeople;
                 ClientCurrent.ReservationDate = dateTimeReservation.Value;
 
@@ -312,6 +318,7 @@ namespace TourismDesktop.Views
 
             CBoxAccommodationPreference.SelectedIndex = -1;
             CBoxFoodPreference.SelectedIndex = -1;
+            CBoxPreferenceTransport.SelectedIndex = -1;
             numberOfPeople = 0;
             dateTimeReservation.Value = DateTime.Now;
 
@@ -346,7 +353,5 @@ namespace TourismDesktop.Views
             ListClient.DataSource = new BindingSource(filteredClient, null);
         }
         #endregion
-
     }
 }
-
