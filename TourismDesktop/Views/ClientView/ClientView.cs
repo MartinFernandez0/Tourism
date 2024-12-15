@@ -3,6 +3,7 @@ using TourismServices.Models;
 using TourismServices.Services;
 using System.Data;
 using TourismServices.Enums;
+using TourismDesktop.ViewReports;
 
 namespace TourismDesktop.Views
 {
@@ -352,6 +353,23 @@ namespace TourismDesktop.Views
             var filteredClient = Filterlist.Where(c => c.FirstName.Contains(txtFilter.Text)).ToList();
             ListClient.DataSource = new BindingSource(filteredClient, null);
         }
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            //Obtener el Cliente Seleccionado
+            var selectedClient = (pfClient)ListClient.Current;
+
+            if (selectedClient != null)
+            {
+                //Abre la ventana del reorte nuevo
+                var clientViewReport = new ClientViewReport(selectedClient);
+                clientViewReport.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un cliente para generar el reporte");
+            }
+        }
+
         #endregion
     }
 }

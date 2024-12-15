@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TourismServices.Interfaces;
+using TourismServices.Models;
 using TourismServices.Services;
 
 namespace TourismDesktop.ViewReports
@@ -17,26 +18,42 @@ namespace TourismDesktop.ViewReports
     {
         ReportViewer reporte;
         IClientService clientService = new ClientService();
-        public ClientViewReport()
+        private pfClient selectedClient;
+
+        public ClientViewReport(pfClient client)
         {
             InitializeComponent();
-            reporte = new ReportViewer();
-            reporte.Dock = DockStyle.Fill;
-            Controls.Add(reporte);
+            //reporte = new ReportViewer();
+            //reporte.Dock = DockStyle.Fill;
+            //Controls.Add(reporte);
+            selectedClient = client;
         }
 
-        private async void ClientViewReport_Load(object sender, EventArgs e)
+        private void ClientViewReport_Load(object sender, EventArgs e)
         {
-            reporte.LocalReport.ReportEmbeddedResource = "TourismDesktop.Reports.ClientViewReport.rdlc";
+            try
+            {
+                reporte = new ReportViewer();
+                reporte.Dock = DockStyle.Fill;
+                Controls.Add(reporte);
 
-            var clients = await clientService.GetAllAsync();
+                reporte.LocalReport.ReportEmbeddedResource = "TourismDesktop.Reports.ClientViewReport.rdlc";
 
-            reporte.LocalReport.DataSources.Add(new ReportDataSource("DSClient", clients));
-            reporte.SetDisplayMode(DisplayMode.PrintLayout);
-            //definimos zoom 100%
-            reporte.ZoomMode = ZoomMode.Percent;
-            reporte.ZoomPercent = 100;
-            reporte.RefreshReport();
+                // Crea una lista con el cliente seleccionado
+                var clients = new List<pfClient> { selectedClient };
+
+                // Añade la lista como fuente de datos del reporte
+                reporte.LocalReport.DataSources.Clear();
+                reporte.LocalReport.DataSources.Add(new ReportDataSource("DSClients", clients));
+                reporte.SetDisplayMode(DisplayMode.PrintLayout);
+                reporte.ZoomMode = ZoomMode.Percent;
+                reporte.ZoomPercent = 100;
+                reporte.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el reporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
         <Value>FacturadeEmpresa</Value>
         <Sizing>FitProportional</Sizing>
         <Height>27.48267cm</Height>
-        <Width>19.00524cm</Width>
+        <Width>19.04091cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -820,7 +820,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DSClient">
+    <DataSet Name="DSClients">
       <Query>
         <DataSourceName>TourismDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>

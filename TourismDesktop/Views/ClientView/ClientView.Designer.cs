@@ -97,6 +97,7 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
+            btnGenerateReport = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
@@ -132,6 +133,7 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(24, 24, 29);
+            panel1.Controls.Add(btnGenerateReport);
             panel1.Controls.Add(btnReturn);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(0, 0);
@@ -852,6 +854,22 @@
             pictureBox3.TabIndex = 106;
             pictureBox3.TabStop = false;
             // 
+            // btnGenerateReport
+            // 
+            btnGenerateReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnGenerateReport.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnGenerateReport.IconColor = Color.Black;
+            btnGenerateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnGenerateReport.IconSize = 20;
+            btnGenerateReport.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGenerateReport.Location = new Point(882, 16);
+            btnGenerateReport.Margin = new Padding(3, 2, 3, 2);
+            btnGenerateReport.Name = "btnGenerateReport";
+            btnGenerateReport.Size = new Size(100, 33);
+            btnGenerateReport.TabIndex = 68;
+            btnGenerateReport.UseVisualStyleBackColor = true;
+            btnGenerateReport.Click += btnGenerateReport_Click;
+            // 
             // ClientView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -953,5 +971,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox5;
+        private FontAwesome.Sharp.IconButton btnGenerateReport;
     }
 }
