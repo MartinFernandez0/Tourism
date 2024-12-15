@@ -121,9 +121,6 @@ namespace TourismDesktop.Views
             Filterlist = (List<pfClient>)ListClient.DataSource;
             showingDeleted = !showingDeleted;
         }
-        #endregion
-
-        #region C.R.U.D
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             //Information Basic
@@ -132,7 +129,6 @@ namespace TourismDesktop.Views
             txtDocument.Text = string.Empty;
             Birthdate.Value = DateTime.Now;
             CustomerGenderEnum customerGender;
-
 
             //Information Contact
             txtEmail.Text = string.Empty;
@@ -157,6 +153,18 @@ namespace TourismDesktop.Views
             PaymentConfirmationEnum paymentConfirmation;
             dateTimeTransactionDate.Value = DateTime.Now;
             decimal totalAmount = 0;
+
+            // Set ComboBoxes to -1
+            CBoxGender.SelectedIndex = -1;
+            CBoxAccommodationPreference.SelectedIndex = -1;
+            CBoxFoodPreference.SelectedIndex = -1;
+            CBoxReservationStatus.SelectedIndex = -1;
+            CBoxPaymentMethod.SelectedIndex = -1;
+            CBoxPaymentConfirmation.SelectedIndex = -1;
+            CBoxPreferenceTransport.SelectedIndex = -1;
+            CBoxDestination.SelectedIndex = -1;
+            CBoxActivity.SelectedIndex = -1;
+            CBoxItinerary.SelectedIndex = -1;
 
             tabControl1.SelectTab(tabPageAddEdit);
         }

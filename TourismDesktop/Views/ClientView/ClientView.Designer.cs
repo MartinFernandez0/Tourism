@@ -33,6 +33,7 @@
             label3 = new Label();
             txtFilter = new TextBox();
             panel1 = new Panel();
+            btnGenerateReport = new FontAwesome.Sharp.IconButton();
             btnReturn = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             tabControl1 = new TabControl();
@@ -97,7 +98,6 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
-            btnGenerateReport = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
@@ -142,6 +142,23 @@
             panel1.Size = new Size(1106, 63);
             panel1.TabIndex = 37;
             // 
+            // btnGenerateReport
+            // 
+            btnGenerateReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnGenerateReport.IconChar = FontAwesome.Sharp.IconChar.ClipboardCheck;
+            btnGenerateReport.IconColor = Color.Black;
+            btnGenerateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnGenerateReport.IconSize = 20;
+            btnGenerateReport.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGenerateReport.Location = new Point(814, 16);
+            btnGenerateReport.Margin = new Padding(3, 2, 3, 2);
+            btnGenerateReport.Name = "btnGenerateReport";
+            btnGenerateReport.Size = new Size(168, 33);
+            btnGenerateReport.TabIndex = 68;
+            btnGenerateReport.Text = "Generar Reporte";
+            btnGenerateReport.UseVisualStyleBackColor = true;
+            btnGenerateReport.Click += btnGenerateReport_Click;
+            // 
             // btnReturn
             // 
             btnReturn.BackColor = Color.White;
@@ -165,9 +182,9 @@
             label1.ForeColor = SystemColors.ControlLight;
             label1.Location = new Point(18, 15);
             label1.Name = "label1";
-            label1.Size = new Size(85, 30);
+            label1.Size = new Size(189, 30);
             label1.TabIndex = 0;
-            label1.Text = "VIAJES";
+            label1.Text = "VIAJES CLIENTES";
             // 
             // tabControl1
             // 
@@ -853,22 +870,6 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 106;
             pictureBox3.TabStop = false;
-            // 
-            // btnGenerateReport
-            // 
-            btnGenerateReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGenerateReport.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            btnGenerateReport.IconColor = Color.Black;
-            btnGenerateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnGenerateReport.IconSize = 20;
-            btnGenerateReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGenerateReport.Location = new Point(882, 16);
-            btnGenerateReport.Margin = new Padding(3, 2, 3, 2);
-            btnGenerateReport.Name = "btnGenerateReport";
-            btnGenerateReport.Size = new Size(100, 33);
-            btnGenerateReport.TabIndex = 68;
-            btnGenerateReport.UseVisualStyleBackColor = true;
-            btnGenerateReport.Click += btnGenerateReport_Click;
             // 
             // ClientView
             // 

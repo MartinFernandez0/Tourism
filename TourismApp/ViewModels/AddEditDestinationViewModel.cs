@@ -37,7 +37,6 @@ namespace TourismApp.ViewModels
                 URLImage = editDestination.URL_image;
                 CategoryName = editDestination.CategoryName;
                 Country = editDestination.Country;
-                ItineraryId = editDestination.ItineraryId;
                 IsDeleted = editDestination.IsDeleted;
 
                 ItinerarySelected = ListItineraries?.FirstOrDefault(i => i.Id == ItineraryId);
@@ -205,7 +204,6 @@ namespace TourismApp.ViewModels
                 editDestination.CategoryName = CategoryName;
                 editDestination.Country = Country;
 
-                editDestination.ItineraryId = ItinerarySelected.Id;
                 editDestination.IsDeleted = IsDeleted;
 
                 await destinationService.UpdateAsync(editDestination);
@@ -219,7 +217,6 @@ namespace TourismApp.ViewModels
                     URL_image = URLImage,
                     CategoryName = CategoryName,
                     Country = Country,
-                    ItineraryId = ItineraryId,
                     IsDeleted = IsDeleted
                 };
 
