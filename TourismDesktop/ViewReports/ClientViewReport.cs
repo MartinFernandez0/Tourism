@@ -1,12 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TourismServices.Interfaces;
 using TourismServices.Models;
@@ -16,38 +10,44 @@ namespace TourismDesktop.ViewReports
 {
     public partial class ClientViewReport : Form
     {
-        ReportViewer reporte;
-        IClientService clientService = new ClientService();
-        private pfClient selectedClient;
+        private ReportViewer reporte;
+        private readonly IClientService clientService;
+        private readonly pfClient selectedClient;
 
         public ClientViewReport(pfClient client)
         {
             InitializeComponent();
-            //reporte = new ReportViewer();
-            //reporte.Dock = DockStyle.Fill;
-            //Controls.Add(reporte);
+            clientService = new ClientService();
             selectedClient = client;
         }
 
-        private void ClientViewReport_Load(object sender, EventArgs e)
+        private async void ClientViewReport_Load(object sender, EventArgs e)
         {
             try
             {
-                reporte = new ReportViewer();
-                reporte.Dock = DockStyle.Fill;
-                Controls.Add(reporte);
+                // Inicializa y configura el ReportViewer
+                reporte = new ReportViewer
+                {
+                    Dock = DockStyle.Fill
+                };
+                this.Controls.Add(reporte);
 
+                // Configura el reporte embebido
                 reporte.LocalReport.ReportEmbeddedResource = "TourismDesktop.Reports.ClientViewReport.rdlc";
 
-                // Crea una lista con el cliente seleccionado
+                // Obtén los datos de forma asincrónica
                 var clients = new List<pfClient> { selectedClient };
 
-                // Añade la lista como fuente de datos del reporte
+                // Limpia y añade la fuente de datos
                 reporte.LocalReport.DataSources.Clear();
                 reporte.LocalReport.DataSources.Add(new ReportDataSource("DSClients", clients));
+
+                // Configura el modo de visualización
                 reporte.SetDisplayMode(DisplayMode.PrintLayout);
                 reporte.ZoomMode = ZoomMode.Percent;
                 reporte.ZoomPercent = 100;
+
+                // Refresca el reporte
                 reporte.RefreshReport();
             }
             catch (Exception ex)
