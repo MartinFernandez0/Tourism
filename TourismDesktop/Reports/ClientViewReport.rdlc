@@ -6,6 +6,7 @@
         <Source>Embedded</Source>
         <Value>FacturadeEmpresa</Value>
         <Sizing>FitProportional</Sizing>
+        <Top>0cm</Top>
         <Height>27.48267cm</Height>
         <Width>19.04091cm</Width>
         <Style>
@@ -62,7 +63,7 @@
         <Top>6.77384cm</Top>
         <Left>3.67612cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>5.83216cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -92,7 +93,7 @@
         <Top>7.23686cm</Top>
         <Left>3.67612cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>5.83216cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -122,7 +123,7 @@
         <Top>7.66053cm</Top>
         <Left>5.21083cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>5.01195cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -152,7 +153,7 @@
         <Top>8.11266cm</Top>
         <Left>4.08886cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>5.00866cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -299,10 +300,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Id</rd:DefaultName>
-        <Top>6.77384cm</Top>
+        <Top>6.59276cm</Top>
         <Left>13.09809cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>5.30969cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -329,10 +330,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Id</rd:DefaultName>
-        <Top>7.23686cm</Top>
+        <Top>7.1663cm</Top>
         <Left>13.55023cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>4.85755cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -359,10 +360,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Id</rd:DefaultName>
-        <Top>7.66053cm</Top>
+        <Top>7.53912cm</Top>
         <Left>13.55023cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>4.85755cm</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -389,10 +390,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Id</rd:DefaultName>
-        <Top>8.11266cm</Top>
-        <Left>13.09809cm</Left>
+        <Top>8.00683cm</Top>
+        <Left>13.55023cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>4.85755cm</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -419,10 +420,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Id</rd:DefaultName>
-        <Top>8.6862cm</Top>
-        <Left>12.81341cm</Left>
+        <Top>8.61564cm</Top>
+        <Left>13.09809cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>5.30969cm</Width>
         <ZIndex>14</ZIndex>
         <Style>
           <Border>
@@ -689,7 +690,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Id</rd:DefaultName>
-        <Top>22.84895cm</Top>
+        <Top>22.77839cm</Top>
         <Left>4.08886cm</Left>
         <Height>0.57354cm</Height>
         <Width>3.45091cm</Width>
@@ -722,7 +723,7 @@
         <Top>23.42249cm</Top>
         <Left>4.08886cm</Left>
         <Height>0.57354cm</Height>
-        <Width>3.45091cm</Width>
+        <Width>5.88508cm</Width>
         <ZIndex>24</ZIndex>
         <Style>
           <Border>
@@ -742,7 +743,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Fields!TotalAmount.Value</Value>
-                <Style />
+                <Style>
+                  <Format>0.00;(0.00)</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -782,7 +785,7 @@
         <Top>23.8537cm</Top>
         <Left>6.16174cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.93578cm</Width>
+        <Width>4.06104cm</Width>
         <ZIndex>26</ZIndex>
         <Style>
           <Border>

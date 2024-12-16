@@ -132,26 +132,16 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Line Name="Line1">
-            <Left>1.24037cm</Left>
-            <Height>0cm</Height>
-            <Width>12.58062cm</Width>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
           <Tablix Name="Tablix3">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>21.99662cm</Width>
+                  <Width>19.13912cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>3.06917cm</Height>
+                  <Height>3.37812cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -177,7 +167,7 @@
                                   <Top>0.29104cm</Top>
                                   <Left>0.16204cm</Left>
                                   <Height>0.6cm</Height>
-                                  <Width>4.24625cm</Width>
+                                  <Width>6.945cm</Width>
                                   <Style>
                                     <Border>
                                       <Style>None</Style>
@@ -193,7 +183,7 @@
                               <Top>0.39688cm</Top>
                               <Left>0.78729cm</Left>
                               <Height>1.18208cm</Height>
-                              <Width>4.40829cm</Width>
+                              <Width>7.10704cm</Width>
                               <Style>
                                 <Border>
                                   <Style>Solid</Style>
@@ -216,7 +206,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox8</rd:DefaultName>
-                              <Top>2.09021cm</Top>
+                              <Top>2.12548cm</Top>
+                              <Left>0.78729cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>1</ZIndex>
@@ -245,8 +236,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox8</rd:DefaultName>
-                              <Top>2.09021cm</Top>
-                              <Left>3.19829cm</Left>
+                              <Top>2.06375cm</Top>
+                              <Left>4.59cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>2</ZIndex>
@@ -276,7 +267,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox8</rd:DefaultName>
                               <Top>2.09021cm</Top>
-                              <Left>6.02933cm</Left>
+                              <Left>7.42104cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>3</ZIndex>
@@ -306,7 +297,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox8</rd:DefaultName>
                               <Top>2.09021cm</Top>
-                              <Left>9.23079cm</Left>
+                              <Left>10.6225cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>4</ZIndex>
@@ -336,7 +327,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox8</rd:DefaultName>
                               <Top>2.09021cm</Top>
-                              <Left>12.08829cm</Left>
+                              <Left>13.45354cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>5</ZIndex>
@@ -365,8 +356,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox8</rd:DefaultName>
-                              <Top>2.09021cm</Top>
-                              <Left>19.02037cm</Left>
+                              <Top>2.05493cm</Top>
+                              <Left>16.34808cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>6</ZIndex>
@@ -383,7 +374,7 @@
                             <Line Name="Line3">
                               <Top>2.79604cm</Top>
                               <Height>0cm</Height>
-                              <Width>21.99662cm</Width>
+                              <Width>19.13912cm</Width>
                               <ZIndex>7</ZIndex>
                               <Style>
                                 <Border>
@@ -404,7 +395,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>1.44166cm</Height>
+                  <Height>1.56604cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -427,7 +418,7 @@
                               <rd:DefaultName>ReservationDate1</rd:DefaultName>
                               <Top>0.38396cm</Top>
                               <Height>0.6cm</Height>
-                              <Width>2.5cm</Width>
+                              <Width>4.19333cm</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -453,8 +444,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>FirstName</rd:DefaultName>
-                              <Top>0.38396cm</Top>
-                              <Left>3.19829cm</Left>
+                              <Top>0.3575cm</Top>
+                              <Left>4.59cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>1</ZIndex>
@@ -483,8 +474,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Document</rd:DefaultName>
-                              <Top>0.38396cm</Top>
-                              <Left>6.02933cm</Left>
+                              <Top>0.3575cm</Top>
+                              <Left>7.42104cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>2</ZIndex>
@@ -514,7 +505,7 @@
                               </Paragraphs>
                               <rd:DefaultName>PostalCode</rd:DefaultName>
                               <Top>0.38396cm</Top>
-                              <Left>9.23079cm</Left>
+                              <Left>10.6225cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>3</ZIndex>
@@ -544,9 +535,9 @@
                               </Paragraphs>
                               <rd:DefaultName>ReservationStatus</rd:DefaultName>
                               <Top>0.38396cm</Top>
-                              <Left>12.08829cm</Left>
+                              <Left>13.48cm</Left>
                               <Height>0.6cm</Height>
-                              <Width>3.32021cm</Width>
+                              <Width>2.47354cm</Width>
                               <ZIndex>4</ZIndex>
                               <Style>
                                 <Border>
@@ -566,15 +557,17 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Fields!TotalAmount.Value</Value>
-                                      <Style />
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>TotalAmount</rd:DefaultName>
-                              <Top>0.38396cm</Top>
-                              <Left>19.02037cm</Left>
+                              <Top>0.3575cm</Top>
+                              <Left>16.34808cm</Left>
                               <Height>0.6cm</Height>
                               <Width>2.5cm</Width>
                               <ZIndex>5</ZIndex>
@@ -601,70 +594,11 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>2.39246cm</Height>
+                  <Height>0.66146cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Rectangle Name="Rectangle1">
-                          <ReportItems>
-                            <Rectangle Name="Rectangle2">
-                              <ReportItems>
-                                <Rectangle Name="Rectangle6">
-                                  <ReportItems>
-                                    <Textbox Name="ReservationDate2">
-                                      <CanGrow>true</CanGrow>
-                                      <KeepTogether>true</KeepTogether>
-                                      <Paragraphs>
-                                        <Paragraph>
-                                          <TextRuns>
-                                            <TextRun>
-                                              <Value>="TOTAL DE COSTOS" + First(Fields!TotalAmount.Value)</Value>
-                                              <Style />
-                                            </TextRun>
-                                          </TextRuns>
-                                          <Style />
-                                        </Paragraph>
-                                      </Paragraphs>
-                                      <rd:DefaultName>ReservationDate</rd:DefaultName>
-                                      <Top>0.29104cm</Top>
-                                      <Left>0.16204cm</Left>
-                                      <Height>0.6cm</Height>
-                                      <Width>4.24625cm</Width>
-                                      <Style>
-                                        <Border>
-                                          <Style>None</Style>
-                                        </Border>
-                                        <PaddingLeft>2pt</PaddingLeft>
-                                        <PaddingRight>2pt</PaddingRight>
-                                        <PaddingTop>2pt</PaddingTop>
-                                        <PaddingBottom>2pt</PaddingBottom>
-                                      </Style>
-                                    </Textbox>
-                                  </ReportItems>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Top>0.09706cm</Top>
-                                  <Left>17.58833cm</Left>
-                                  <Height>1.18208cm</Height>
-                                  <Width>4.40829cm</Width>
-                                  <Style>
-                                    <Border>
-                                      <Style>Solid</Style>
-                                      <Width>2pt</Width>
-                                    </Border>
-                                  </Style>
-                                </Rectangle>
-                              </ReportItems>
-                              <KeepTogether>true</KeepTogether>
-                              <Top>0.57319cm</Top>
-                              <Height>1.27914cm</Height>
-                              <Width>21.99662cm</Width>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                              </Style>
-                            </Rectangle>
-                          </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
                             <Border>
@@ -711,11 +645,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DSClients</DataSetName>
-            <Top>0.44662cm</Top>
+            <Top>1.21512cm</Top>
             <Left>0.29104cm</Left>
-            <Height>6.90328cm</Height>
-            <Width>21.99662cm</Width>
-            <ZIndex>1</ZIndex>
+            <Height>5.60562cm</Height>
+            <Width>19.13912cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -723,13 +656,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>3.84531in</Height>
+        <Height>4.14739in</Height>
         <Style />
       </Body>
-      <Width>9.09859in</Width>
+      <Width>7.858in</Width>
       <Page>
         <PageHeader>
-          <Height>2.03729cm</Height>
+          <Height>2.88396cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -752,7 +685,7 @@
               </Paragraphs>
               <rd:DefaultName>TituloReporte</rd:DefaultName>
               <Top>0.31432cm</Top>
-              <Left>1.24037cm</Left>
+              <Left>0.29104cm</Left>
               <Height>1.54658cm</Height>
               <Width>9.9395cm</Width>
               <Style>
@@ -773,7 +706,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>4.52063cm</Height>
+          <Height>2.48334cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -792,8 +725,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>1.19776cm</Top>
-              <Left>19.78766cm</Left>
+              <Top>0.77443cm</Top>
+              <Left>16.93016cm</Left>
               <Height>0.6cm</Height>
               <Width>2.5cm</Width>
               <Style>

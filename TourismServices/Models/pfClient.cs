@@ -72,6 +72,22 @@ namespace TourismServices.Models
 
         // Eliminado
         public bool IsDeleted { get; set; } = false;
+
+
+        //// Propiedad calculada para el nombre del destino
+        //public string DestinationName => Destination?.Name ?? "Sin destino";
+        //public string ActivityName => Activity?.ActivityName ?? "Sin actividad";
+        //public string ItineraryName => Itinerary?.Name ?? "Sin itinerario";
+
+        // Propiedades formateadas para los enums
+        //public string FormattedCustomerGender => CustomerGender.ToString();
+        //public string FormattedAccommodationPreference => AccommodationPreference.ToString();
+        //public string FormattedFoodPreference => FoodPreference.ToString();
+        //public string FormattedPaymentMethod => PaymentMethod.ToString();
+        //public string FormattedPaymentConfirmation => PaymentConfirmation.ToString();
+        //public string FormattedReservationStatus => ReservationStatus.ToString();
+        //public string FormattedPreferenceTransport => PreferenceTransport.ToString();
+
     }
 
 }
