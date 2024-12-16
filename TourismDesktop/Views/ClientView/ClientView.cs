@@ -86,7 +86,10 @@ namespace TourismDesktop.Views
             dataGridClientView.Columns[0].Visible = false;
             dataGridClientView.Columns[15].Visible = false;
             dataGridClientView.Columns[17].Visible = false;
+            dataGridClientView.Columns[18].Visible = false;
+            dataGridClientView.Columns[19].Visible = false;
             dataGridClientView.Columns[22].Visible = false;
+            dataGridClientView.Columns[23].Visible = false;
             dataGridClientView.Columns[28].Visible = false;
 
             dataGridClientView.Columns[27].DefaultCellStyle.Format = "N2";
@@ -361,6 +364,10 @@ namespace TourismDesktop.Views
             var filteredClient = Filterlist.Where(c => c.FirstName.Contains(txtFilter.Text)).ToList();
             ListClient.DataSource = new BindingSource(filteredClient, null);
         }
+
+        #endregion
+
+        #region ReportList
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             //Obtener el Cliente Seleccionado
@@ -378,6 +385,45 @@ namespace TourismDesktop.Views
             }
         }
 
+        private void btnReportCost_Click(object sender, EventArgs e)
+        {
+            // Obtener la fecha de reservación seleccionada
+            DateTime selectedDate = dateTimeFilterVentas.Value.Date;
+
+            // Filtrar los clientes por la fecha de reservación
+            var filteredClients = Filterlist.Where(c => c.ReservationDate.Date == selectedDate).ToList();
+
+            if (filteredClients.Any())
+            {
+                // Abre la ventana del reporte de costos históricos con los clientes filtrados
+                var historicCostReport = new HistoricCostReport(filteredClients);
+                historicCostReport.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No hay clientes con la fecha de reservación seleccionada para generar el reporte de costos históricos");
+            }
+        }
+
+        #endregion
+
+        #region BtnFilterDate
+        private async void dateTimeFilterVentas_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = dateTimeFilterVentas.Value.Date;
+            var clients = await ClientService.GetAllAsync();
+            var filteredClients = clients?.Where(c => c.ReservationDate.Date == selectedDate).ToList();
+            ListClient.DataSource = filteredClients;
+        }
+
+        private async void btnCleanFilterDate_Click(object sender, EventArgs e)
+        {
+            dateTimeFilterVentas.Value = DateTime.Now;
+            var clients = await ClientService.GetAllAsync();
+            ListClient.DataSource = clients?.Where(i => !i.IsDeleted).ToList();
+        }
+
         #endregion
     }
+
 }

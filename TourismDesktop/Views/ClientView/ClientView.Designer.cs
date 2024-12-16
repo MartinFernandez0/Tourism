@@ -33,6 +33,8 @@
             label3 = new Label();
             txtFilter = new TextBox();
             panel1 = new Panel();
+            dateTimeFilterVentas = new DateTimePicker();
+            btnReportCost = new FontAwesome.Sharp.IconButton();
             btnGenerateReport = new FontAwesome.Sharp.IconButton();
             btnReturn = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
@@ -98,6 +100,7 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
+            btnCleanFilterDate = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPageList.SuspendLayout();
@@ -133,6 +136,9 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(24, 24, 29);
+            panel1.Controls.Add(btnCleanFilterDate);
+            panel1.Controls.Add(dateTimeFilterVentas);
+            panel1.Controls.Add(btnReportCost);
             panel1.Controls.Add(btnGenerateReport);
             panel1.Controls.Add(btnReturn);
             panel1.Controls.Add(label1);
@@ -141,6 +147,32 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1106, 63);
             panel1.TabIndex = 37;
+            // 
+            // dateTimeFilterVentas
+            // 
+            dateTimeFilterVentas.Format = DateTimePickerFormat.Custom;
+            dateTimeFilterVentas.Location = new Point(496, 19);
+            dateTimeFilterVentas.Name = "dateTimeFilterVentas";
+            dateTimeFilterVentas.Size = new Size(111, 23);
+            dateTimeFilterVentas.TabIndex = 70;
+            dateTimeFilterVentas.ValueChanged += dateTimeFilterVentas_ValueChanged;
+            // 
+            // btnReportCost
+            // 
+            btnReportCost.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnReportCost.IconChar = FontAwesome.Sharp.IconChar.ClipboardCheck;
+            btnReportCost.IconColor = Color.Black;
+            btnReportCost.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnReportCost.IconSize = 20;
+            btnReportCost.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReportCost.Location = new Point(631, 15);
+            btnReportCost.Margin = new Padding(3, 2, 3, 2);
+            btnReportCost.Name = "btnReportCost";
+            btnReportCost.Size = new Size(168, 33);
+            btnReportCost.TabIndex = 69;
+            btnReportCost.Text = "Lista Ventas";
+            btnReportCost.UseVisualStyleBackColor = true;
+            btnReportCost.Click += btnReportCost_Click;
             // 
             // btnGenerateReport
             // 
@@ -871,6 +903,22 @@
             pictureBox3.TabIndex = 106;
             pictureBox3.TabStop = false;
             // 
+            // btnCleanFilterDate
+            // 
+            btnCleanFilterDate.BackColor = Color.White;
+            btnCleanFilterDate.BackgroundImageLayout = ImageLayout.None;
+            btnCleanFilterDate.ForeColor = SystemColors.ActiveCaptionText;
+            btnCleanFilterDate.IconChar = FontAwesome.Sharp.IconChar.ClockRotateLeft;
+            btnCleanFilterDate.IconColor = Color.Black;
+            btnCleanFilterDate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCleanFilterDate.IconSize = 25;
+            btnCleanFilterDate.Location = new Point(418, 11);
+            btnCleanFilterDate.Name = "btnCleanFilterDate";
+            btnCleanFilterDate.Size = new Size(57, 37);
+            btnCleanFilterDate.TabIndex = 71;
+            btnCleanFilterDate.UseVisualStyleBackColor = false;
+            btnCleanFilterDate.Click += btnCleanFilterDate_Click;
+            // 
             // ClientView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -973,5 +1021,8 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox5;
         private FontAwesome.Sharp.IconButton btnGenerateReport;
+        private FontAwesome.Sharp.IconButton btnReportCost;
+        private DateTimePicker dateTimeFilterVentas;
+        private FontAwesome.Sharp.IconButton btnCleanFilterDate;
     }
 }

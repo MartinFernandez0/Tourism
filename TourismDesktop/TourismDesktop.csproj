@@ -10,10 +10,12 @@
 
   <ItemGroup>
     <None Remove="Reports\ClientViewReport.rdlc" />
+    <None Remove="Reports\HistoricCostReport.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Reports\ClientViewReport.rdlc" />
+    <EmbeddedResource Include="Reports\HistoricCostReport.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
